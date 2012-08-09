@@ -1,5 +1,9 @@
 .DS_Store
 .metadata
 cnf/cache
-com.brindysoft.mud/generated/
-com.brindysoft.mud/bin/
+com.brindysoft.mud/generated
+com.brindysoft.mud/bin
+com.brindysoft.mud/bin_test
+com.brindysoft.logging/generated
+com.brindysoft.logging/bin
+com.brindysoft.logging/bin_test
