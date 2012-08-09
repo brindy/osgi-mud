@@ -7,7 +7,7 @@ import org.osgi.service.event.EventAdmin;
 
 public class ExceptionEvent extends Event {
 
-	public static final String TOPIC = "mud/EXCEPTION";
+	public static final String TOPIC = "com/brindysoft/mud/EXCEPTION";
 
 	private final Throwable throwable;
 

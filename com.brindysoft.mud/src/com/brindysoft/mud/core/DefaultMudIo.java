@@ -115,9 +115,9 @@ public class DefaultMudIo implements MudIo, UncaughtExceptionHandler {
 
 	@Override
 	public void uncaughtException(Thread thread, Throwable throwable) {
-		logger.debug("DefaultMuleIo#uncaughtException() - IN");
+		logger.debug("DefaultMudIo#uncaughtException() - IN");
 		ExceptionEvent.postEvent(eventAdmin, throwable, handler);
-		logger.debug("DefaultMuleIo#uncaughtException() - OUT");
+		logger.debug("DefaultMudIo#uncaughtException() - OUT");
 	}
 
 }

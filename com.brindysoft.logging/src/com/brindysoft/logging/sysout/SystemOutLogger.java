@@ -15,7 +15,7 @@ public class SystemOutLogger implements Logger {
 	}
 
 	@Override
-	public void debug(String message, Exception ex) {
+	public void debug(String message, Throwable ex) {
 		log("debug", message, ex);
 	}
 
@@ -25,7 +25,7 @@ public class SystemOutLogger implements Logger {
 	}
 
 	@Override
-	public void error(String message, Exception ex) {
+	public void error(String message, Throwable ex) {
 		log("error", message, ex);
 	}
 
@@ -35,7 +35,7 @@ public class SystemOutLogger implements Logger {
 	}
 
 	@Override
-	public void warn(String message, Exception ex) {
+	public void warn(String message, Throwable ex) {
 		log("warn", message, ex);
 	}
 
@@ -45,11 +45,11 @@ public class SystemOutLogger implements Logger {
 	}
 
 	@Override
-	public void info(String message, Exception ex) {
+	public void info(String message, Throwable ex) {
 		log("info", message, ex);
 	}
 
-	private void log(String type, String message, Exception ex) {
+	private void log(String type, String message, Throwable ex) {
 
 		System.out.println(new Date() + " : " + type + " : " + message);
 		if (null != ex) {

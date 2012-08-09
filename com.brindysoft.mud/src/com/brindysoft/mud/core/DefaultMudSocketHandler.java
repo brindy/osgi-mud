@@ -55,8 +55,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 			thread = new Thread(this);
 			thread.start();
 		} catch (IOException e) {
-			e.printStackTrace();
-			fireExceptionEvent(e);
+			ExceptionEvent.postEvent(eventAdmin, e, this);
 		}
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#run() IN");
 	}
@@ -68,8 +67,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		try {
 			io.run();
 		} catch (IOException e) {
-			e.printStackTrace();
-			fireExceptionEvent(e);
+			ExceptionEvent.postEvent(eventAdmin, e, this);
 		}
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#run() OUT");
 	}
@@ -89,11 +87,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		socket.close();
 
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#deactivate() OUT");
-	}
-
-	private void fireExceptionEvent(IOException e) {
-		logger.debug("firingExceptionEvent");
-		ExceptionEvent.postEvent(eventAdmin, e, this);
 	}
 
 	private MudIo createIo() {

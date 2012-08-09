@@ -105,7 +105,9 @@ public class MudServer implements Runnable, EventHandler {
 
 	private void handleExceptionEvent(Event event) {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() IN");
-		MudSocketHandler handler = ((ExceptionEvent) event).getHandler();
+		ExceptionEvent exEvent = (ExceptionEvent) event;
+		logger.info("Connection threw exception", exEvent.getThrowable());
+		MudSocketHandler handler = exEvent.getHandler();
 		socketHandlers.remove(handler).dispose();
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() OUT");
 	}
