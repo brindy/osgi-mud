@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1344332839404' name='com.brindysoft.mud' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1344532937977' name='com.brindysoft.mud' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='com.brindysoft.mud.core'/>
@@ -7,9 +7,9 @@
       <attribute name='version' type='Version' value='0.0.0'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='094c18b13c0818312a0c6bc5fb486ee2d5d6d1a4192f86019c6f90425f834e69'/>
+      <attribute name='osgi.content' value='b2659e9366eb482160aa0180e78c31ed5390c234c9c0e45cd5a4f3f2b1770fc0'/>
       <attribute name='url' value='generated/com.brindysoft.mud.core.jar'/>
-      <attribute name='size' type='Long' value='15172'/>
+      <attribute name='size' type='Long' value='22287'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
@@ -21,7 +21,7 @@
       <attribute name='bundle-version' type='Version' value='0.0.0'/>
     </capability>
     <capability namespace='bndtools.workspace'>
-      <attribute name='bndtools.workspace' value='file:/Users/brindy/Projects/Personal/arkhammud'/>
+      <attribute name='bndtools.workspace' value='file:/Users/brindy/Projects/Personal/mud'/>
       <attribute name='project.path' value='/com.brindysoft.mud'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>

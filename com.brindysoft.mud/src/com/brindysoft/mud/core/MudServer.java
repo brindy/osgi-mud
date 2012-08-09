@@ -21,10 +21,10 @@ import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
 
-@Component(immediate = true, provide = EventHandler.class, properties = "event.topics=com/brindysoft/mud/core/SocketHandler/*")
+@Component(immediate = true, provide = EventHandler.class, properties = "event.topics=" + ExceptionEvent.TOPIC)
 public class MudServer implements Runnable, EventHandler {
 
-	private final Map<SocketHandler, ComponentInstance> socketHandlers = new HashMap<SocketHandler, ComponentInstance>();
+	private final Map<MudSocketHandler, ComponentInstance> socketHandlers = new HashMap<MudSocketHandler, ComponentInstance>();
 
 	private Thread thread;
 	private ServerSocket serverSocket;
@@ -38,7 +38,7 @@ public class MudServer implements Runnable, EventHandler {
 		this.logger = logger;
 	}
 
-	@Reference(target = "(component.factory=" + SocketHandler.FACTORY + ")")
+	@Reference(target = "(component.factory=" + MudSocketHandler.FACTORY + ")")
 	public void setSocketHandlerFactory(ComponentFactory socketHandlerFactory) {
 		this.socketHandlerFactory = socketHandlerFactory;
 	}
@@ -78,17 +78,6 @@ public class MudServer implements Runnable, EventHandler {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#run() OUT");
 	}
 
-	private void checkRetry(IOException e) {
-		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#checkRetry(" + e + ", " + retry + ") IN");
-		retry++;
-		if (retry > 3) {
-			logger.debug("MudServer(" + Thread.currentThread().getName() + ")#checkRetry() throwing RuntimeException("
-					+ e + ")");
-			throw new RuntimeException("Unable to accept sockets", e);
-		}
-		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#checkRetry(" + retry + ") OUT");
-	}
-
 	@Deactivate
 	public void stop() throws Exception {
 		logger.debug("MudServer#stop() - IN");
@@ -108,7 +97,7 @@ public class MudServer implements Runnable, EventHandler {
 	@Override
 	public void handleEvent(Event event) {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleEvent(" + event + ") IN");
-		if (event instanceof SocketHandler.ExceptionEvent) {
+		if (event instanceof ExceptionEvent) {
 			handleExceptionEvent(event);
 		}
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleEvent(" + event + ") OUT");
@@ -116,17 +105,28 @@ public class MudServer implements Runnable, EventHandler {
 
 	private void handleExceptionEvent(Event event) {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() IN");
-		SocketHandler handler = ((SocketHandler.ExceptionEvent) event).getHandler();
+		MudSocketHandler handler = ((ExceptionEvent) event).getHandler();
 		socketHandlers.remove(handler).dispose();
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() OUT");
 	}
 
 	private void createSocketHandler(Socket socket) {
 		Hashtable<String, Object> properties = new Hashtable<String, Object>();
-		properties.put(SocketHandler.SOCKET_PROPERTY, socket);
+		properties.put(MudSocketHandler.SOCKET_PROPERTY, socket);
 		ComponentInstance componentInstance = socketHandlerFactory.newInstance(properties);
-		SocketHandler handler = (SocketHandler) componentInstance.getInstance();
+		MudSocketHandler handler = (MudSocketHandler) componentInstance.getInstance();
 		socketHandlers.put(handler, componentInstance);
+	}
+
+	private void checkRetry(IOException e) {
+		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#checkRetry(" + e + ", " + retry + ") IN");
+		retry++;
+		if (retry > 3) {
+			logger.debug("MudServer(" + Thread.currentThread().getName() + ")#checkRetry() throwing RuntimeException("
+					+ e + ")");
+			throw new RuntimeException("Unable to accept sockets", e);
+		}
+		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#checkRetry(" + retry + ") OUT");
 	}
 
 }

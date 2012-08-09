@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Hashtable;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentFactory;
@@ -17,8 +18,8 @@ import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
 
-@Component(factory = SocketHandler.FACTORY)
-public class DefaultSocketHandler implements SocketHandler, Runnable {
+@Component(factory = MudSocketHandler.FACTORY)
+public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 	private Socket socket;
 	private Thread thread;
@@ -34,7 +35,7 @@ public class DefaultSocketHandler implements SocketHandler, Runnable {
 		this.logger = logger;
 	}
 
-	@Reference(target = "(component.factory=" + MudEngine.FACTORY + ")")
+	@Reference(target = "(component.factory=" + MudIo.FACTORY + ")")
 	public void setMudEngineFactory(ComponentFactory factory) {
 		this.mudEngineFactory = factory;
 	}
@@ -48,7 +49,7 @@ public class DefaultSocketHandler implements SocketHandler, Runnable {
 	public void activate(Map<String, Object> properties) {
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#run() IN");
 		try {
-			socket = (Socket) properties.get(SocketHandler.SOCKET_PROPERTY);
+			socket = (Socket) properties.get(MudSocketHandler.SOCKET_PROPERTY);
 			inputStream = socket.getInputStream();
 			outputStream = socket.getOutputStream();
 			thread = new Thread(this);
@@ -63,11 +64,9 @@ public class DefaultSocketHandler implements SocketHandler, Runnable {
 	@Override
 	public void run() {
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#run() IN");
-		MudEngine engine = createMudEngine();
+		MudIo io = createIo();
 		try {
-			while (engine.run(inputStream, outputStream)) {
-				logger.debug("SocketThread(" + Thread.currentThread().getName() + ").while()");
-			}
+			io.run();
 		} catch (IOException e) {
 			e.printStackTrace();
 			fireExceptionEvent(e);
@@ -94,12 +93,17 @@ public class DefaultSocketHandler implements SocketHandler, Runnable {
 
 	private void fireExceptionEvent(IOException e) {
 		logger.debug("firingExceptionEvent");
-		eventAdmin.postEvent(new ExceptionEvent(this, e));
+		ExceptionEvent.postEvent(eventAdmin, e, this);
 	}
 
-	private MudEngine createMudEngine() {
-		mudEngineFactoryInstance = mudEngineFactory.newInstance(null);
-		return (MudEngine) mudEngineFactoryInstance.getInstance();
+	private MudIo createIo() {
+		Hashtable<String, Object> properties = new Hashtable<String, Object>();
+		properties.put(MudIo.INPUT_PROPERTY, inputStream);
+		properties.put(MudIo.OUTPUT_PROPERTY, outputStream);
+		properties.put(MudIo.SOCKET_HANDLER_PROPERTY, this);
+
+		mudEngineFactoryInstance = mudEngineFactory.newInstance(properties);
+		return (MudIo) mudEngineFactoryInstance.getInstance();
 	}
 
 }
