@@ -1,18 +1,8 @@
-package com.brindysoft.mud.core;
+package com.brindysoft.mud.core.api;
 
 import java.io.IOException;
 
 public interface MudIo {
-
-	String FACTORY = "com.brindysoft.mud.core.MudEngine";
-
-	String INPUT_PROPERTY = "input";
-
-	String OUTPUT_PROPERTY = "output";
-
-	String SOCKET_HANDLER_PROPERTY = "socketHandler";
-
-	void run() throws IOException;
 
 	String readLine() throws IOException;
 

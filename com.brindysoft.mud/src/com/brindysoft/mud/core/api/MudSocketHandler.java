@@ -1,8 +1,6 @@
-package com.brindysoft.mud.core;
+package com.brindysoft.mud.core.api;
 
-
-
-public interface MudSocketHandler {
+public interface MudSocketHandler extends MudIo {
 
 	String FACTORY = "com.brindysoft.mud.core.SocketHandler";
 

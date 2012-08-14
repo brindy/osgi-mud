@@ -1,4 +1,4 @@
-Private-Package: com.brindysoft.mud.core
+Private-Package: com.brindysoft.mud.core.api
 -runee: JavaSE-1.6
 Service-Component: *
 -runframework: org.apache.felix.framework

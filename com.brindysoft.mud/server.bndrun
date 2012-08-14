@@ -1,21 +1,22 @@
 -runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'
 -runee: JavaSE-1.6
 
--runbundles: org.apache.felix.scr;version='[1.6.0,1.6.1)',\
-	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
-	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
-	com.brindysoft.mud.core;version=latest,\
-	osgi.cmpn;version='[4.2.0,4.2.1)',\
-	org.apache.felix.log;version='[1.0.1,1.0.2)',\
-	javax.servlet;version='[2.5.0,2.5.1)',\
-	org.apache.felix.metatype;version='[1.0.4,1.0.5)',\
-	org.apache.felix.webconsole;version='[3.1.8,3.1.9)',\
+-runbundles: com.brindysoft.logging.sysout;version=latest,\
 	org.apache.felix.eventadmin;version='[1.2.14,1.2.15)',\
-	com.brindysoft.logging.sysout;version=latest,\
+	com.brindysoft.mud.ootb;version=latest,\
+	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
+	javax.servlet;version='[2.5.0,2.5.1)',\
+	org.apache.felix.webconsole;version='[3.1.8,3.1.9)',\
+	com.brindysoft.logging.api;version=latest,\
 	org.apache.felix.configadmin;version='[1.4.0,1.4.1)',\
-	org.apache.felix.http.jetty;version='[2.2.0,2.2.1)',\
+	org.apache.felix.metatype;version='[1.0.4,1.0.5)',\
 	org.apache.felix.gogo.command;version='[0.12.0,0.12.1)',\
-	com.brindysoft.logging.api;version=latest
+	org.apache.felix.scr;version='[1.6.0,1.6.1)',\
+	com.brindysoft.mud.core;version=latest,\
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
+	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
+	org.apache.felix.http.jetty;version='[2.2.0,2.2.1)',\
+	osgi.cmpn;version='[4.2.0,4.2.1)'
 
 ## Uncomment if you need to change the HTTP port
 #-runproperties: org.osgi.service.http.port=8080
@@ -31,6 +32,7 @@
 	osgi.identity;filter:='(osgi.identity=com.brindysoft.mud.core)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.eventadmin)',\
 	osgi.identity;filter:='(osgi.identity=com.brindysoft.logging.sysout)',\
-	osgi.identity;filter:='(osgi.identity=com.brindysoft.logging.api)'
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.logging.api)',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.mud.ootb)'
 	
 -runframework: org.apache.felix.framework;version='[4.0.3,4.0.3]'

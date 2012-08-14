@@ -1,4 +1,4 @@
-package com.brindysoft.mud.core;
+package com.brindysoft.mud.core.api;
 
 import java.util.Map;
 

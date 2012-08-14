@@ -1,4 +1,4 @@
-package com.brindysoft.mud.core;
+package com.brindysoft.mud.core.internal;
 
 import java.util.Locale;
 

@@ -1,6 +1,7 @@
-package com.brindysoft.mud.core;
+package com.brindysoft.mud.core.internal;
 
 import java.util.Locale;
+
 
 import aQute.bnd.annotation.component.Component;
 

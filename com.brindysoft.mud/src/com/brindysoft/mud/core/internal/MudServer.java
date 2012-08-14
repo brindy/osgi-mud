@@ -1,4 +1,4 @@
-package com.brindysoft.mud.core;
+package com.brindysoft.mud.core.internal;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -20,6 +20,8 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
+import com.brindysoft.mud.core.api.ExceptionEvent;
+import com.brindysoft.mud.core.api.MudSocketHandler;
 
 @Component(immediate = true, provide = EventHandler.class, properties = "event.topics=" + ExceptionEvent.TOPIC)
 public class MudServer implements Runnable, EventHandler {
@@ -59,8 +61,9 @@ public class MudServer implements Runnable, EventHandler {
 
 		while (null != thread) {
 
+			Socket socket = null;
 			try {
-				Socket socket = serverSocket.accept();
+				socket = serverSocket.accept();
 				createSocketHandler(socket);
 				retry = 0;
 			} catch (SocketTimeoutException e) {
@@ -71,11 +74,24 @@ public class MudServer implements Runnable, EventHandler {
 				if (null != thread) {
 					checkRetry(e);
 				}
+			} catch (Exception e) {
+				logger.error("Error creating socket", e);
+				cleanup(socket);
 			}
 
 		}
 
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#run() OUT");
+	}
+
+	private void cleanup(Socket socket) {
+		if (null != socket) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				logger.error("Error cleaning up socket afte error", e);
+			}
+		}
 	}
 
 	@Deactivate
@@ -106,8 +122,10 @@ public class MudServer implements Runnable, EventHandler {
 	private void handleExceptionEvent(Event event) {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() IN");
 		ExceptionEvent exEvent = (ExceptionEvent) event;
+
 		logger.info("Connection threw exception", exEvent.getThrowable());
 		MudSocketHandler handler = exEvent.getHandler();
+
 		socketHandlers.remove(handler).dispose();
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() OUT");
 	}

@@ -1,1 +1,2 @@
-Private-Package: com.brindysoft.mud.core
+Export-Package: com.brindysoft.mud.core.api
+Private-Package: com.brindysoft.mud.core.internal
