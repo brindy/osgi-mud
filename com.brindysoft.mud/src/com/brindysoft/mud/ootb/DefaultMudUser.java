@@ -10,6 +10,10 @@ public class DefaultMudUser implements MudUser {
 
 	private transient MudSocketHandler socket;
 
+	private Locale locale;
+
+	private String name;
+
 	@Override
 	public void attachToSocket(MudSocketHandler socket) {
 		this.socket = socket;
@@ -17,16 +21,20 @@ public class DefaultMudUser implements MudUser {
 
 	@Override
 	public Locale getLocale() {
-		return null;
+		return locale;
+	}
+
+	public void setLocale(Locale locale) {
+		this.locale = locale;
 	}
 
 	@Override
-	public void print(String message, Object... params) throws IOException {
+	public void print(String message, Object... params) {
 		socket.print(message, params);
 	}
 
 	@Override
-	public void println(String message, Object... params) throws IOException {
+	public void println(String message, Object... params) {
 		socket.println(message, params);
 	}
 
@@ -35,4 +43,12 @@ public class DefaultMudUser implements MudUser {
 		return socket.readLine();
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
 }

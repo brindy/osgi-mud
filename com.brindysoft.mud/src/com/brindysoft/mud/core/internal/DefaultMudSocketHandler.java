@@ -109,10 +109,21 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 			case -1:
 				return null;
 
+			case 0:
+				break;
+
 			case '\r':
 				break;
 
 			case '\n':
+				break;
+
+			case 7:
+				buffer.append(' ');
+				break;
+
+			case 8:
+				buffer.deleteCharAt(buffer.length() - 1);
 				break;
 
 			default:
@@ -124,20 +135,27 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	}
 
 	@Override
-	public void println(String message, Object... params) throws IOException {
+	public void println(String message, Object... params) {
 		print(message, params);
-		outputStream.write('\n');
-		outputStream.write('\r');
-		outputStream.flush();
+		try {
+			outputStream.write('\n');
+			outputStream.write('\r');
+			outputStream.flush();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
-	public void print(String message, Object... params) throws IOException {
+	public void print(String message, Object... params) {
 		message = localizer.lookup(message, locale);
 		String output = String.format(message, params);
-		System.out.println(output);
-		outputStream.write(output.getBytes());
-		outputStream.flush();
+		try {
+			outputStream.write(output.getBytes());
+			outputStream.flush();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Deactivate

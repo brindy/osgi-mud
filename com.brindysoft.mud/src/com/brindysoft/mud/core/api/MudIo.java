@@ -9,7 +9,7 @@ public interface MudIo {
 	/**
 	 * Same as {@link #print(String, Object...)} but with a carriage return.
 	 */
-	void println(String message, Object... params) throws IOException;
+	void println(String message, Object... params);
 
 	/**
 	 * Print a localized string filed with given parameters as per
@@ -21,6 +21,6 @@ public interface MudIo {
 	 * @param params
 	 *            any parameters used by the message
 	 */
-	void print(String message, Object... params) throws IOException;
+	void print(String message, Object... params);
 
 }

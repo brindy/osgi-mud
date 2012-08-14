@@ -13,29 +13,30 @@ public class DefaultMudAuthenticator implements MudAuthenticator {
 
 	@Override
 	public MudUser authenticate(MudSocketHandler socket) throws IOException {
-		socket.print("Enter your desired username: ");
-		String name = socket.readLine();
+		String name = promptForName(socket);
 
 		DefaultMudUser user = loadByName(name);
 		if (null == user) {
-			user = newUser(socket, name);
+			user = new DefaultMudUser();
+			user.setName(name);
 		} else {
 			// check user's password
 		}
 
 		// update the user
+		
 		// save to the database
 
 		return user;
 	}
 
-	private DefaultMudUser loadByName(String name) {
-		return null;
+	private String promptForName(MudSocketHandler socket) throws IOException {
+		socket.print("Enter your desired username: ");
+		String name = socket.readLine();
+		return name;
 	}
 
-	private DefaultMudUser newUser(MudSocketHandler socket, String name) throws IOException {
-		socket.print("You chose %s, is this OK? [y,N] ", name);
-		String response = socket.readLine();
+	private DefaultMudUser loadByName(String name) {
 		return null;
 	}
 
