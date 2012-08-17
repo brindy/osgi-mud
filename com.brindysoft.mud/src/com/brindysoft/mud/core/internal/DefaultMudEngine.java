@@ -1,6 +1,7 @@
 package com.brindysoft.mud.core.internal;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;
@@ -17,6 +18,12 @@ public class DefaultMudEngine implements MudEngine {
 
 	private Logger logger;
 	private MudWorld world;
+
+	private MudCommandRegistry commandRegistry;
+
+	@Reference
+	public void setCommandRegistry(MudCommandRegistry commandRegistry) {
+	}
 
 	@Reference
 	public void setWorld(MudWorld world) {
@@ -40,6 +47,7 @@ public class DefaultMudEngine implements MudEngine {
 
 	@Override
 	public void run(MudUser user) throws IOException {
+		logger.debug("DefaultMudEngine#run() - IN");
 
 		// add the user to the world
 		world.addUser(user);
@@ -48,13 +56,21 @@ public class DefaultMudEngine implements MudEngine {
 		while (true) {
 			user.print(user.getName() + " > ");
 			String commandLine = user.readLine();
-			
-			
-			
-			user.println("I don't know how to '%s'", commandLine);
-			user.println("");
+			if (null == commandLine) {
+				break;
+			}
+
+			String[] args = commandLine.split("\\W+");
+			logger.debug("DefaultMudEngine#run() args : " + Arrays.asList(args));
+
+			MudCommand command = commandRegistry.find(args[0]);
+			if (null == command || !command.invoke(args, user)) {
+				user.println("I don't know how to '%s'", commandLine);
+				user.println("");
+			}
 		}
 
+		logger.debug("DefaultMudEngine#run() - OUT");
 	}
 
 }

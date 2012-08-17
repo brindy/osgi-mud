@@ -52,10 +52,12 @@ public class SystemOutLogger implements Logger {
 	private void log(String type, String message, Throwable ex) {
 
 		System.out.println(new Date() + " : " + type + " : " + message);
-		if (null != ex) {
+		
+		while (null != ex) {
 			System.out.println(new Date() + " : " + type + " : " + ex.toString());
 			System.out.print(new Date() + " : ");
 			ex.printStackTrace(System.out);
+			ex = ex.getCause();
 		}
 
 	}

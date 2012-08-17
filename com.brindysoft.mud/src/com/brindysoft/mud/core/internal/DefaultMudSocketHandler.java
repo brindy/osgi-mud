@@ -80,6 +80,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	@Override
 	public void run() {
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#run() IN");
+		
 		try {
 			MudUser user = authenticator.authenticate(this);
 			if (null == user) {
@@ -99,39 +100,12 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	}
 
 	@Override
-	public String readLine() throws IOException {
-		StringBuilder buffer = new StringBuilder();
-		int charRead = '\0';
-		while ('\n' != charRead) {
-			charRead = inputStream.read();
-
-			switch (charRead) {
-			case -1:
-				return null;
-
-			case 0:
-				break;
-
-			case '\r':
-				break;
-
-			case '\n':
-				break;
-
-			case 7:
-				buffer.append(' ');
-				break;
-
-			case 8:
-				buffer.deleteCharAt(buffer.length() - 1);
-				break;
-
-			default:
-				buffer.append((char) charRead);
-				break;
-			}
+	public String readLine() {
+		try {
+			return doReadLine();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
-		return buffer.toString();
 	}
 
 	@Override
@@ -172,6 +146,41 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		socket.close();
 
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#deactivate() OUT");
+	}
+
+	private String doReadLine() throws IOException {
+		StringBuilder buffer = new StringBuilder();
+		int charRead = '\0';
+		while ('\n' != charRead) {
+			charRead = inputStream.read();
+	
+			switch (charRead) {
+			case -1:
+				throw new IOException("Unable to read from input stream");
+	
+			case 0:
+				break;
+	
+			case '\r':
+				break;
+	
+			case '\n':
+				break;
+	
+			case 7:
+				buffer.append(' ');
+				break;
+	
+			case 8:
+				buffer.deleteCharAt(buffer.length() - 1);
+				break;
+	
+			default:
+				buffer.append((char) charRead);
+				break;
+			}
+		}
+		return buffer.toString();
 	}
 
 }

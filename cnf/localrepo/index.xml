@@ -1,5 +1,815 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1344297194206' name='Local' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1345132932964' name='Local' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='db4o_osgi'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='15451355146a5bf193dc80bd06b164b7a009eea94b7f1d3f230388048f31d90e'/>
+      <attribute name='url' value='db4o_osgi/db4o_osgi-8.0.249.jar'/>
+      <attribute name='size' type='Long' value='2339232'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.benchmark'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.cfg'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.codegen'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.context'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.decorate'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.diva'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.dump'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.editor'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.file'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.inline'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.optimize'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.reflect'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.shrink'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.ssa'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.strip'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.tbaa'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.tools'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.trans'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.tree'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.util'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.activation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.collections'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.constraints'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.defragment'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.diagnostic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.events'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.ext'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.foundation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.marshall'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.messaging'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.qlin'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.query'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.ta'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.typehandlers'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.types'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config.annotations'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config.encoding'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.drs.db4o'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.foundation.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.activation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.btree'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.caching'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.callbacks'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.classindex'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.collections'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.convert'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.delete'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.diagnostic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.encoding'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.events'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.fieldindex'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.fileheader'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.freespace'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.ids'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.mapping'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.marshall'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.metadata'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.qlin'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.query'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.references'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.reflect'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.replication'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.slots'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.threading'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.transactionlog'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.weakref'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.core'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.generic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.jdk'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.typehandlers.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config.annotations.reflect'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.btree.algebra'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.convert.conversions'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers.array'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers.net'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers.versions'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.query.processor'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.query.result'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.reflect.generic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.caching'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.foundation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.caching'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.events'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.messages'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.objectexchange'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.monitoring'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.ssl'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cluster'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.consistency'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.filestats'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.foundation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.monitoring'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.cluster'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.monitoring'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.monitoring.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.self'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.ant'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.api'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.bloat'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.classfilter'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.core'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.file'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.main'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.util'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.analysis'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.example'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.instrumentation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.main'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.optimization'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr.build'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr.cmp'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr.cmp.operand'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.enhance'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.osgi'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='db4o_osgi'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.3.0))'/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='org.apache.felix.eventadmin'/>
@@ -40,6 +850,1414 @@
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.metatype)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
       <directive name='resolution' value='optional'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='com.db4o.java5'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='921a252a2715651b16b659412fe249e580eea14818872a426f81256009ca7cde'/>
+      <attribute name='url' value='com.db4o.java5/com.db4o.java5-8.0.249.jar'/>
+      <attribute name='size' type='Long' value='2642943'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers.versions'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal.mapping,com.db4o.marshall,com.db4o.typehandlers,com.db4o.ext,com.db4o.internal,com.db4o.defragment,com.db4o.internal.marshall,com.db4o.internal.slots,com.db4o.internal.activation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.classindex'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o,com.db4o.foundation,com.db4o.internal.references,com.db4o.internal.btree'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.events'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext,com.db4o.internal,com.db4o.internal.events,com.db4o.foundation,com.db4o.internal.callbacks,com.db4o,com.db4o.query'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.references'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.convert'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.internal.convert.conversions'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.types'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.ssl'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.cs.foundation,javax.net.ssl,javax.net,com.db4o.config,com.db4o.internal,com.db4o.cs.internal.config,com.db4o.cs.config'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.foundation.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.classfilter'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.core,com.db4o.instrumentation.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.slots'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.internal.ids,com.db4o.internal.freespace,com.db4o.internal,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.mapping'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.marshall,com.db4o.internal,com.db4o.internal.handlers'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.ext'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.marshall,com.db4o.query,com.db4o.internal.encoding,com.db4o.internal,com.db4o.types,com.db4o.internal.activation,com.db4o,com.db4o.config,com.db4o.reflect,com.db4o.reflect.generic,com.db4o.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.core'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,com.db4o.instrumentation.bloat,com.db4o.instrumentation.util,EDU.purdue.cs.bloat.cfg,com.db4o.instrumentation.api,EDU.purdue.cs.bloat.file'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.generic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.foundation,com.db4o.internal,com.db4o.internal.reflect.generic,com.db4o.internal.diagnostic,com.db4o.internal.marshall'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.metadata'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.reflect,com.db4o.marshall,com.db4o.internal.marshall'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.main'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.core,com.db4o.instrumentation.util,com.db4o.instrumentation.classfilter,com.db4o.instrumentation.file,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.file,com.db4o.foundation.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.internal.encoding,com.db4o.foundation,com.db4o.internal.handlers,com.db4o.internal.slots,com.db4o.config,com.db4o.ext,com.db4o.internal.config,com.db4o.marshall,com.db4o.query'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.typehandlers.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.typehandlers,com.db4o.internal.delete,com.db4o.marshall,com.db4o.ext,com.db4o.internal,com.db4o.foundation,com.db4o.internal.marshall,com.db4o.internal.activation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.caching'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.objectexchange'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.internal,com.db4o.cs.caching,com.db4o.cs.internal,com.db4o.internal.slots,com.db4o.typehandlers,com.db4o.internal.marshall,com.db4o.internal.ids'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.reflect'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.ext'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.consistency'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.internal,com.db4o.internal.btree,com.db4o.internal.slots,com.db4o.internal.ids,com.db4o.ext,com.db4o.internal.classindex,com.db4o.internal.freespace,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.config,com.db4o.internal,com.db4o.cs.internal.config,com.db4o.cs.config,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.typehandlers,com.db4o.internal.handlers,com.db4o.messaging,com.db4o.config.encoding,com.db4o.reflect,com.db4o.diagnostic,com.db4o.foundation,com.db4o.ext,com.db4o.io,com.db4o.reflect.generic,com.db4o,com.db4o.internal.ids,com.db4o.reflect.jdk'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.marshall'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o,com.db4o.foundation,com.db4o.typehandlers'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cluster'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.ext,com.db4o.internal.cluster,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.self'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.util'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.core,EDU.purdue.cs.bloat.tree,com.db4o.foundation.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.diagnostic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.internal,com.db4o.foundation,com.db4o.diagnostic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers.net'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.foundation,com.db4o.reflect.generic,com.db4o.internal.handlers'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.defragment'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.ext,com.db4o.internal.ids,com.db4o.internal.slots,com.db4o.internal,com.db4o.internal.btree,com.db4o.internal.mapping,com.db4o,com.db4o.config,com.db4o.internal.classindex,com.db4o.io,com.db4o.internal.config,com.db4o.typehandlers,com.db4o.internal.encoding,com.db4o.internal.marshall,com.db4o.internal.freespace,com.db4o.internal.metadata'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.foundation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.diagnostic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.activation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ta,com.db4o.activation,com.db4o.typehandlers,com.db4o.internal,com.db4o.foundation,com.db4o,com.db4o.reflect,com.db4o.reflect.generic,com.db4o.events'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.enhance'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ta.instrumentation,com.db4o.nativequery.main,com.db4o.instrumentation.core,com.db4o.instrumentation.main,com.db4o.instrumentation.classfilter,com.db4o.instrumentation.ant,com.db4o.ta.instrumentation.ant'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.filestats'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.internal.btree,com.db4o.foundation,com.db4o.internal.slots,com.db4o.config,com.db4o.internal.collections,com.db4o.internal.classindex,com.db4o.internal.ids,com.db4o,com.db4o.internal.fileheader,com.db4o.internal.freespace'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.query'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o,com.db4o.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.constraints'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext,com.db4o.reflect,com.db4o.internal,com.db4o.foundation,com.db4o.events,com.db4o.reflect.generic,com.db4o.reflect.core,com.db4o.internal.btree,com.db4o.config,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.cs.internal.messages,com.db4o.reflect,com.db4o.internal,com.db4o.reflect.generic,com.db4o.events,com.db4o.internal.threading,com.db4o.ext,com.db4o,com.db4o.internal.query.result,com.db4o.config,com.db4o.cs.internal.caching,com.db4o.internal.references,com.db4o.cs.internal.config,com.db4o.cs.config,com.db4o.internal.events,com.db4o.qlin,com.db4o.internal.activation,com.db4o.internal.slots,com.db4o.query,com.db4o.internal.encoding,com.db4o.internal.query.processor,com.db4o.cs.internal.events,com.db4o.internal.qlin,com.db4o.cs.internal.objectexchange,com.db4o.cs.caching,com.db4o.io,com.db4o.internal.ids,com.db4o.messaging,com.db4o.cs.foundation,com.db4o.types,com.db4o.internal.config'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.events'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.events,com.db4o.internal.events,com.db4o.cs.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.query.result'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.reflect,com.db4o.internal.classindex,com.db4o.query,com.db4o.ext,com.db4o.internal.query.processor,com.db4o,com.db4o.config,com.db4o.internal.btree'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers.array'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.typehandlers,com.db4o.internal.marshall,com.db4o.marshall,com.db4o.reflect,com.db4o.internal,com.db4o.internal.delete,com.db4o.ext,com.db4o.reflect.generic,com.db4o.internal.handlers,com.db4o,com.db4o.foundation,com.db4o.internal.slots'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.fieldindex'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal.query.processor,com.db4o.internal.btree,com.db4o.foundation,com.db4o.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.api'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr.cmp'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.marshall,com.db4o.foundation,com.db4o.internal.marshall,com.db4o,com.db4o.foundation.io,com.db4o.types,com.db4o.internal.activation,com.db4o.internal.slots,com.db4o.reflect,com.db4o.typehandlers,com.db4o.ext,com.db4o.internal.handlers,com.db4o.internal.delete,com.db4o.internal.metadata,com.db4o.internal.query.processor,com.db4o.internal.reflect,com.db4o.config,com.db4o.internal.classindex,com.db4o.internal.references,com.db4o.internal.diagnostic,com.db4o.query,com.db4o.internal.encoding,com.db4o.reflect.generic,com.db4o.reflect.core,com.db4o.internal.handlers.array,com.db4o.internal.callbacks,com.db4o.internal.btree,com.db4o.events,com.db4o.internal.fileheader,com.db4o.messaging,com.db4o.config.encoding,com.db4o.internal.events,com.db4o.io,com.db4o.diagnostic,com.db4o.internal.config,com.db4o.defragment,com.db4o.internal.mapping,com.db4o.internal.handlers.versions,com.db4o.internal.replication,com.db4o.internal.query,com.db4o.reflect.jdk,com.db4o.internal.handlers.net,com.db4o.config.annotations.reflect,com.db4o.internal.ids,com.db4o.internal.freespace,com.db4o.internal.convert,com.db4o.internal.query.result,com.db4o.internal.qlin,com.db4o.qlin,com.db4o.internal.weakref,com.db4o.internal.threading,com.db4o.constraints,com.db4o.activation,com.db4o.typehandlers.internal,com.db4o.collections,com.db4o.internal.collections'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config.annotations'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.messages'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.internal,com.db4o.reflect.generic,com.db4o.cs.internal,com.db4o.ext,com.db4o.drs.db4o,com.db4o.internal.activation,com.db4o.internal.callbacks,com.db4o.foundation,com.db4o.internal.threading,com.db4o.types,com.db4o.config,com.db4o.internal.query.result,com.db4o.query,com.db4o.internal.query.processor,com.db4o.cs.internal.objectexchange,com.db4o.internal.encoding,com.db4o,com.db4o.internal.ids,com.db4o.internal.slots,com.db4o.messaging,com.db4o.marshall'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.monitoring'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.events,com.db4o.foundation,javax.management,com.db4o,com.db4o.monitoring'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.convert.conversions'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.internal.convert,com.db4o.ext,com.db4o.internal.btree,com.db4o.marshall,com.db4o.foundation,com.db4o.internal.marshall,com.db4o.internal.handlers'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.config,com.db4o.ext,com.db4o.internal,com.db4o.messaging,com.db4o.internal.config,com.db4o.cs.config,com.db4o.query,com.db4o.foundation,com.db4o.cs.internal,com.db4o.cs.internal.messages,com.db4o,com.db4o.cs.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.config,com.db4o.messaging,com.db4o.ext,com.db4o,com.db4o.cs.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.instrumentation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.nativequery.expr.cmp,com.db4o.instrumentation.api,com.db4o.nativequery.expr.cmp.operand,com.db4o.nativequery.expr,com.db4o.foundation,com.db4o.query,com.db4o.nativequery.optimization,com.db4o.internal.query'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.btree.algebra'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.internal.btree'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.qlin'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.foundation,com.db4o.reflect.core,com.db4o.internal,com.db4o.reflect.generic,com.db4o,com.db4o.ext'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.query'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.config,com.db4o.internal.diagnostic,com.db4o.reflect,com.db4o.ext,com.db4o.internal,com.db4o.foundation,com.db4o.reflect.generic,com.db4o,com.db4o.internal.query.result,com.db4o.marshall,com.db4o.internal.marshall,com.db4o.internal.handlers'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.freespace'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.internal.slots,com.db4o.marshall,com.db4o.internal.ids,com.db4o.internal.btree,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.delete'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.marshall,com.db4o.typehandlers,com.db4o.internal.marshall,com.db4o.internal.slots,com.db4o.internal.diagnostic,com.db4o.reflect,com.db4o.internal,com.db4o.foundation,com.db4o.diagnostic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.monitoring'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='javax.management,com.db4o.monitoring,com.db4o.events,com.db4o.cs.internal,com.db4o,com.db4o.ext,com.db4o.cs.config,com.db4o.foundation,com.db4o.cs.foundation,com.db4o.monitoring.internal,com.db4o.config,com.db4o.internal,com.db4o.cs.internal.config'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.collections'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.marshall,com.db4o.internal,com.db4o.internal.btree,com.db4o.internal.activation,com.db4o.internal.handlers,com.db4o.internal.delete,com.db4o.typehandlers,com.db4o.ext,com.db4o.internal.marshall,com.db4o.defragment'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.typehandlers'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.marshall,com.db4o.internal,com.db4o.internal.activation,com.db4o.internal.marshall,com.db4o.internal.delete,com.db4o.ext,com.db4o.foundation,com.db4o.internal.handlers,com.db4o,com.db4o.typehandlers.internal,com.db4o.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.query.processor'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.marshall,com.db4o.typehandlers,com.db4o.internal.marshall,com.db4o.config,com.db4o.query,com.db4o.reflect.generic,com.db4o.internal.handlers,com.db4o,com.db4o.internal.handlers.array,com.db4o.reflect,com.db4o.internal.diagnostic,com.db4o.internal.fieldindex,com.db4o.internal.classindex,com.db4o.types,com.db4o.internal.query.result,com.db4o.internal.query,com.db4o.internal.callbacks'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.ids'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.internal.btree,com.db4o,com.db4o.internal.slots,com.db4o.marshall,com.db4o.ext,com.db4o.internal.freespace,com.db4o.internal.transactionlog,com.db4o.config'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.monitoring'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='javax.management,com.db4o.ext,com.db4o.internal,com.db4o,com.db4o.monitoring.internal,com.db4o.internal.freespace,com.db4o.foundation,com.db4o.internal.slots,com.db4o.config,com.db4o.io,com.db4o.query,com.db4o.diagnostic,com.db4o.internal.query,com.db4o.events,com.db4o.internal.config,com.db4o.internal.references'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.ta.instrumentation.ant'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.core,org.apache.tools.ant.util.regexp,com.db4o.ta.instrumentation,com.db4o.instrumentation.ant,org.apache.tools.ant.types,org.apache.tools.ant,com.db4o.instrumentation.classfilter'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.ta'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.activation,com.db4o.ext,com.db4o,com.db4o.internal,com.db4o.diagnostic,com.db4o.events,com.db4o.internal.activation,com.db4o.foundation,com.db4o.internal.diagnostic,com.db4o.reflect,com.db4o.reflect.generic,com.db4o.config,com.db4o.internal.references'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.drs.db4o'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.ext,com.db4o.internal,com.db4o.foundation,com.db4o.internal.activation,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.ant'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.core,org.apache.tools.ant.types.resources,com.db4o.instrumentation.file,org.apache.tools.ant.types,com.db4o.instrumentation.util,org.apache.tools.ant,com.db4o.instrumentation.main,com.db4o.instrumentation.classfilter'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.jdk'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect.core,com.db4o.reflect,com.db4o.internal,com.db4o.foundation,com.db4o,com.db4o.ext'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.qlin'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.qlin,com.db4o,com.db4o.internal.query.result,com.db4o.reflect,com.db4o.internal,com.db4o.internal.query.processor,com.db4o.foundation,com.db4o.internal.query'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr.cmp.operand'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.nativequery.expr.cmp,com.db4o.instrumentation.api,com.db4o.nativequery.expr,com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.marshall'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.typehandlers,com.db4o.foundation,com.db4o.marshall,com.db4o.internal.activation,com.db4o.internal.encoding,com.db4o.internal.classindex,com.db4o.internal.convert.conversions,com.db4o.internal.btree,com.db4o.internal.handlers,com.db4o.defragment,com.db4o.ext,com.db4o,com.db4o.internal.slots,com.db4o.internal.mapping,com.db4o.internal.query.processor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.callbacks'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.ext,com.db4o.internal,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.btree'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.internal,com.db4o.defragment,com.db4o.marshall,com.db4o.internal.ids,com.db4o,com.db4o.internal.slots,com.db4o.internal.caching,com.db4o.internal.btree.algebra'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.reflect.generic'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.foundation,com.db4o.internal,com.db4o.reflect.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.config'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.config,com.db4o.internal,com.db4o.config.encoding,com.db4o.typehandlers,com.db4o.reflect,com.db4o.diagnostic,com.db4o,com.db4o.ext,com.db4o.foundation,com.db4o.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr.build'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.nativequery.expr.cmp,com.db4o.nativequery.expr,com.db4o.nativequery.expr.cmp.operand'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.main'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.ant,com.db4o.instrumentation.core,com.db4o.query,com.db4o.instrumentation.main,com.db4o.instrumentation.classfilter,com.db4o.nativequery.optimization,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.util,com.db4o.internal.query'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.cs.internal.caching'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.internal.caching,com.db4o.ext,com.db4o.events,com.db4o.cs.internal,com.db4o.cs.caching,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.weakref'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext,com.db4o.internal,com.db4o.foundation,com.db4o.internal.threading'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.messaging'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.optimization'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.api,com.db4o.nativequery.expr.cmp,com.db4o.internal,com.db4o.nativequery.expr.cmp.operand,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,com.db4o.query,EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.bloat,com.db4o.instrumentation.core,com.db4o.reflect,com.db4o.nativequery.expr,EDU.purdue.cs.bloat.file,com.db4o.internal.query,com.db4o.reflect.jdk,com.db4o.nativequery.instrumentation,EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.cfg,com.db4o.nativequery.analysis,com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.caching'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config.encoding'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal.encoding'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.monitoring.internal'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.internal,com.db4o.internal.references,com.db4o.monitoring'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.events'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.events,com.db4o.foundation,com.db4o.query,com.db4o.internal,com.db4o,com.db4o.ext,com.db4o.internal.callbacks'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.threading'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.events,com.db4o.internal.events'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.example'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.internal.query,com.db4o.config,com.db4o.internal,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.ta.instrumentation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.core,com.db4o.instrumentation.util,com.db4o.activation,com.db4o.ta,com.db4o.foundation,com.db4o.collections'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.config.annotations.reflect'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.config,com.db4o.config.annotations,com.db4o.internal'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.file'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.encoding'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.config.encoding,com.db4o.marshall,com.db4o.foundation,com.db4o.internal,com.db4o.ext'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.cluster'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.query,com.db4o.cluster,com.db4o.foundation,com.db4o.internal.query.result,com.db4o.internal.query,com.db4o,com.db4o.ext,com.db4o.internal,com.db4o.internal.query.processor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.instrumentation.bloat'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.instrumentation.api,EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.util,com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.collections'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ta,com.db4o.activation,com.db4o.internal.collections,com.db4o.internal,com.db4o'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.reflect.core'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.reflect,com.db4o.internal,com.db4o.foundation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.handlers'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.foundation,com.db4o.marshall,com.db4o.internal,com.db4o.internal.delete,com.db4o.typehandlers,com.db4o.ext,com.db4o.internal.marshall,com.db4o,com.db4o.internal.slots,com.db4o.reflect,com.db4o.internal.metadata,com.db4o.reflect.generic,com.db4o.internal.activation,com.db4o.config,com.db4o.internal.encoding'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.activation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.replication'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.transactionlog'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.internal,com.db4o.foundation,com.db4o.internal.freespace,com.db4o.internal.slots,com.db4o.foundation.io,com.db4o.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.expr'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.nativequery.expr.cmp,com.db4o.nativequery.expr.cmp.operand'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.foundation'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o,com.db4o.types,com.db4o.internal,com.db4o.internal.encoding,com.db4o.internal.handlers'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.internal.fileheader'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext,com.db4o.internal,com.db4o.internal.threading,com.db4o.internal.slots,com.db4o.internal.freespace,com.db4o.internal.activation,com.db4o.foundation,com.db4o.internal.ids,com.db4o.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.io'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.ext,com.db4o.foundation,com.db4o,com.db4o.internal.fileheader,com.db4o.internal.caching,com.db4o.internal,com.db4o.foundation.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.db4o.nativequery.analysis'/>
+      <attribute name='version' type='Version' value='8.0.249.16098'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='com.db4o.nativequery.expr,com.db4o.nativequery.expr.cmp.operand,com.db4o.nativequery.expr.build,com.db4o.instrumentation.bloat,EDU.purdue.cs.bloat.editor,com.db4o.instrumentation.core,com.db4o.instrumentation.util,com.db4o.activation,EDU.purdue.cs.bloat.cfg,com.db4o.ta,com.db4o.nativequery.expr.cmp,com.db4o.instrumentation.api,EDU.purdue.cs.bloat.tree'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.benchmark'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.cfg'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.codegen'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.strip'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.reflect'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.trans'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.tbaa,EDU.purdue.cs.bloat.ssa'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.tree'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.decorate'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.trans'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.diva'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.ssa,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.codegen,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.tbaa,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.trans,EDU.purdue.cs.bloat.file'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.tools'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.benchmark,EDU.purdue.cs.bloat.codegen,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.trans,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.optimize,EDU.purdue.cs.bloat.inline,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.tree'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.shrink'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.trans'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.dump'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.ssa'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.editor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.optimize'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.codegen,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.context,EDU.purdue.cs.bloat.tbaa,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.diva,EDU.purdue.cs.bloat.trans,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.ssa,EDU.purdue.cs.bloat.inline,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.tree'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.codegen'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.context'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.file,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.inline,EDU.purdue.cs.bloat.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.tbaa'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.editor,EDU.purdue.cs.bloat.tree,EDU.purdue.cs.bloat.cfg,EDU.purdue.cs.bloat.ssa'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.file'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.inline'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.editor'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.util'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='EDU.purdue.cs.bloat.editor'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.db4o.java5'/>
+      <attribute name='bundle-version' type='Version' value='8.0.249.16098'/>
+      <directive name='uses' value='EDU.purdue.cs.bloat.util,EDU.purdue.cs.bloat.reflect,EDU.purdue.cs.bloat.tree'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.benchmark)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.cfg)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.codegen)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.context)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.decorate)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.diva)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.dump)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.editor)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.file)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.inline)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.optimize)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.reflect)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.shrink)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.ssa)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.strip)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.tbaa)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.tools)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.trans)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.tree)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=EDU.purdue.cs.bloat.util)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.activation)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cluster)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.collections)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.config)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.config.annotations)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.config.annotations.reflect)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.config.encoding)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.consistency)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.constraints)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.caching)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.config)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.foundation)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.internal)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.internal.caching)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.internal.config)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.internal.events)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.internal.messages)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.internal.objectexchange)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.monitoring)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.ssl)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.defragment)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.diagnostic)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.drs.db4o)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.enhance)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.events)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.ext)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.filestats)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.foundation)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.foundation.io)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.ant)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.api)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.bloat)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.classfilter)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.core)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.file)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.main)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.instrumentation.util)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.activation)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.btree)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.btree.algebra)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.caching)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.callbacks)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.classindex)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.cluster)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.collections)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.config)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.convert)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.convert.conversions)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.delete)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.diagnostic)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.encoding)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.events)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.fieldindex)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.fileheader)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.freespace)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.handlers)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.handlers.array)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.handlers.net)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.handlers.versions)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.ids)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.io)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.mapping)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.marshall)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.metadata)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.monitoring)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.qlin)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.query)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.query.processor)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.query.result)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.references)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.reflect)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.reflect.generic)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.replication)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.slots)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.threading)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.transactionlog)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.internal.weakref)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.io)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.marshall)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.messaging)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.monitoring)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.monitoring.internal)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.analysis)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.example)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.expr)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.expr.build)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.expr.cmp)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.expr.cmp.operand)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.instrumentation)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.main)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.nativequery.optimization)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.qlin)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.query)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect.core)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect.generic)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect.jdk)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect.self)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.ta)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.ta.instrumentation)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.ta.instrumentation.ant)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.typehandlers)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.typehandlers.internal)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.types)(version&gt;=8.0.0))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.management)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.net)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.net.ssl)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.apache.tools.ant)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.apache.tools.ant.types)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.apache.tools.ant.types.resources)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.apache.tools.ant.util.regexp)'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='com.objectdb'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='dcd978c4969060402e58eb620011fc5927d8412fdc2dcce003feddc0971395f4'/>
+      <attribute name='url' value='com.objectdb/com.objectdb-2.4.2.jar'/>
+      <attribute name='size' type='Long' value='1397899'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.objectdb'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+      <directive name='uses' value='com.objectdb.o,  javax.persistence.spi,  javax.jdo,  javax.persistence'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.jdo'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+      <directive name='uses' value='javax.naming,  javax.xml.parsers,  javax.jdo.spi,  org.w3c.dom,  org.xml.sax,  javax.jdo.listener,  javax.jdo.datastore,  javax.transaction'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.jdo.annotations'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.jdo.datastore'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.jdo.identity'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.jdo.listener'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.persistence'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+      <directive name='uses' value='javax.persistence.criteria,javax.persistence.metamodel'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.persistence.criteria'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='javax.persistence.metamodel'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.objectdb'/>
+      <attribute name='bundle-version' type='Version' value='2.4.2.b02'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.naming)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.xml.parsers)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.xml.transform)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.osgi.framework)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.xml.sax)'/>
     </requirement>
   </resource>
 </repository>

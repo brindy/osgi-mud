@@ -84,16 +84,6 @@ public class MudServer implements Runnable, EventHandler {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#run() OUT");
 	}
 
-	private void cleanup(Socket socket) {
-		if (null != socket) {
-			try {
-				socket.close();
-			} catch (IOException e) {
-				logger.error("Error cleaning up socket afte error", e);
-			}
-		}
-	}
-
 	@Deactivate
 	public void stop() throws Exception {
 		logger.debug("MudServer#stop() - IN");
@@ -117,6 +107,16 @@ public class MudServer implements Runnable, EventHandler {
 			handleExceptionEvent(event);
 		}
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleEvent(" + event + ") OUT");
+	}
+
+	private void cleanup(Socket socket) {
+		if (null != socket) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				logger.error("Error cleaning up socket afte error", e);
+			}
+		}
 	}
 
 	private void handleExceptionEvent(Event event) {

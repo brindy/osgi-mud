@@ -12,4 +12,13 @@ public interface MudWorld {
 	 */
 	void addUser(MudUser user);
 
+	/**
+	 * Find the place where the object resides.
+	 * 
+	 * @param object
+	 *            the object to find the place of
+	 * @return the place the object resides
+	 */
+	MudPlace findPlace(Object object);
+
 }

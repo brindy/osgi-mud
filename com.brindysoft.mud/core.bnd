@@ -1,2 +1,4 @@
-Export-Package: com.brindysoft.mud.core.api
-Private-Package: com.brindysoft.mud.core.internal
+Export-Package: com.brindysoft.mud.core.api,\
+	com.brindysoft.mud.core.spi
+Private-Package: com.brindysoft.mud.core.internal,\
+	com.brindysoft.mud.core.internal.commands

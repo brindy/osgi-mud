@@ -1,10 +1,7 @@
-package com.brindysoft.mud.ootb;
+package com.brindysoft.mud.core.api;
 
-import java.io.IOException;
 import java.util.Locale;
 
-import com.brindysoft.mud.core.api.MudSocketHandler;
-import com.brindysoft.mud.core.api.MudUser;
 
 public class DefaultMudUser implements MudUser {
 
@@ -39,7 +36,7 @@ public class DefaultMudUser implements MudUser {
 	}
 
 	@Override
-	public String readLine() throws IOException {
+	public String readLine() {
 		return socket.readLine();
 	}
 

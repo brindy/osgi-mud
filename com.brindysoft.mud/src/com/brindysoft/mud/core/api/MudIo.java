@@ -1,10 +1,8 @@
 package com.brindysoft.mud.core.api;
 
-import java.io.IOException;
-
 public interface MudIo {
 
-	String readLine() throws IOException;
+	String readLine();
 
 	/**
 	 * Same as {@link #print(String, Object...)} but with a carriage return.
