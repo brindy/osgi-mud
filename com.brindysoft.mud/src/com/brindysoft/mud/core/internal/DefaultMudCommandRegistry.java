@@ -19,7 +19,7 @@ public class DefaultMudCommandRegistry implements MudCommandRegistry {
 		this.logger = logger;
 	}
 
-	@Reference(optional = true, dynamic = true)
+	@Reference(optional = true, dynamic = true, multiple=true)
 	public void addCommand(MudCommand command) {
 		if (null != logger) {
 			logger.debug("DefaultMudCommandRegistry#addCommand(%s)", command);

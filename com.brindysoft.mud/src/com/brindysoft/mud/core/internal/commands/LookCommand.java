@@ -26,7 +26,13 @@ public class LookCommand implements MudCommand {
 	@Override
 	public boolean invoke(String[] args, MudUser user) {
 		MudPlace place = world.findPlace(user);
-		place.describe(user);
+		user.println(place.getDescription(user));
 		return true;
 	}
+
+	@Override
+	public String getDescription(MudUser user) {
+		return "Take a cursory look at your current location.";
+	}
+
 }

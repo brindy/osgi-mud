@@ -56,7 +56,7 @@ public class UserManager implements MudUserManager {
 	@Override
 	public MudUser create(String username, String password) {
 		User user = new User();
-		user.setUsername(username);
+		user.setName(username);
 
 		UserCredentials creds = new UserCredentials();
 		creds.setUser(user);
@@ -71,7 +71,7 @@ public class UserManager implements MudUserManager {
 	@Override
 	public MudUser find(String username) {
 		User user = new User();
-		user.setUsername(username);
+		user.setName(username);
 		ObjectSet<User> results = db.queryByExample(user);
 		if (!results.isEmpty()) {
 			return results.next();

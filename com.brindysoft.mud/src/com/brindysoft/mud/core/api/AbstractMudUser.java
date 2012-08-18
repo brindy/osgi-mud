@@ -2,14 +2,11 @@ package com.brindysoft.mud.core.api;
 
 import java.util.Locale;
 
-
-public class DefaultMudUser implements MudUser {
+public abstract class AbstractMudUser implements MudUser {
 
 	private transient MudSocketHandler socket;
 
 	private Locale locale;
-
-	private String name;
 
 	@Override
 	public void attachToSocket(MudSocketHandler socket) {
@@ -40,12 +37,4 @@ public class DefaultMudUser implements MudUser {
 		return socket.readLine();
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
 }

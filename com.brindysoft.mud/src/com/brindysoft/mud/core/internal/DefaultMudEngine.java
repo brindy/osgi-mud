@@ -50,7 +50,6 @@ public class DefaultMudEngine implements MudEngine {
 	public void run(MudUser user) throws IOException {
 		logger.debug("DefaultMudEngine#run() - IN");
 
-		// add the user to the world
 		world.addUser(user);
 
 		// start reading commands
@@ -61,7 +60,12 @@ public class DefaultMudEngine implements MudEngine {
 				break;
 			}
 
-			String[] args = commandLine.split("\\W+");
+			commandLine = commandLine.trim();
+			if (commandLine.length() == 0) {
+				continue;
+			}
+
+			String[] args = commandLine.split("\\s+");
 			logger.debug("DefaultMudEngine#run() args : " + Arrays.asList(args));
 
 			MudCommand command = commandRegistry.find(args[0]);

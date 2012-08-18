@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.osgi.service.event.EventAdmin;
 
@@ -80,7 +81,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	@Override
 	public void run() {
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#run() IN");
-		
+
 		try {
 			MudUser user = authenticator.authenticate(this);
 			if (null == user) {
@@ -101,11 +102,11 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 	@Override
 	public String readLine() {
-		try {
-			return doReadLine();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
+		String line = new Scanner(inputStream).nextLine();
+		if (null == line) {
+			throw new RuntimeException("Failed to read from input stream");
 		}
+		return line;
 	}
 
 	@Override
@@ -146,41 +147,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		socket.close();
 
 		logger.debug("DefaultSocketHandler(" + Thread.currentThread().getName() + ")#deactivate() OUT");
-	}
-
-	private String doReadLine() throws IOException {
-		StringBuilder buffer = new StringBuilder();
-		int charRead = '\0';
-		while ('\n' != charRead) {
-			charRead = inputStream.read();
-	
-			switch (charRead) {
-			case -1:
-				throw new IOException("Unable to read from input stream");
-	
-			case 0:
-				break;
-	
-			case '\r':
-				break;
-	
-			case '\n':
-				break;
-	
-			case 7:
-				buffer.append(' ');
-				break;
-	
-			case 8:
-				buffer.deleteCharAt(buffer.length() - 1);
-				break;
-	
-			default:
-				buffer.append((char) charRead);
-				break;
-			}
-		}
-		return buffer.toString();
 	}
 
 }

@@ -1,17 +1,18 @@
 package com.brindysoft.mud.necronomicon;
 
-import com.brindysoft.mud.core.api.DefaultMudUser;
+import com.brindysoft.mud.core.api.AbstractMudUser;
 
-public class User extends DefaultMudUser {
+public class User extends AbstractMudUser {
 
-	private String username;
+	private String name;
 
-	public String getUsername() {
-		return username;
+	@Override
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
