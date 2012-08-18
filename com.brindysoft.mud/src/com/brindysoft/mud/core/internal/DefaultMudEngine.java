@@ -23,6 +23,7 @@ public class DefaultMudEngine implements MudEngine {
 
 	@Reference
 	public void setCommandRegistry(MudCommandRegistry commandRegistry) {
+		this.commandRegistry = commandRegistry;
 	}
 
 	@Reference

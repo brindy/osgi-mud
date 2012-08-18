@@ -26,7 +26,7 @@ public class LookCommand implements MudCommand {
 	@Override
 	public boolean invoke(String[] args, MudUser user) {
 		MudPlace place = world.findPlace(user);
-		place.printDescription(user);
+		place.describe(user);
 		return true;
 	}
 }

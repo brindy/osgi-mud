@@ -6,13 +6,24 @@ import java.util.Map;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
+import com.brindysoft.logging.api.Logger;
+
 @Component
 public class DefaultMudCommandRegistry implements MudCommandRegistry {
 
 	private Map<String, MudCommand> commands = new HashMap<String, MudCommand>();
+	private Logger logger;
+
+	@Reference
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
 
 	@Reference(optional = true, dynamic = true)
 	public void addCommand(MudCommand command) {
+		if (null != logger) {
+			logger.debug("DefaultMudCommandRegistry#addCommand(%s)", command);
+		}
 		for (String verb : command.getVerbs()) {
 			commands.put(verb, command);
 		}
@@ -26,7 +37,7 @@ public class DefaultMudCommandRegistry implements MudCommandRegistry {
 
 	@Override
 	public MudCommand find(String string) {
-		return null;
+		return commands.get(string);
 	}
 
 }
