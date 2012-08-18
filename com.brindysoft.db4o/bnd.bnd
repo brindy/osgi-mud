@@ -1,8 +1,8 @@
--buildpath: db4o_osgi,\
-	com.db4o.java5,\
+-buildpath: com.db4o.java5,\
 	biz.aQute.bnd.annotation,\
 	osgi.core,\
-	osgi.cmpn
+	osgi.cmpn,\
+	com.brindysoft.logging.api;version=latest
 Export-Package: com.brindysoft.db4o.api
 Service-Component: *
 Private-Package: com.brindysoft.db4o

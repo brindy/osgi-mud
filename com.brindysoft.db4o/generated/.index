@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1345190108892' name='com.brindysoft.db4o' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1345252687477' name='com.brindysoft.db4o' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='com.brindysoft.db4o'/>
@@ -7,9 +7,9 @@
       <attribute name='version' type='Version' value='0.0.0'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='904eedabc52a6adb1381f381cdb2cf0419711509cfb70efaefb0038e53a7afa8'/>
+      <attribute name='osgi.content' value='dca214e5e7961e5319785686ac2766fafbfc5477a79d841e4ddee65558f9b82b'/>
       <attribute name='url' value='generated/com.brindysoft.db4o.jar'/>
-      <attribute name='size' type='Long' value='5279'/>
+      <attribute name='size' type='Long' value='10891'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
@@ -25,7 +25,7 @@
       <attribute name='version' type='Version' value='1.0.0'/>
       <attribute name='bundle-symbolic-name' value='com.brindysoft.db4o'/>
       <attribute name='bundle-version' type='Version' value='0.0.0'/>
-      <directive name='uses' value='com.db4o,com.db4o.osgi'/>
+      <directive name='uses' value='com.db4o'/>
     </capability>
     <capability namespace='bndtools.workspace'>
       <attribute name='bndtools.workspace' value='file:/Users/brindy/Projects/Personal/mud'/>
@@ -35,13 +35,34 @@
       <directive name='filter' value='(&amp;(osgi.wiring.package=com.brindysoft.db4o.api)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.brindysoft.logging.api)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.osgi)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.config)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.cs.config)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.db4o.reflect.jdk)(version&gt;=8.0.0)(!(version&gt;=9.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.component)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
     </requirement>
     <requirement namespace='osgi.extender'>
-      <directive name='filter' value='(&amp;(osgi.extender=osgi.ds)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))'/>
+      <directive name='filter' value='(&amp;(osgi.extender=osgi.ds)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
     </requirement>
   </resource>
 </repository>

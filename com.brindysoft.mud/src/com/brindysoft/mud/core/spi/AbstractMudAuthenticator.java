@@ -21,13 +21,13 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 			String username = promptForUsername(socket);
 			MudUser user = userManager.find(username);
 			if (null != user) {
-				String password = promptForNewPassword(socket, username);
+				String password = promptForPassword(socket, username);
 				if (userManager.checkPassword(user, password)) {
 					return user;
 				}
 				socket.println("Sorry, that was the wrong password.");
 			} else {
-				String password = promptForPassword(socket, username);
+				String password = promptForNewPassword(socket, username);
 				return userManager.create(username, password);
 			}
 		}

@@ -10,56 +10,57 @@ import com.brindysoft.logging.api.Logger;
 public class SystemOutLogger implements Logger {
 
 	@Override
-	public void debug(String message) {
-		log("debug", message, null);
+	public void debug(String message, Object... args) {
+		log("debug", null, message, args);
 	}
 
 	@Override
-	public void debug(String message, Throwable ex) {
-		log("debug", message, ex);
+	public void debug(Throwable t, String message, Object... args) {
+		log("debug", t, message, args);
 	}
 
 	@Override
-	public void error(String message) {
-		log("error", message, null);
+	public void warn(String message, Object... args) {
+		log("warn ", null, message, args);
 	}
 
 	@Override
-	public void error(String message, Throwable ex) {
-		log("error", message, ex);
+	public void warn(Throwable t, String message, Object... args) {
+		log("warn ", t, message, args);
 	}
 
 	@Override
-	public void warn(String message) {
-		log("warn", message, null);
+	public void error(String message, Object... args) {
+		log("error", null, message, args);
 	}
 
 	@Override
-	public void warn(String message, Throwable ex) {
-		log("warn", message, ex);
+	public void error(Throwable t, String message, Object... args) {
+		log("error", t, message, args);
 	}
 
 	@Override
-	public void info(String message) {
-		log("info", message, null);
+	public void info(String message, Object... args) {
+		log("info ", null, message, args);
 	}
 
 	@Override
-	public void info(String message, Throwable ex) {
-		log("info", message, ex);
+	public void info(Throwable t, String message, Object... args) {
+		log("info ", t, message, args);
 	}
 
-	private void log(String type, String message, Throwable ex) {
-
-		System.out.println(new Date() + " : " + type + " : " + message);
+	private void log(String type, Throwable ex, String message, Object... args) {
+		String timeStamp = new Date().toString();
+		String formattedMessage = String.format(message, args);
+		String outputMessage = String.format("%s : %s : %s", timeStamp, type, formattedMessage);
+		System.out.println(outputMessage);
 		
 		while (null != ex) {
-			System.out.println(new Date() + " : " + type + " : " + ex.toString());
-			System.out.print(new Date() + " : ");
+			System.out.println(String.format("%s : %s : %s", timeStamp, type, ex.toString()));
 			ex.printStackTrace(System.out);
 			ex = ex.getCause();
 		}
-
+		
 	}
 
 }

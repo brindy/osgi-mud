@@ -75,7 +75,7 @@ public class MudServer implements Runnable, EventHandler {
 					checkRetry(e);
 				}
 			} catch (Exception e) {
-				logger.error("Error creating socket", e);
+				logger.error(e, "Error creating socket");
 				cleanup(socket);
 			}
 
@@ -123,7 +123,7 @@ public class MudServer implements Runnable, EventHandler {
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleExceptionEvent() IN");
 		ExceptionEvent exEvent = (ExceptionEvent) event;
 
-		logger.info("Connection threw exception", exEvent.getThrowable());
+		logger.info(exEvent.getThrowable(), "Connection threw exception");
 		MudSocketHandler handler = exEvent.getHandler();
 
 		socketHandlers.remove(handler).dispose();

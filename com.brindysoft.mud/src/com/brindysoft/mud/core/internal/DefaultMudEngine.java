@@ -36,13 +36,13 @@ public class DefaultMudEngine implements MudEngine {
 	}
 
 	@Activate
-	public void activate() {
-		logger.debug("DefaultMudEngine#activate()");
+	public void start() {
+		logger.debug("DefaultMudEngine#start()");
 	}
 
 	@Deactivate
-	public void deactivate() {
-		logger.debug("DefaultMudEngine#deactivate()");
+	public void stop() {
+		logger.debug("DefaultMudEngine#stop()");
 	}
 
 	@Override
