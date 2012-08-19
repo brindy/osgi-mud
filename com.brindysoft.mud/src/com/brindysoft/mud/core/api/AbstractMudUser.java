@@ -10,9 +10,20 @@ public abstract class AbstractMudUser implements MudUser {
 
 	@Override
 	public void attachToSocket(MudSocketHandler socket) {
+		
+		if (this.socket != null) {
+			this.socket.close();
+			this.socket = null;
+		}
+		
 		this.socket = socket;
 	}
 
+	@Override
+	public boolean isAttached() {
+		return socket != null && socket.isAlive();
+	}
+	
 	@Override
 	public Locale getLocale() {
 		return locale;

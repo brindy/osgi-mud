@@ -60,7 +60,7 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 				return name;
 			}
 	
-			socket.println("Your username has to be at least 3 characters long.");
+			socket.println("Your username has to be at least 3 characters long and contain only alphabetic characters.");
 		}
 	}
 

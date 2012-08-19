@@ -114,6 +114,31 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	}
 
 	@Override
+	public boolean isAlive() {
+		return socket != null;
+	}
+
+	@Override
+	public void close() {
+		if (thread == null) {
+			return;
+		}
+
+		Thread thread = this.thread;
+		Socket socket = this.socket;
+
+		this.socket = null;
+		this.thread = null;
+
+		thread.interrupt();
+		try {
+			socket.close();
+		} catch (IOException e) {
+			// ignore
+		}
+	}
+
+	@Override
 	public String readLine() {
 		try {
 			return doReadLine();
@@ -151,14 +176,9 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	public void deactivate() throws Exception {
 		logger.debug("%s(%s)#deactivate() IN", getClass().getSimpleName(), Thread.currentThread().getName());
 
-		Thread thread = this.thread;
-		Socket socket = this.socket;
-
-		this.socket = null;
-		this.thread = null;
-
-		thread.interrupt();
-		socket.close();
+		if (null != thread) {
+			close();
+		}
 
 		logger.debug("%s(%s)#deactivate() OUT", getClass().getSimpleName(), Thread.currentThread().getName());
 	}
@@ -303,8 +323,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	class TerminalOutputStrategy implements OutputStrategy {
 
 		public TerminalOutputStrategy() throws IOException {
-			outputStream.write(new byte[] { 0x1B, '[', 32, 'm' });
-			outputStream.flush();
 		}
 
 		@Override
@@ -319,7 +337,9 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 			message = message.replaceAll("\\{text:magenta}", new String(new byte[] { 0x1B, '[', 35, 'm' }));
 			message = message.replaceAll("\\{text:cyan}", new String(new byte[] { 0x1B, '[', 36, 'm' }));
 			message = message.replaceAll("\\{text:white}", new String(new byte[] { 0x1B, '[', 37, 'm' }));
-			message = message.replaceAll("\\{text}", new String(new byte[] { 0x1B, '[', 39, 'm' }));
+			message = message.replaceAll("\\{text}", new String(new byte[] { 0x1B, '[', 0, 'm' }));
+
+			message = message.replaceAll("\\{text:?.*?}", "");
 
 			outputStream.write(message.getBytes());
 		}

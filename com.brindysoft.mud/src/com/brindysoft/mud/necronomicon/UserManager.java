@@ -15,33 +15,33 @@ import com.db4o.ObjectSet;
 @Component
 public class UserManager implements MudUserManager {
 
+	private Logger logger;
+
 	private ObjectContainer db;
 
 	private Db4oService service;
-
-	private Logger logger;
-
-	@Reference
-	public void setLogger(Logger logger) {
-		this.logger = logger;
-	}
 
 	@Reference
 	public void setDb4oService(Db4oService service) {
 		this.service = service;
 	}
 
+	@Reference
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
+
 	@Activate
 	public void start() {
 		logger.debug("UserManager#start() - IN");
-		db = service.open("necronomicon");
+		db = service.getDatabase("necronomicon");
 		logger.debug("UserManager#start() - OUT");
 	}
 
 	@Deactivate
 	public void stop() {
 		logger.debug("UserManager#stop() - IN");
-		db.close();
+		db = null;
 		logger.debug("UserManager#stop() - OUT");
 	}
 
@@ -64,6 +64,7 @@ public class UserManager implements MudUserManager {
 
 		db.store(user);
 		db.store(creds);
+		db.commit();
 
 		return user;
 	}

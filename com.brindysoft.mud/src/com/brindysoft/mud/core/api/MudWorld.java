@@ -19,6 +19,6 @@ public interface MudWorld {
 	 *            the object to find the place of
 	 * @return the place the object resides
 	 */
-	MudPlace findPlace(Object object);
+	MudPlace findPlaceContaining(Object object);
 
 }

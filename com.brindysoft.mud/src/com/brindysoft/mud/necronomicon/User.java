@@ -15,4 +15,8 @@ public class User extends AbstractMudUser {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("User %s", name);
+	}
 }

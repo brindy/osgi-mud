@@ -15,7 +15,7 @@ import com.db4o.ObjectContainer;
 public class Db4oServiceFactory implements Db4oService {
 
 	private Logger logger;
-	private Db4oServerManager serverManager;
+	private Db4oContainerManager serverManager;
 	private ComponentContext ctx;
 	private String dbName;
 
@@ -25,20 +25,20 @@ public class Db4oServiceFactory implements Db4oService {
 	}
 
 	@Reference
-	public void setServerManager(Db4oServerManager serverManager) {
+	public void setServerManager(Db4oContainerManager serverManager) {
 		this.serverManager = serverManager;
 	}
 
 	@Activate
 	public void start(ComponentContext ctx) {
-		logger.debug("Db4oServiceFactory#start() - IN, %s", serverManager);
+		logger.debug("Db4oServiceFactory#start() - IN, for %s", ctx.getUsingBundle());
 		this.ctx = ctx;
 		logger.debug("Db4oServiceFactory#start() - OUT");
 	}
 
-	public ObjectContainer open(String dbName) {
+	public ObjectContainer getDatabase(String dbName) {
 		this.dbName = dbName;
-		return serverManager.getEmbeddedClient(ctx.getUsingBundle(), dbName);
+		return serverManager.getObjectContainer(ctx.getUsingBundle(), dbName);
 	}
 
 	@Deactivate

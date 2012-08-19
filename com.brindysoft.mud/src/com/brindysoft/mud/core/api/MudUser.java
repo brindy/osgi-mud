@@ -8,6 +8,8 @@ public interface MudUser extends MudIo {
 
 	void attachToSocket(MudSocketHandler socket);
 
+	boolean isAttached();
+
 	String getName();
 
 }

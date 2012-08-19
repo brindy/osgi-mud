@@ -4,6 +4,6 @@ import com.db4o.ObjectContainer;
 
 public interface Db4oService {
 
-	ObjectContainer open(String dbName);
+	ObjectContainer getDatabase(String dbName);
 
 }

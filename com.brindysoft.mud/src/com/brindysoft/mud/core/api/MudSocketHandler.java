@@ -6,4 +6,8 @@ public interface MudSocketHandler extends MudIo {
 
 	String SOCKET_PROPERTY = "socket";
 
+	void close();
+
+	boolean isAlive();
+
 }

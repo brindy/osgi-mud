@@ -12,14 +12,15 @@ import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.core.api.MudEngine;
 import com.brindysoft.mud.core.api.MudUser;
 import com.brindysoft.mud.core.api.MudWorld;
+import com.brindysoft.mud.core.internal.commands.LookCommand;
 
 @Component
 public class DefaultMudEngine implements MudEngine {
 
 	private Logger logger;
 	private MudWorld world;
-
 	private MudCommandRegistry commandRegistry;
+	private LookCommand lookCommand;
 
 	@Reference
 	public void setCommandRegistry(MudCommandRegistry commandRegistry) {
@@ -34,6 +35,11 @@ public class DefaultMudEngine implements MudEngine {
 	@Reference
 	public void setLogger(Logger logger) {
 		this.logger = logger;
+	}
+
+	@Reference
+	public void setLookCommand(LookCommand lookCommand) {
+		this.lookCommand = lookCommand;
 	}
 
 	@Activate
@@ -51,6 +57,7 @@ public class DefaultMudEngine implements MudEngine {
 		logger.debug("%s#run() - IN", getClass().getSimpleName());
 
 		world.addUser(user);
+		lookCommand.invoke(null, user);
 
 		// start reading commands
 		while (true) {
