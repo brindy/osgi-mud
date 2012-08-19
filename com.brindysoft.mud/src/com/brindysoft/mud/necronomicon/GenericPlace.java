@@ -65,6 +65,16 @@ public class GenericPlace implements MudPlace {
 	}
 
 	@Override
+	public void broadcastByUser(MudUser user, String message, Object... args) {
+		for (MudUser recipient : getUsers()) {
+			if (user == recipient) {
+				continue;
+			}
+			recipient.println(message, args);
+		}
+	}
+
+	@Override
 	public Set<String> getExits() {
 		return null == connections ? Collections.<String> emptySet() : Collections.unmodifiableSet(new HashSet<String>(
 				connections.keySet()));

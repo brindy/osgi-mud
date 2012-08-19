@@ -66,6 +66,12 @@ public interface MudPlace {
 	void broadcast(String message, Object... args);
 
 	/**
+	 * Same {@link #broadcast(String, Object...)} but is not sent to the given
+	 * user
+	 */
+	void broadcastByUser(MudUser user, String message, Object... args);
+
+	/**
 	 * Return a set of exits from this location. Changes to this set will MUST
 	 * NOT be reflected in the under lying data of the place.
 	 * 

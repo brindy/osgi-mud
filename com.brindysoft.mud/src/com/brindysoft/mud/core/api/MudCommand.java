@@ -1,7 +1,5 @@
 package com.brindysoft.mud.core.api;
 
-
-
 public interface MudCommand {
 
 	/**
@@ -19,14 +17,5 @@ public interface MudCommand {
 	boolean invoke(String[] args, MudUser user);
 
 	String[] getVerbs();
-
-	/**
-	 * Get the description for the current user.
-	 * 
-	 * @param user
-	 *            the user
-	 * @return the description
-	 */
-	String getDescription(MudUser user);
 
 }

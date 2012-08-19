@@ -30,9 +30,4 @@ public class ExitCommand implements MudCommand {
 		return true;
 	}
 
-	@Override
-	public String getDescription(MudUser user) {
-		return "Exit the game.  Warning, your character might in danger if you don't exit in a safe area.";
-	}
-
 }

@@ -50,9 +50,4 @@ public class LookCommand implements MudCommand {
 		return true;
 	}
 
-	@Override
-	public String getDescription(MudUser user) {
-		return "Take a cursory look at your current location.";
-	}
-
 }

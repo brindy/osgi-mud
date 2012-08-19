@@ -44,11 +44,6 @@ public class MoveCommand implements MudCommand {
 	}
 
 	@Override
-	public String getDescription(MudUser user) {
-		return "Moves you in the specified direction.";
-	}
-
-	@Override
 	public String[] getVerbs() {
 		return new String[] { "go", "north", "n", "east", "e", "south", "s", "west", "w" };
 	}
