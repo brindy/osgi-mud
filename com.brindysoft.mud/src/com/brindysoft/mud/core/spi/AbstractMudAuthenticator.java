@@ -35,7 +35,7 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 
 	private String promptForNewPassword(MudSocketHandler socket, String name) {
 		while (true) {
-			socket.print("Welcome %s, please choose a password: ", name);
+			socket.print("Welcome {text:blue}%s{text}, please choose a password: ", name);
 			String password = socket.readLine();
 	
 			if (null == password || password.length() > 5) {
@@ -47,7 +47,7 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 	}
 
 	private String promptForPassword(MudSocketHandler socket, String name) {
-		socket.print("Welcome %s, please enter your password: ", name);
+		socket.print("Welcome back {text:blue}%s{text}, please enter your password: ", name);
 		return socket.readLine();
 	}
 

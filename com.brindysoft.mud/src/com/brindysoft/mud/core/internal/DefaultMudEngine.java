@@ -38,23 +38,23 @@ public class DefaultMudEngine implements MudEngine {
 
 	@Activate
 	public void start() {
-		logger.debug("DefaultMudEngine#start()");
+		logger.debug("%s#start()", getClass().getSimpleName());
 	}
 
 	@Deactivate
 	public void stop() {
-		logger.debug("DefaultMudEngine#stop()");
+		logger.debug("%s#stop()", getClass().getSimpleName());
 	}
 
 	@Override
 	public void run(MudUser user) throws IOException {
-		logger.debug("DefaultMudEngine#run() - IN");
+		logger.debug("%s#run() - IN", getClass().getSimpleName());
 
 		world.addUser(user);
 
 		// start reading commands
 		while (true) {
-			user.print(user.getName() + " > ");
+			user.print("{text:blue}%s{text} > ", user.getName());
 			String commandLine = user.readLine();
 			if (null == commandLine) {
 				break;
@@ -66,7 +66,7 @@ public class DefaultMudEngine implements MudEngine {
 			}
 
 			String[] args = commandLine.split("\\s+");
-			logger.debug("DefaultMudEngine#run() args : " + Arrays.asList(args));
+			logger.debug("%s#run() args : %s", getClass().getSimpleName(), Arrays.asList(args));
 
 			MudCommand command = commandRegistry.find(args[0]);
 			if (null == command || !command.invoke(args, user)) {
@@ -75,7 +75,7 @@ public class DefaultMudEngine implements MudEngine {
 			}
 		}
 
-		logger.debug("DefaultMudEngine#run() - OUT");
+		logger.debug("%s#run() - OUT", getClass().getSimpleName());
 	}
 
 }
