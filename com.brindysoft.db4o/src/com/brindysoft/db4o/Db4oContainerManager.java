@@ -18,6 +18,7 @@ import com.brindysoft.logging.api.Logger;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
+import com.db4o.io.MemoryStorage;
 import com.db4o.reflect.jdk.ClassLoaderJdkLoader;
 import com.db4o.reflect.jdk.JdkLoader;
 import com.db4o.reflect.jdk.JdkReflector;
@@ -70,6 +71,7 @@ public class Db4oContainerManager {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 		
 		JdkReflector reflector = new JdkReflector(loader);
+		config.file().storage(new MemoryStorage());
 		config.common().reflectWith(reflector);
 		config.common().add(new TransparentPersistenceSupport(new DeactivatingRollbackStrategy()));
 		config.common().activationDepth(Integer.MAX_VALUE);

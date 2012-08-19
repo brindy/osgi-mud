@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.Locale;
 import java.util.Map;
 
 import org.osgi.service.event.EventAdmin;
@@ -36,7 +35,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 	private MudEngine engine;
 	private MudAuthenticator authenticator;
-	private MudLocalizer localizer;
 	private EventAdmin eventAdmin;
 	private Logger logger;
 
@@ -45,18 +43,11 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	private InputStream inputStream;
 	private OutputStream outputStream;
 
-	private Locale locale = Locale.getDefault();
-
 	private OutputStrategy outputStrategy = new PlainOutputStrategy();
 
 	@Reference
 	public void setEngine(MudEngine engine) {
 		this.engine = engine;
-	}
-
-	@Reference
-	public void setLocalizer(MudLocalizer localizer) {
-		this.localizer = localizer;
 	}
 
 	@Reference
@@ -101,9 +92,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 				throw new Exception("Unable to authenticate user");
 			}
 
-			if (null == (locale = user.getLocale())) {
-				locale = Locale.getDefault();
-			}
 			user.attachToSocket(this);
 			engine.run(user);
 		} catch (Exception e) {
@@ -161,8 +149,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 	@Override
 	public void print(String message, Object... params) {
-		message = localizer.lookup(message, locale);
-
 		String output = String.format(message, params);
 		try {
 			outputStrategy.print(output);

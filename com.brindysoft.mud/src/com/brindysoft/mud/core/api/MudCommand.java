@@ -1,6 +1,6 @@
-package com.brindysoft.mud.core.internal;
+package com.brindysoft.mud.core.api;
 
-import com.brindysoft.mud.core.api.MudUser;
+
 
 public interface MudCommand {
 

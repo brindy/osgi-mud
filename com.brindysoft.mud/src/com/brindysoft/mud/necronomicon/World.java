@@ -10,6 +10,8 @@ import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.core.api.MudPlace;
 import com.brindysoft.mud.core.api.MudUser;
 import com.brindysoft.mud.core.api.MudWorld;
+import com.brindysoft.mud.core.internal.commands.EastCommand;
+import com.brindysoft.mud.core.internal.commands.WestCommand;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
@@ -61,8 +63,9 @@ public class World implements MudWorld {
 			place = db.query(MudPlace.class).get(0);
 		}
 
+		place.broadcast("{text:green}%s{text} appears!", user.getName());
 		place.addUser(user);
-		db.store(place);
+
 		db.commit();
 	}
 
@@ -72,13 +75,40 @@ public class World implements MudWorld {
 		return query.isEmpty() ? null : query.get(0);
 	}
 
+	@Override
+	public boolean move(MudUser user, String direction) {
+		MudPlace place = findPlaceContaining(user);
+		MudPlace otherPlace = place.placeInDirection(direction);
+		if (null != otherPlace) {
+			place.removeUser(user);
+			place.broadcast("%s heads %s", user.getName(), direction);
+
+			otherPlace.broadcast("%s arrives from the %s", user.getName(), place.getOppositeExit(direction));
+			otherPlace.addUser(user);
+
+			db.commit();
+			return true;
+		}
+		return false;
+	}
+
 	private void createEmptyWorld() {
 		logger.debug("%s#createEmptyWorld() - IN", getClass().getSimpleName());
 
-		GenericPlace first = new GenericPlace();
-		first.setDescription("Welcome to Dunwich.  The Miskatonic river flows under the nearby "
-				+ "bridge leading out of the village.");
-		db.store(first);
+		// create places
+		GenericPlace dunwichTurnoff = new GenericPlace();
+		dunwichTurnoff.setDescription("This is the Dunwich Turnoff.  "
+				+ "The main road to Arkham and Aylesbury runs east to west.  " + "The road to Dunwich heads north.");
+		db.store(dunwichTurnoff);
+		db.commit();
+
+		GenericPlace busstop = new GenericPlace();
+		busstop.setDescription("You are next to to the bus stop at Dean's Corners.");
+		db.store(busstop);
+		db.commit();
+
+		// connect places
+		busstop.connect(dunwichTurnoff, EastCommand.DIRECTION, WestCommand.DIRECTION);
 		db.commit();
 
 		logger.debug("%s#createEmptyWorld() - OUT", getClass().getSimpleName());

@@ -21,4 +21,14 @@ public interface MudWorld {
 	 */
 	MudPlace findPlaceContaining(Object object);
 
+	/**
+	 * Move the user in the given direction.
+	 * 
+	 * @param user
+	 *            the user
+	 * @param direction
+	 *            the direction (the exit name)
+	 */
+	boolean move(MudUser user, String direction);
+
 }

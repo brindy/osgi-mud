@@ -9,10 +9,10 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
+import com.brindysoft.mud.core.api.MudCommand;
 import com.brindysoft.mud.core.api.MudEngine;
 import com.brindysoft.mud.core.api.MudUser;
 import com.brindysoft.mud.core.api.MudWorld;
-import com.brindysoft.mud.core.internal.commands.LookCommand;
 
 @Component
 public class DefaultMudEngine implements MudEngine {
@@ -20,7 +20,7 @@ public class DefaultMudEngine implements MudEngine {
 	private Logger logger;
 	private MudWorld world;
 	private MudCommandRegistry commandRegistry;
-	private LookCommand lookCommand;
+	private MudCommand lookCommand;
 
 	@Reference
 	public void setCommandRegistry(MudCommandRegistry commandRegistry) {
@@ -37,8 +37,8 @@ public class DefaultMudEngine implements MudEngine {
 		this.logger = logger;
 	}
 
-	@Reference
-	public void setLookCommand(LookCommand lookCommand) {
+	@Reference(target = "(type=look)")
+	public void setLookCommand(MudCommand lookCommand) {
 		this.lookCommand = lookCommand;
 	}
 
