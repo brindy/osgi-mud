@@ -7,3 +7,6 @@ com.brindysoft.mud/bin_test
 com.brindysoft.logging/generated
 com.brindysoft.logging/bin
 com.brindysoft.logging/bin_test
+com.brindysoft.db4o/generated
+com.brindysoft.db4o/bin
+com.brindysoft.db4o/bin_test
