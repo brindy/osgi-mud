@@ -10,8 +10,6 @@ import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.core.api.MudPlace;
 import com.brindysoft.mud.core.api.MudUser;
 import com.brindysoft.mud.core.api.MudWorld;
-import com.brindysoft.mud.core.internal.commands.EastCommand;
-import com.brindysoft.mud.core.internal.commands.WestCommand;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
@@ -108,7 +106,7 @@ public class World implements MudWorld {
 		db.commit();
 
 		// connect places
-		busstop.connect(dunwichTurnoff, EastCommand.DIRECTION, WestCommand.DIRECTION);
+		busstop.connect(dunwichTurnoff, "east", "west");
 		db.commit();
 
 		logger.debug("%s#createEmptyWorld() - OUT", getClass().getSimpleName());
