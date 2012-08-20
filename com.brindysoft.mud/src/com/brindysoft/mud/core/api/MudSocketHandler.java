@@ -1,10 +1,11 @@
 package com.brindysoft.mud.core.api;
 
+/**
+ * Not intended to be implemented by clients.
+ * 
+ * @author brindy
+ */
 public interface MudSocketHandler extends MudIo {
-
-	String FACTORY = "com.brindysoft.mud.core.SocketHandler";
-
-	String SOCKET_PROPERTY = "socket";
 
 	void close();
 
