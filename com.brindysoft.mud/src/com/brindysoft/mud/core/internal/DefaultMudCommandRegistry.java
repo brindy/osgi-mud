@@ -7,7 +7,7 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.api.MudCommand;
+import com.brindysoft.mud.core.mpi.MudCommand;
 
 @Component
 public class DefaultMudCommandRegistry implements MudCommandRegistry {

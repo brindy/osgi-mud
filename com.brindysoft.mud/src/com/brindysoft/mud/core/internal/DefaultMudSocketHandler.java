@@ -24,14 +24,15 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.api.ExceptionEvent;
-import com.brindysoft.mud.core.api.MudAuthenticator;
-import com.brindysoft.mud.core.api.MudEngine;
 import com.brindysoft.mud.core.api.MudSocketHandler;
-import com.brindysoft.mud.core.api.MudUser;
+import com.brindysoft.mud.core.mpi.MudAuthenticator;
+import com.brindysoft.mud.core.mpi.MudUser;
 
-@Component(factory = MudSocketHandler.FACTORY)
+@Component(factory = DefaultMudSocketHandler.FACTORY)
 public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
+
+	public static final String FACTORY = "com.brindysoft.mud.core.SocketHandler";
+	public static final String SOCKET_PROPERTY = "socket";
 
 	private MudEngine engine;
 	private MudAuthenticator authenticator;
@@ -69,7 +70,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	public void activate(Map<String, Object> properties) {
 		logger.debug("%s(%s)#run() IN", getClass().getSimpleName(), Thread.currentThread().getName());
 		try {
-			socket = (Socket) properties.get(MudSocketHandler.SOCKET_PROPERTY);
+			socket = (Socket) properties.get(SOCKET_PROPERTY);
 			inputStream = new BufferedInputStream(socket.getInputStream());
 			outputStream = socket.getOutputStream();
 			thread = new Thread(this);

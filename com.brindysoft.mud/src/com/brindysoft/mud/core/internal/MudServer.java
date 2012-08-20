@@ -20,7 +20,6 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.api.ExceptionEvent;
 import com.brindysoft.mud.core.api.MudSocketHandler;
 
 @Component(immediate = true, provide = EventHandler.class, properties = "event.topics=" + ExceptionEvent.TOPIC)
@@ -40,7 +39,7 @@ public class MudServer implements Runnable, EventHandler {
 		this.logger = logger;
 	}
 
-	@Reference(target = "(component.factory=" + MudSocketHandler.FACTORY + ")")
+	@Reference(target = "(component.factory=" + DefaultMudSocketHandler.FACTORY + ")")
 	public void setSocketHandlerFactory(ComponentFactory socketHandlerFactory) {
 		this.socketHandlerFactory = socketHandlerFactory;
 	}
@@ -132,7 +131,7 @@ public class MudServer implements Runnable, EventHandler {
 
 	private void createSocketHandler(Socket socket) {
 		Hashtable<String, Object> properties = new Hashtable<String, Object>();
-		properties.put(MudSocketHandler.SOCKET_PROPERTY, socket);
+		properties.put(DefaultMudSocketHandler.SOCKET_PROPERTY, socket);
 		ComponentInstance componentInstance = socketHandlerFactory.newInstance(properties);
 		MudSocketHandler handler = (MudSocketHandler) componentInstance.getInstance();
 		socketHandlers.put(handler, componentInstance);

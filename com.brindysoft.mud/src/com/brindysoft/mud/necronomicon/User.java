@@ -1,6 +1,6 @@
 package com.brindysoft.mud.necronomicon;
 
-import com.brindysoft.mud.core.api.AbstractMudUser;
+import com.brindysoft.mud.core.mpi.AbstractMudUser;
 
 public class User extends AbstractMudUser {
 

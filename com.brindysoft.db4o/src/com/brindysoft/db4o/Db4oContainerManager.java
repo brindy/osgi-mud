@@ -1,6 +1,6 @@
 package com.brindysoft.db4o;
 
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -18,15 +18,17 @@ import com.brindysoft.logging.api.Logger;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
+import com.db4o.diagnostic.Diagnostic;
+import com.db4o.diagnostic.DiagnosticListener;
 import com.db4o.io.MemoryStorage;
 import com.db4o.reflect.jdk.ClassLoaderJdkLoader;
 import com.db4o.reflect.jdk.JdkLoader;
 import com.db4o.reflect.jdk.JdkReflector;
-import com.db4o.ta.DeactivatingRollbackStrategy;
-import com.db4o.ta.TransparentPersistenceSupport;
 
 @Component(provide = Db4oContainerManager.class)
-public class Db4oContainerManager {
+public class Db4oContainerManager implements DiagnosticListener {
+
+	public final JdkLoader loader = new ClassLoaderJdkLoader(ObjectContainer.class.getClassLoader());
 
 	private Map<String, BundleLoader> loaders;
 	private Map<String, ObjectContainer> containers;
@@ -39,7 +41,7 @@ public class Db4oContainerManager {
 	}
 
 	@Activate
-	public void start(BundleContext ctx) {
+	public void start(BundleContext ctx) throws IOException {
 		logger.debug("Db4oServerManager#start() - IN");
 		loaders = new HashMap<String, BundleLoader>();
 		containers = new HashMap<String, ObjectContainer>();
@@ -51,13 +53,7 @@ public class Db4oContainerManager {
 
 		ObjectContainer container = containers.get(dbName);
 		if (null == container) {
-			BundleLoader loader = new BundleLoader(new HashSet<Bundle>(Arrays.asList(bundle)),
-					new ClassLoaderJdkLoader(ObjectContainer.class.getClassLoader()));
-			loaders.put(dbName, loader);
-			
-			EmbeddedConfiguration config = createConfiguration(loader);
-			
-			container = Db4oEmbedded.openFile(config, dbName + ".db4o");
+			container = openContainer(bundle, dbName);
 			containers.put(dbName, container);
 		} else {
 			BundleLoader loader = loaders.get(dbName);
@@ -67,63 +63,85 @@ public class Db4oContainerManager {
 		return container;
 	}
 
-	private EmbeddedConfiguration createConfiguration(BundleLoader loader) {
-		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-		
-		JdkReflector reflector = new JdkReflector(loader);
-		config.file().storage(new MemoryStorage());
-		config.common().reflectWith(reflector);
-		config.common().add(new TransparentPersistenceSupport(new DeactivatingRollbackStrategy()));
-		config.common().activationDepth(Integer.MAX_VALUE);
-		config.common().updateDepth(Integer.MAX_VALUE);
-		return config;
+	private ObjectContainer openContainer(Bundle bundle, String dbName) {
+		ObjectContainer container;
+		BundleLoader loader = new BundleLoader();
+		loader.bundles.add(bundle);
+		loaders.put(dbName, loader);
+
+		EmbeddedConfiguration config = createConfiguration(loader);
+
+		container = Db4oEmbedded.openFile(config, dbName + ".db4o");
+		return container;
 	}
 
 	public synchronized void unregister(Bundle usingBundle, String dbName) {
-		if (usingBundle.getState() == Bundle.STOPPING) {
-			loaders.get(dbName).bundles.remove(usingBundle);
-			if (loaders.get(dbName).bundles.isEmpty()) {
-				loaders.remove(dbName);
-				containers.remove(dbName).close();
-			}
+		logger.debug("%s#unregister(%s, %s) - IN", getClass().getSimpleName(), usingBundle, dbName);
+
+		BundleLoader loader = loaders.get(dbName);
+		if (null == loader) {
+			logger.debug("%s#unregister(%s, %s) - OUT, no BundleLoader found", getClass().getSimpleName(), usingBundle,
+					dbName);
+			return;
 		}
+
+		loader.bundles.remove(usingBundle);
+		if (0 == loader.bundles.size()) {
+			logger.debug("%s#unregister() - closing and removing database %s", getClass().getName(), dbName);
+			containers.remove(dbName).close();
+			loaders.remove(dbName);
+		}
+		logger.debug("%s#unregister(%s, %s) - OUT", getClass().getSimpleName(), usingBundle, dbName);
 	}
 
 	@Deactivate
 	public void stop() {
-		logger.debug("Db4oServerManager#stop() - IN");
+		logger.debug("%s#stop() - IN", getClass().getSimpleName());
 		for (ObjectContainer container : containers.values()) {
 			container.close();
 		}
 		containers.clear();
 		containers = null;
-		logger.debug("Db4oServerManager#stop() - OUT");
+		logger.debug("%s#stop() - OUT", getClass().getSimpleName());
+	}
+
+	@Override
+	public void onDiagnostic(Diagnostic diag) {
+		logger.debug("%s#onDiagnostic(%s)", getClass().getSimpleName(), diag);
+	}
+
+	private EmbeddedConfiguration createConfiguration(BundleLoader loader) {
+		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+		JdkReflector reflector = new JdkReflector(loader);
+
+		config.file().storage(new MemoryStorage());
+		config.common().diagnostic().addListener(this);
+		config.common().exceptionsOnNotStorable(true);
+		config.common().reflectWith(reflector);
+		return config;
 	}
 
 	class BundleLoader implements JdkLoader {
 
-		public final Set<Bundle> bundles;
+		public final Set<Bundle> bundles = new HashSet<Bundle>();
 
-		public final JdkLoader loader;
-
-		public BundleLoader(Set<Bundle> bundles, JdkLoader loader) {
-			this.bundles = bundles;
-			this.loader = loader;
+		public BundleLoader() {
 		}
 
 		@Override
 		public Class<?> loadClass(String className) {
-			logger.debug("BundleLoader#loadClass(%s)", className);
-
 			Class<?> clazz = loader.loadClass(className);
 			if (null != clazz) {
 				return clazz;
 			}
 
 			for (Bundle bundle : bundles) {
-				logger.debug("BundleLoader#loadClass(%s) from %s", className, bundle);
 				try {
-					return bundle.loadClass(className);
+					clazz = bundle.loadClass(className);
+					if (clazz != null) {
+						logger.debug("BundleLoader#loadClass(%s) from %s", className, bundle);
+						return clazz;
+					}
 				} catch (ClassNotFoundException e) {
 				}
 			}
@@ -134,7 +152,8 @@ public class Db4oContainerManager {
 
 		@Override
 		public Object deepClone(Object context) {
-			return new BundleLoader(new HashSet<Bundle>(bundles), loader);
+			// return new BundleLoader(bundles, loader);
+			return null;
 		}
 
 	}

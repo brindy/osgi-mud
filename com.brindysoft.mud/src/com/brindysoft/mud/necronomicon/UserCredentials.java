@@ -1,6 +1,6 @@
 package com.brindysoft.mud.necronomicon;
 
-import com.brindysoft.mud.core.api.MudUser;
+import com.brindysoft.mud.core.mpi.MudUser;
 
 public class UserCredentials {
 

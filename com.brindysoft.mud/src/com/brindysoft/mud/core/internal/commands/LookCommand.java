@@ -5,10 +5,10 @@ import java.util.Set;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
-import com.brindysoft.mud.core.api.MudCommand;
-import com.brindysoft.mud.core.api.MudPlace;
-import com.brindysoft.mud.core.api.MudUser;
-import com.brindysoft.mud.core.api.MudWorld;
+import com.brindysoft.mud.core.mpi.MudCommand;
+import com.brindysoft.mud.core.mpi.MudPlace;
+import com.brindysoft.mud.core.mpi.MudUser;
+import com.brindysoft.mud.core.mpi.MudWorld;
 
 @Component(properties = "type=look")
 public class LookCommand implements MudCommand {
@@ -28,6 +28,7 @@ public class LookCommand implements MudCommand {
 	@Override
 	public boolean invoke(String[] args, MudUser user) {
 		MudPlace place = world.findPlaceContaining(user);
+
 		user.println(place.getDescription(user));
 
 		Set<String> exits = place.getExits();

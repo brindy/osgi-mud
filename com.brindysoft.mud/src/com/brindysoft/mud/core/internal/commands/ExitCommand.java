@@ -2,8 +2,8 @@ package com.brindysoft.mud.core.internal.commands;
 
 import aQute.bnd.annotation.component.Component;
 
-import com.brindysoft.mud.core.api.MudCommand;
-import com.brindysoft.mud.core.api.MudUser;
+import com.brindysoft.mud.core.mpi.MudCommand;
+import com.brindysoft.mud.core.mpi.MudUser;
 
 @Component
 public class ExitCommand implements MudCommand {

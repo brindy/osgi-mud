@@ -7,9 +7,10 @@ import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.db4o.api.Db4oService;
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.api.MudPlace;
-import com.brindysoft.mud.core.api.MudUser;
-import com.brindysoft.mud.core.api.MudWorld;
+import com.brindysoft.mud.core.mpi.AbstractMudPlace;
+import com.brindysoft.mud.core.mpi.MudPlace;
+import com.brindysoft.mud.core.mpi.MudUser;
+import com.brindysoft.mud.core.mpi.MudWorld;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
@@ -70,7 +71,8 @@ public class World implements MudWorld {
 	@Override
 	public MudPlace findPlaceContaining(Object object) {
 		ObjectSet<MudPlace> query = db.query(new FindPlaceContainingObjectPredicate(object));
-		return query.isEmpty() ? null : query.get(0);
+		MudPlace place = query.isEmpty() ? null : query.get(0);
+		return place;
 	}
 
 	@Override
@@ -94,20 +96,24 @@ public class World implements MudWorld {
 		logger.debug("%s#createEmptyWorld() - IN", getClass().getSimpleName());
 
 		// create places
-		GenericPlace dunwichTurnoff = new GenericPlace();
+		AbstractMudPlace dunwichTurnoff = new SimplePlace();
 		dunwichTurnoff.setDescription("This is the Dunwich Turnoff.  "
 				+ "The main road to Arkham and Aylesbury runs east to west.  " + "The road to Dunwich heads north.");
 		db.store(dunwichTurnoff);
-		db.commit();
 
-		GenericPlace busstop = new GenericPlace();
+		AbstractMudPlace busstop = new SimplePlace();
 		busstop.setDescription("You are next to to the bus stop at Dean's Corners.");
 		db.store(busstop);
-		db.commit();
 
 		// connect places
 		busstop.connect(dunwichTurnoff, "east", "west");
+		db.store(busstop);
+		db.store(dunwichTurnoff);
 		db.commit();
+
+		assert (dunwichTurnoff.getExits().size() == 1);
+		assert (busstop.getExits().size() == 1);
+		assert (db.query(MudPlace.class).size() == 2);
 
 		logger.debug("%s#createEmptyWorld() - OUT", getClass().getSimpleName());
 	}

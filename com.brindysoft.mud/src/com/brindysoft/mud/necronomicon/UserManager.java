@@ -7,8 +7,8 @@ import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.db4o.api.Db4oService;
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.api.MudUser;
-import com.brindysoft.mud.core.api.MudUserManager;
+import com.brindysoft.mud.core.mpi.MudUser;
+import com.brindysoft.mud.core.mpi.MudUserManager;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 

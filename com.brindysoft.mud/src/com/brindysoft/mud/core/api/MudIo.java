@@ -1,5 +1,10 @@
 package com.brindysoft.mud.core.api;
 
+/**
+ * Not intended for implmentation by clients.
+ * 
+ * @author brindy
+ */
 public interface MudIo {
 
 	String readLine();
