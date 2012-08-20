@@ -2,7 +2,7 @@ package com.brindysoft.mud.core.internal;
 
 import java.io.IOException;
 
-import com.brindysoft.mud.core.mpi.MudUser;
+import com.brindysoft.mud.mpi.MudUser;
 
 public interface MudEngine {
 

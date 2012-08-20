@@ -9,9 +9,9 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.mpi.MudCommand;
-import com.brindysoft.mud.core.mpi.MudUser;
-import com.brindysoft.mud.core.mpi.MudWorld;
+import com.brindysoft.mud.mpi.MudCommand;
+import com.brindysoft.mud.mpi.MudUser;
+import com.brindysoft.mud.mpi.MudWorld;
 
 @Component
 public class DefaultMudEngine implements MudEngine {

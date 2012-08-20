@@ -1,6 +1,6 @@
 package com.brindysoft.mud.core.internal;
 
-import com.brindysoft.mud.core.mpi.MudCommand;
+import com.brindysoft.mud.mpi.MudCommand;
 
 
 public interface MudCommandRegistry {

@@ -1,7 +1,6 @@
-package com.brindysoft.mud.core.mpi;
+package com.brindysoft.mud.mpi;
 
-import com.brindysoft.mud.core.api.MudSocketHandler;
-
+import com.brindysoft.mud.api.MudSocketHandler;
 
 public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 
@@ -35,11 +34,11 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 		while (true) {
 			socket.print("Welcome {text:blue}%s{text}, please choose a password: ", name);
 			String password = socket.readLine();
-	
+
 			if (null == password || password.length() > 5) {
 				return password;
 			}
-	
+
 			socket.println("Your password must be at least 6 characters long.");
 		}
 	}
@@ -53,11 +52,11 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 		while (true) {
 			socket.print("Enter your desired username: ");
 			String name = socket.readLine().trim();
-	
+
 			if (null == name || name.matches("([a-zA-Z]){3,}")) {
 				return name;
 			}
-	
+
 			socket.println("Your username has to be at least 3 characters long and contain only alphabetic characters.");
 		}
 	}

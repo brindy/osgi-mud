@@ -3,10 +3,10 @@ package com.brindysoft.mud.core.internal.commands;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
-import com.brindysoft.mud.core.mpi.MudCommand;
-import com.brindysoft.mud.core.mpi.MudPlace;
-import com.brindysoft.mud.core.mpi.MudUser;
-import com.brindysoft.mud.core.mpi.MudWorld;
+import com.brindysoft.mud.mpi.MudCommand;
+import com.brindysoft.mud.mpi.MudPlace;
+import com.brindysoft.mud.mpi.MudUser;
+import com.brindysoft.mud.mpi.MudWorld;
 
 @Component
 public class SpeakCommand implements MudCommand {

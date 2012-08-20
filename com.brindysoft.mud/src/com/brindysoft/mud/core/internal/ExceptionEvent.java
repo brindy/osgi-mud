@@ -5,7 +5,7 @@ import java.util.Map;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
-import com.brindysoft.mud.core.api.MudSocketHandler;
+import com.brindysoft.mud.api.MudSocketHandler;
 
 
 public class ExceptionEvent extends Event {

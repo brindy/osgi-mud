@@ -1,2 +1,3 @@
-Private-Package: com.brindysoft.mud.necronomicon
+Private-Package: com.brindysoft.mud.necronomicon,\
+	com.brindysoft.mud.necronomicon.commands
 Service-Component: *

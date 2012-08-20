@@ -1,4 +1,4 @@
-package com.brindysoft.mud.core.api;
+package com.brindysoft.mud.api;
 
 /**
  * Not intended for implmentation by clients.

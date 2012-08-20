@@ -1,0 +1,2 @@
+Export-Package: com.brindysoft.mud.api,\
+	com.brindysoft.mud.mpi

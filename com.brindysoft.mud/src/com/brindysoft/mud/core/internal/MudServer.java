@@ -20,7 +20,7 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.api.MudSocketHandler;
+import com.brindysoft.mud.api.MudSocketHandler;
 
 @Component(immediate = true, provide = EventHandler.class, properties = "event.topics=" + ExceptionEvent.TOPIC)
 public class MudServer implements Runnable, EventHandler {

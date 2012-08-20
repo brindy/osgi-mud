@@ -1,4 +1,4 @@
-package com.brindysoft.mud.core.mpi;
+package com.brindysoft.mud.mpi;
 
 public interface MudCommand {
 

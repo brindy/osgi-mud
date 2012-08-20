@@ -7,7 +7,7 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.mud.core.mpi.MudCommand;
+import com.brindysoft.mud.mpi.MudCommand;
 
 @Component
 public class DefaultMudCommandRegistry implements MudCommandRegistry {
@@ -20,13 +20,15 @@ public class DefaultMudCommandRegistry implements MudCommandRegistry {
 		this.logger = logger;
 	}
 
-	@Reference(optional = true, dynamic = true, multiple=true)
+	@Reference(optional = true, multiple = true)
 	public void addCommand(MudCommand command) {
 		if (null != logger) {
 			logger.debug("DefaultMudCommandRegistry#addCommand(%s)", command);
 		}
 		for (String verb : command.getVerbs()) {
-			commands.put(verb, command);
+			if (null != commands.put(verb, command)) {
+				throw new RuntimeException("Command already registered for " + verb);
+			}
 		}
 	}
 

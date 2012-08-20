@@ -1,0 +1,10 @@
+
+## TODO 
+
+* Newbie helper.  
+* Detailed stats.
+* Database version management.
+
+## Review
+
+* lombok and osgi

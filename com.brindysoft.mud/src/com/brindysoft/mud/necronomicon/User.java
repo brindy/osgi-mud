@@ -1,22 +1,18 @@
 package com.brindysoft.mud.necronomicon;
 
-import com.brindysoft.mud.core.mpi.AbstractMudUser;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+import com.brindysoft.mud.mpi.AbstractMudUser;
+
+@Data
+@EqualsAndHashCode(callSuper = false)
+@ToString
 public class User extends AbstractMudUser {
 
 	private String name;
 
-	@Override
-	public String getName() {
-		return name;
-	}
+	private int insanity;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("User %s", name);
-	}
 }

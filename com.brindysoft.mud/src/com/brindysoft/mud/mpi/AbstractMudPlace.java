@@ -1,4 +1,4 @@
-package com.brindysoft.mud.core.mpi;
+package com.brindysoft.mud.mpi;
 
 import java.util.Collections;
 import java.util.HashMap;
