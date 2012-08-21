@@ -63,18 +63,6 @@ public class Db4oContainerManager implements DiagnosticListener {
 		return container;
 	}
 
-	private ObjectContainer openContainer(Bundle bundle, String dbName) {
-		ObjectContainer container;
-		BundleLoader loader = new BundleLoader();
-		loader.bundles.add(bundle);
-		loaders.put(dbName, loader);
-
-		EmbeddedConfiguration config = createConfiguration(loader);
-
-		container = Db4oEmbedded.openFile(config, dbName + ".db4o");
-		return container;
-	}
-
 	public synchronized void unregister(Bundle usingBundle, String dbName) {
 		logger.debug("%s#unregister(%s, %s) - IN", getClass().getSimpleName(), usingBundle, dbName);
 
@@ -108,6 +96,18 @@ public class Db4oContainerManager implements DiagnosticListener {
 	@Override
 	public void onDiagnostic(Diagnostic diag) {
 		logger.debug("%s#onDiagnostic(%s)", getClass().getSimpleName(), diag);
+	}
+
+	private ObjectContainer openContainer(Bundle bundle, String dbName) {
+		ObjectContainer container;
+		BundleLoader loader = new BundleLoader();
+		loader.bundles.add(bundle);
+		loaders.put(dbName, loader);
+	
+		EmbeddedConfiguration config = createConfiguration(loader);
+	
+		container = Db4oEmbedded.openFile(config, dbName + ".db4o");
+		return container;
 	}
 
 	private EmbeddedConfiguration createConfiguration(BundleLoader loader) {

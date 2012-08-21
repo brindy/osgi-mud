@@ -88,4 +88,35 @@ public interface MudPlace {
 	 */
 	String getOppositeExit(String direction);
 
+	/**
+	 * The user leaves this place, heading in the given direction.
+	 * 
+	 * @param user
+	 *            the user
+	 * @param direction
+	 *            the direction the user went
+	 */
+	void userLeaves(MudUser user, String direction);
+
+	/**
+	 * The user arrives in this place <em>heading</em> in the given direction.
+	 * 
+	 * @param user
+	 *            the user
+	 * 
+	 * @param direction
+	 *            the direction the user was <em>heading</em> in when they
+	 *            arrived here
+	 */
+	void userArrives(MudUser user, String direction);
+
+	/**
+	 * Get the exist in the given direction.
+	 * 
+	 * @param direction
+	 *            the direction
+	 * @return the place in the given direction
+	 */
+	MudPlace getExit(String direction);
+
 }

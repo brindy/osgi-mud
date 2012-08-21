@@ -25,13 +25,15 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 				socket.println("Sorry, that was the wrong password.");
 			} else {
 				String password = promptForNewPassword(socket, username);
+				socket.println("");
 				return userManager.create(username, password);
 			}
 		}
 	}
 
-	private String promptForNewPassword(MudSocketHandler socket, String name) {
+	protected String promptForNewPassword(MudSocketHandler socket, String name) {
 		while (true) {
+			socket.println("");
 			socket.print("Welcome {text:blue}%s{text}, please choose a password: ", name);
 			String password = socket.readLine();
 
@@ -43,13 +45,15 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 		}
 	}
 
-	private String promptForPassword(MudSocketHandler socket, String name) {
+	protected String promptForPassword(MudSocketHandler socket, String name) {
+		socket.println("");
 		socket.print("Welcome back {text:blue}%s{text}, please enter your password: ", name);
 		return socket.readLine();
 	}
 
-	private String promptForUsername(MudSocketHandler socket) {
+	protected String promptForUsername(MudSocketHandler socket) {
 		while (true) {
+			socket.println("");
 			socket.print("Enter your desired username: ");
 			String name = socket.readLine().trim();
 

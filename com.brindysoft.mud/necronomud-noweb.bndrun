@@ -1,0 +1,36 @@
+-runfw: org.apache.felix.framework;version='[4.0.3,4.0.3]'
+-runee: JavaSE-1.6
+
+-runbundles: org.apache.felix.metatype;version='[1.0.4,1.0.5)',\
+	com.brindysoft.mud.core;version=latest,\
+	org.apache.felix.configadmin;version='[1.4.0,1.4.1)',\
+	com.brindysoft.db4o;version=latest,\
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
+	com.brindysoft.mud.necronomud;version=latest,\
+	osgi.cmpn;version='[4.2.0,4.2.1)',\
+	org.apache.felix.gogo.command;version='[0.12.0,0.12.1)',\
+	db4o_osgi;version='[8.0.249,8.0.250)',\
+	org.apache.felix.scr;version='[1.6.0,1.6.1)',\
+	org.apache.felix.eventadmin;version='[1.2.14,1.2.15)',\
+	com.brindysoft.logging.sysout;version=latest,\
+	com.brindysoft.logging.api;version=latest,\
+	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
+	com.brindysoft.mud.api;version=latest
+
+## Uncomment if you need to change the HTTP port
+#-runproperties: org.osgi.service.http.port=8080
+
+-runrequires: osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.metatype)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
+	osgi.identity;filter:='(&(osgi.identity=osgi.cmpn)(version>=4.2))',\
+	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.scr)(version>=1.6.0))',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.mud.core)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.eventadmin)',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.logging.sysout)',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.logging.api)',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.db4o)',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.mud.api)',\
+	osgi.identity;filter:='(osgi.identity=com.brindysoft.mud.necronomud)'
+	
+-runframework: org.apache.felix.framework;version='[4.0.3,4.0.3]'

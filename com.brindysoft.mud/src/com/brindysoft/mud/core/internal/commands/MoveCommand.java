@@ -7,6 +7,7 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.mud.mpi.MudCommand;
+import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
 
@@ -59,11 +60,17 @@ public class MoveCommand implements MudCommand {
 		}
 		direction = DIRECTIONS.get(direction);
 
-		if (world.move(user, direction)) {
+		MudPlace source = world.findPlaceContaining(user);
+		if (source.getExits().contains(direction)) {
+			source.userLeaves(user, direction);
+			source.getExit(direction).userArrives(user, direction);
+			world.save(source, source.getExit(direction));
 			return lookCommand.invoke(new String[] { lookCommand.getVerbs()[0] }, user);
 		}
 
-		return false;
+		user.println("You can't go %s from here.", direction);
+
+		return true;
 	}
 
 }

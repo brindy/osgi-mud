@@ -6,14 +6,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
 public abstract class AbstractMudPlace implements MudPlace {
 
-	private Map<String, MudPlace> connections;
+	protected Map<String, MudPlace> connections;
 
-	private Map<String, String> opposites;
+	protected Map<String, String> opposites;
 
-	private Set<MudUser> users;
+	protected Set<MudUser> users;
 
 	private String description;
 
@@ -79,8 +78,25 @@ public abstract class AbstractMudPlace implements MudPlace {
 	}
 
 	@Override
+	public MudPlace getExit(String direction) {
+		return getConnections().get(direction);
+	}
+
+	@Override
 	public String getOppositeExit(String direction) {
 		return getOpposites().get(direction);
+	}
+
+	@Override
+	public synchronized void userLeaves(MudUser user, String direction) {
+		users.remove(user);
+		broadcast("%s heads %s.", user.getName(), direction);
+	}
+
+	@Override
+	public synchronized void userArrives(MudUser user, String direction) {
+		broadcast("%s arrives from the %s.", user.getName(), opposites.get(direction));
+		addUser(user);
 	}
 
 	public void connect(AbstractMudPlace otherPlace, String inDirection, String fromDirection) {

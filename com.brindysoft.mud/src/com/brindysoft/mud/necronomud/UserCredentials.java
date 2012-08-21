@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomicon;
+package com.brindysoft.mud.necronomud;
 
 import com.brindysoft.mud.mpi.MudUser;
 

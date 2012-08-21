@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomicon;
+package com.brindysoft.mud.necronomud;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

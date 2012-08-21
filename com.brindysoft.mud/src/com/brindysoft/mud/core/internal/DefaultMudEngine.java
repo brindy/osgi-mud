@@ -60,6 +60,7 @@ public class DefaultMudEngine implements MudEngine {
 
 		// start reading commands
 		while (true) {
+			user.println("");
 			user.print("{text:blue}%s{text} > ", user.getName());
 			String commandLine = user.readLine();
 			if (null == commandLine) {

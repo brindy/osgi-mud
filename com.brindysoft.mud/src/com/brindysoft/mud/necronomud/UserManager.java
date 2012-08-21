@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomicon;
+package com.brindysoft.mud.necronomud;
 
 import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;

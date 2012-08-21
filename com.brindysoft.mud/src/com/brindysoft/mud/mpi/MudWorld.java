@@ -22,13 +22,11 @@ public interface MudWorld {
 	MudPlace findPlaceContaining(Object object);
 
 	/**
-	 * Move the user in the given direction.
+	 * Save the given object.
 	 * 
-	 * @param user
-	 *            the user
-	 * @param direction
-	 *            the direction (the exit name)
+	 * @param objects
+	 *            the objects that changed
 	 */
-	boolean move(MudUser user, String direction);
+	void save(Object... objects);
 
 }
