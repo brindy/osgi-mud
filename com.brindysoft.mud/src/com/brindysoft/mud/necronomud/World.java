@@ -103,7 +103,7 @@ public class World implements MudWorld {
 
 		SimplePlace aBridge = new SimplePlace();
 		aBridge.setTag("turnoff-dunwich-bridge");
-		aBridge.setDescription("This is covered bridge made mainly of wooden planks.  "
+		aBridge.setDescription("This is a covered bridge made mainly of wooden planks.  "
 				+ "Dunwich Road continues to the north and south.  " + "A river flows east to west below the bridge.");
 
 		SimplePlace cornerOfEastCreekAndDunwich = new SimplePlace();
