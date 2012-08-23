@@ -78,7 +78,6 @@ public class DefaultMudEngine implements MudEngine {
 			MudCommand command = commandRegistry.find(args[0]);
 			if (null == command || !command.invoke(args, user)) {
 				user.println("I don't know how to '%s'", commandLine);
-				user.println("");
 			}
 		}
 

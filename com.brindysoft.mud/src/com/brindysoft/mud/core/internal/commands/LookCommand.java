@@ -54,7 +54,7 @@ public class LookCommand implements MudCommand {
 			user.println("");
 			user.println("You see:");
 			for (MudObject object : objects) {
-				user.println(object.getName());
+				user.println(object.getListName());
 			}
 		}
 

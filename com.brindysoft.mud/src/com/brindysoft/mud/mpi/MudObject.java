@@ -2,6 +2,26 @@ package com.brindysoft.mud.mpi;
 
 public interface MudObject {
 
-	String getName();
+	/**
+	 * @return the name to display in a list of items, e.g. "A Balloon",
+	 *         "The Sword of Avalon".
+	 */
+	String getListName();
+
+	/**
+	 * A set of generic and specific names to match against user input, e.g.
+	 * "sword", "sword of avalon", "avalon sword".
+	 * 
+	 * @return a list of strings to match against user input.
+	 */
+	String[] getAliases();
+
+	/**
+	 * Give the user more detail about the item.
+	 * 
+	 * @param user
+	 *            the user examining the item
+	 */
+	void examine(MudUser user);
 
 }

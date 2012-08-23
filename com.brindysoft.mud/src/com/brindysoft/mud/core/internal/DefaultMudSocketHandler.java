@@ -192,6 +192,10 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 			case '\n':
 				break;
+				
+			case '{':
+				buffer.append("{").append('\0');
+				break;
 
 			case 7:
 				buffer.append(' ');
