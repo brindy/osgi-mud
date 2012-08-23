@@ -14,6 +14,8 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	protected Set<MudUser> users;
 
+	protected Set<MudObject> objects;
+
 	private String description;
 
 	@Override
@@ -105,6 +107,21 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 		otherPlace.getConnections().put(fromDirection, this);
 		otherPlace.getOpposites().put(fromDirection, inDirection);
+	}
+
+	@Override
+	public void addObject(MudObject object) {
+		if (null == objects) {
+			objects = new HashSet<MudObject>();
+		}
+
+		objects.add(object);
+	}
+
+	@Override
+	public Set<MudObject> getObjects() {
+		return null == objects ? Collections.<MudObject> emptySet() : Collections
+				.unmodifiableSet(new HashSet<MudObject>(objects));
 	}
 
 	private Map<String, MudPlace> getConnections() {

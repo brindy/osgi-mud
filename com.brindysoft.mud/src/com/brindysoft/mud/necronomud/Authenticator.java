@@ -20,7 +20,10 @@ public class Authenticator extends AbstractMudAuthenticator implements MudAuthen
 
 	@Override
 	public MudUser authenticate(MudSocketHandler socket) {
-		socket.println("Welcome Necronomud v2.");
+		StringBuffer buff = new StringBuffer();
+		buff.append("Welcome to {text:red}Necronomud{text} v2.");
+
+		socket.println(buff.toString());
 		socket.println("");
 		socket.println("Beware investigator!  "
 				+ "What you find beyond may leave a permanent mark on your psyche!  You have been warned.");

@@ -170,7 +170,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		logger.debug("%s(%s)#deactivate() OUT", getClass().getSimpleName(), Thread.currentThread().getName());
 	}
 
-	private synchronized void beginTerminalNegotiation() throws IOException {
+	private void beginTerminalNegotiation() throws IOException {
 		outputStream.write(new byte[] { (byte) IAC, (byte) DO, TERMINAL_TYPE });
 	}
 
@@ -263,6 +263,15 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		case TERMINAL_TYPE:
 			readTerminalType();
 			break;
+
+		default:
+			logger.debug("%s#readSubOption() : OUT", getClass().getSimpleName());
+			int read = 0;
+			while (SE != (read = inputStream.read())) {
+				logger.debug("%s#readSubOption() : read other %d", getClass().getSimpleName(), read);
+			}
+
+			break;
 		}
 
 		logger.debug("%s#readSubOption() : OUT", getClass().getSimpleName());
@@ -316,14 +325,14 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		public synchronized void print(String message) throws IOException {
 			logger.debug("%s#print(%s)", getClass().getSimpleName(), message);
 
-			message = message.replaceAll("\\{text:black}", new String(new byte[] { 0x1B, '[', 30, 'm' }));
-			message = message.replaceAll("\\{text:red}", new String(new byte[] { 0x1B, '[', 31, 'm' }));
-			message = message.replaceAll("\\{text:green}", new String(new byte[] { 0x1B, '[', 32, 'm' }));
-			message = message.replaceAll("\\{text:yellow}", new String(new byte[] { 0x1B, '[', 33, 'm' }));
-			message = message.replaceAll("\\{text:blue}", new String(new byte[] { 0x1B, '[', 34, 'm' }));
-			message = message.replaceAll("\\{text:magenta}", new String(new byte[] { 0x1B, '[', 35, 'm' }));
-			message = message.replaceAll("\\{text:cyan}", new String(new byte[] { 0x1B, '[', 36, 'm' }));
-			message = message.replaceAll("\\{text:white}", new String(new byte[] { 0x1B, '[', 37, 'm' }));
+			message = message.replaceAll("\\{text:black}", new String(new byte[] { 0x1B, '[', '3', '0', 'm' }));
+			message = message.replaceAll("\\{text:red}", new String(new byte[] { 0x1B, '[', '3', '1', 'm' }));
+			message = message.replaceAll("\\{text:green}", new String(new byte[] { 0x1B, '[', '3', '2', 'm' }));
+			message = message.replaceAll("\\{text:yellow}", new String(new byte[] { 0x1B, '[', '3', '3', 'm' }));
+			message = message.replaceAll("\\{text:blue}", new String(new byte[] { 0x1B, '[', '3', '4', 'm' }));
+			message = message.replaceAll("\\{text:magenta}", new String(new byte[] { 0x1B, '[', '3', '5', 'm' }));
+			message = message.replaceAll("\\{text:cyan}", new String(new byte[] { 0x1B, '[', '3', '6', 'm' }));
+			message = message.replaceAll("\\{text:white}", new String(new byte[] { 0x1B, '[', '3', '7', 'm' }));
 			message = message.replaceAll("\\{text}", new String(new byte[] { 0x1B, '[', 0, 'm' }));
 
 			message = message.replaceAll("\\{text:?.*?}", "");

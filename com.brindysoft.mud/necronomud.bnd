@@ -1,3 +1,4 @@
 Private-Package: com.brindysoft.mud.necronomud,\
-	com.brindysoft.mud.necronomud.commands
+	com.brindysoft.mud.necronomud.commands,\
+	com.brindysoft.mud.necronomud.objects
 Service-Component: *

@@ -119,4 +119,20 @@ public interface MudPlace {
 	 */
 	MudPlace getExit(String direction);
 
+	/**
+	 * Add the given to this place.
+	 * 
+	 * @param object
+	 *            the object
+	 */
+	public void addObject(MudObject object);
+
+	/**
+	 * Return set of objects at this location. Changes to this set will MUST NOT
+	 * be reflected in the under lying data of the place.
+	 * 
+	 * @return the objects
+	 */
+	Set<MudObject> getObjects();
+
 }

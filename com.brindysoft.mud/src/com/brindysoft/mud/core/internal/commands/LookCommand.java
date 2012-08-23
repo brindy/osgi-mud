@@ -6,6 +6,7 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.mud.mpi.MudCommand;
+import com.brindysoft.mud.mpi.MudObject;
 import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
@@ -45,6 +46,15 @@ public class LookCommand implements MudCommand {
 					continue;
 				}
 				user.println("{text:green}%s{text} is also here.", otherUser.getName());
+			}
+		}
+
+		Set<MudObject> objects = place.getObjects();
+		if (!objects.isEmpty()) {
+			user.println("");
+			user.println("You see:");
+			for (MudObject object : objects) {
+				user.println(object.getName());
 			}
 		}
 

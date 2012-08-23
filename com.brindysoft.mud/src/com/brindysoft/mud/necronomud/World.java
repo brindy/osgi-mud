@@ -17,8 +17,6 @@ import com.db4o.query.Predicate;
 @Component
 public class World implements MudWorld {
 
-	private static final String STARTING_PLACE = "bus stop";
-
 	private Logger logger;
 
 	private ObjectContainer db;
@@ -72,8 +70,8 @@ public class World implements MudWorld {
 	}
 
 	@Override
-	public MudPlace findPlaceContaining(Object object) {
-		ObjectSet<MudPlace> query = db.query(new FindPlaceContainingObjectPredicate(object));
+	public MudPlace findPlaceContaining(MudUser user) {
+		ObjectSet<MudPlace> query = db.query(new FindPlaceContainingUserPredicate(user));
 		MudPlace place = query.isEmpty() ? null : query.get(0);
 		return place;
 	}
@@ -89,107 +87,37 @@ public class World implements MudWorld {
 	private void createEmptyWorld() {
 		logger.debug("%s#createEmptyWorld() - IN", getClass().getSimpleName());
 
-		// create key places
-		SimplePlace busstop = new SimplePlace();
-		busstop.setTag(STARTING_PLACE);
-		busstop.setDescription("This is the bus stop at Dean's Corners.  "
-				+ "The main road to Aylesbury and Arkham runs east to west respectively.  ");
-
-		SimplePlace dunwichTurnoff = new SimplePlace();
-		dunwichTurnoff.setTag("turnoff");
-		dunwichTurnoff.setDescription("This is the Dunwich Turnoff.  "
-				+ "The main road to Aylesbury and Arkham runs east to west respectively.  "
-				+ "The road to Dunwich, little more than an improved dirt road, heads north.");
-
-		SimplePlace aBridge = new SimplePlace();
-		aBridge.setTag("turnoff-dunwich-bridge");
-		aBridge.setDescription("This is a covered bridge made mainly of wooden planks.  "
-				+ "Dunwich Road continues to the north and south.  " + "A river flows east to west below the bridge.");
-
-		SimplePlace cornerOfEastCreekAndDunwich = new SimplePlace();
-		cornerOfEastCreekAndDunwich.setTag("eastcreek-dunwich-corner");
-		cornerOfEastCreekAndDunwich.setDescription("Dunwich Road turns sharply from the east to the north.  "
-				+ "East Creek Road leads off to the west.");
-
-		// connect places
-		connect(busstop, dunwichTurnoff, "The main road to Aylesbury and Arkham, "
-				+ "running east to west respectively.", "e");
-
-		// TODO make this longer
-		connect(dunwichTurnoff, aBridge, "Dunwich Road, between the turnoff and the bridge.", "nwn");
-
-		// TODO make this longer
-		connect(aBridge, cornerOfEastCreekAndDunwich, "Dunwich Road, between the bridge and East Creek Road junction.",
-				"wnw");
-
-		db.store(busstop);
-		db.store(dunwichTurnoff);
-		db.store(aBridge);
-		db.store(cornerOfEastCreekAndDunwich);
-		db.commit();
+		try {
+			WorldFactory.init(db);
+		} catch (Exception e) {
+			logger.error(e, "Failed to create world.");
+		}
 
 		logger.debug("%s#createEmptyWorld() - OUT", getClass().getSimpleName());
-	}
-
-	private void connect(SimplePlace start, SimplePlace end, String description, String directions) {
-		for (int i = 0; i < directions.length() - 1; i++) {
-			char direction = directions.charAt(i);
-			SimplePlace next = new SimplePlace();
-			next.setDescription(description);
-			db.store(next);
-
-			connect(start, next, direction);
-			start = next;
-		}
-		char direction = directions.charAt(directions.length() - 1);
-		connect(start, end, direction);
-	}
-
-	private void connect(SimplePlace start, SimplePlace next, char direction) {
-		switch (direction) {
-		case 'n':
-			start.connect(next, "north", "south");
-			break;
-
-		case 'e':
-			start.connect(next, "east", "west");
-			break;
-
-		case 's':
-			start.connect(next, "south", "north");
-			break;
-
-		case 'w':
-			start.connect(next, "west", "east");
-			break;
-		}
-
-		db.store(start);
-		db.store(next);
 	}
 
 	private MudPlace findStartingPlace() {
 		if (null == startingPlace) {
 			SimplePlace example = new SimplePlace();
-			example.setTag(STARTING_PLACE);
+			example.setTag(WorldFactory.STARTING_PLACE);
 			startingPlace = (MudPlace) db.queryByExample(example).get(0);
 		}
 		return startingPlace;
 	}
 
-	static class FindPlaceContainingObjectPredicate extends Predicate<MudPlace> {
+	static class FindPlaceContainingUserPredicate extends Predicate<MudPlace> {
 
 		private static final long serialVersionUID = 1L;
 
-		private final Object object;
+		private final MudUser user;
 
-		public FindPlaceContainingObjectPredicate(Object object) {
-			this.object = object;
+		public FindPlaceContainingUserPredicate(MudUser user) {
+			this.user = user;
 		}
 
 		@Override
 		public boolean match(MudPlace place) {
-			return place.contains(object);
+			return place.contains(user);
 		}
 
 	}
