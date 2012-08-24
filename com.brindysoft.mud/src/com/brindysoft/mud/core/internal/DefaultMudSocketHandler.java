@@ -87,6 +87,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 		try {
 			beginTerminalNegotiation();
+			println("");
 
 			MudUser user = authenticator.authenticate(this);
 			if (null == user) {
@@ -171,7 +172,68 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 	}
 
 	private void beginTerminalNegotiation() throws IOException {
+		logger.debug("%s - IAC DO TERMINAL_TYPE", getClass().getName());
 		outputStream.write(new byte[] { (byte) IAC, (byte) DO, TERMINAL_TYPE });
+		if (attemptReadIAC()) {
+			requestTerminalType();
+		}
+	}
+
+	private boolean attemptReadIAC() throws IOException {
+		inputStream.mark(1);
+		if (IAC == inputStream.read()) {
+			logger.debug("%s#attemptReadIAC() - IAC response", getClass().getName());
+			interpretAsCommand();
+			return true;
+		} else {
+			logger.debug("%s#attemptReadIAC() - normal response", getClass().getName());
+			inputStream.reset();
+			return false;
+		}
+	}
+
+	private void requestTerminalType() throws IOException {
+		logger.debug("%s#requestTerminalType() : IN", getClass().getSimpleName());
+		outputStream.write(new byte[] { (byte) IAC, (byte) SB, TERMINAL_TYPE, 1, (byte) IAC, (byte) SE });
+		attemptReadIAC();
+		logger.debug("%s#requestTerminalType() : OUT", getClass().getSimpleName());
+	}
+
+	private void interpretAsCommand() throws IOException {
+		if (!inputStream.markSupported()) {
+			throw new IOException("mark not supported");
+		}
+
+		int command = inputStream.read();
+		logger.debug("%s#interpretAsCommand() : command = %d", getClass().getSimpleName(), command);
+
+		switch (command) {
+
+		case DO:
+			logger.debug("%s#interpretAsCommand() : DO option = %d", getClass().getSimpleName(), inputStream.read());
+			break;
+
+		case DONT:
+			logger.debug("%s#interpretAsCommand() : DONT option = %d", getClass().getSimpleName(), inputStream.read());
+			break;
+
+		case WILL:
+			logger.debug("%s#interpretAsCommand() : WILL option = %d", getClass().getSimpleName(), inputStream.read());
+			break;
+
+		case WONT:
+			logger.debug("%s#interpretAsCommand() : WONT option = %d", getClass().getSimpleName(), inputStream.read());
+			break;
+
+		case SB:
+			readSubOption();
+			break;
+
+		default:
+			logger.debug("%s#interpretAsCommand() : option = %d", getClass().getSimpleName(), inputStream.read());
+			break;
+		}
+
 	}
 
 	private String doReadLine() throws IOException {
@@ -192,7 +254,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 			case '\n':
 				break;
-				
+
 			case '{':
 				buffer.append("{").append('\0');
 				break;
@@ -217,44 +279,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 			}
 		}
 		return buffer.toString();
-	}
-
-	private synchronized void interpretAsCommand() throws IOException {
-		if (!inputStream.markSupported()) {
-			throw new IOException("mark not supported");
-		}
-
-		int command = inputStream.read();
-		logger.debug("%s#interpretAsCommand() : command = %d", getClass().getSimpleName(), command);
-
-		switch (command) {
-
-		case DO:
-			logger.debug("%s#interpretAsCommand() : DO option = %d", getClass().getSimpleName(), inputStream.read());
-			break;
-
-		case DONT:
-			logger.debug("%s#interpretAsCommand() : DONT option = %d", getClass().getSimpleName(), inputStream.read());
-			break;
-
-		case WILL:
-			logger.debug("%s#interpretAsCommand() : WILL option = %d", getClass().getSimpleName(), inputStream.read());
-			requestTerminalType();
-			break;
-
-		case WONT:
-			logger.debug("%s#interpretAsCommand() : WONT option = %d", getClass().getSimpleName(), inputStream.read());
-			break;
-
-		case SB:
-			readSubOption();
-			break;
-
-		default:
-			logger.debug("%s#interpretAsCommand() : option = %d", getClass().getSimpleName(), inputStream.read());
-			break;
-		}
-
 	}
 
 	private void readSubOption() throws IOException {
@@ -300,10 +324,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		}
 		outputStrategy = new TerminalOutputStrategy();
 		logger.debug("%s#readTerminalType() : OUT %s", getClass().getSimpleName(), buffer.toString());
-	}
-
-	private synchronized void requestTerminalType() throws IOException {
-		outputStream.write(new byte[] { (byte) IAC, (byte) SB, TERMINAL_TYPE, 1, (byte) IAC, (byte) SE });
 	}
 
 	interface OutputStrategy {
