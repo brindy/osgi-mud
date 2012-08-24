@@ -48,12 +48,12 @@ public class ExamineCommand implements MudCommand {
 
 		String inputAlias = toAlias(args, start);
 
-		Set<MudObject> actualMatches = new HashSet<MudObject>();
+		Set<MudObject.Examinable> actualMatches = new HashSet<MudObject.Examinable>();
 		MudPlace place = world.findPlaceContaining(user);
-		items: for (MudObject object : place.getObjects()) {
+		items: for (MudObject.Examinable object : place.getObjects(MudObject.Examinable.class)) {
 			for (String alias : object.getAliases()) {
 				if (alias.equals(inputAlias)) {
-					actualMatches.add(object);
+					actualMatches.add((MudObject.Examinable) object);
 					continue items;
 				}
 			}

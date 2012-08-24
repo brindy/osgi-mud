@@ -3,12 +3,7 @@ package com.brindysoft.mud.necronomud.objects;
 import com.brindysoft.mud.mpi.MudObject;
 import com.brindysoft.mud.mpi.MudUser;
 
-public class BusStop implements MudObject {
-
-	@Override
-	public String getListName() {
-		return "A bus stop";
-	}
+public class BusStop implements MudObject, MudObject.Examinable {
 
 	@Override
 	public String[] getAliases() {

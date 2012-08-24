@@ -119,9 +119,18 @@ public abstract class AbstractMudPlace implements MudPlace {
 	}
 
 	@Override
-	public Set<MudObject> getObjects() {
-		return null == objects ? Collections.<MudObject> emptySet() : Collections
-				.unmodifiableSet(new HashSet<MudObject>(objects));
+	public <T extends MudObject> Set<T> getObjects(Class<T> type) {
+		if (null == objects) {
+			return Collections.<T> emptySet();
+		}
+
+		Set<T> objects = new HashSet<T>();
+		for (MudObject o : this.objects) {
+			if (type.isInstance(o)) {
+				objects.add((T) o);
+			}
+		}
+		return objects;
 	}
 
 	private Map<String, MudPlace> getConnections() {

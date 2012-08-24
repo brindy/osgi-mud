@@ -133,6 +133,6 @@ public interface MudPlace {
 	 * 
 	 * @return the objects
 	 */
-	Set<MudObject> getObjects();
+	<T extends MudObject> Set<T> getObjects(Class<T> type);
 
 }

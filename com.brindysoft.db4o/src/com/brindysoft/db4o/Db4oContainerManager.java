@@ -42,10 +42,10 @@ public class Db4oContainerManager implements DiagnosticListener {
 
 	@Activate
 	public void start(BundleContext ctx) throws IOException {
-		logger.debug("Db4oServerManager#start() - IN");
+		logger.debug("%s#start() - IN", getClass().getName());
 		loaders = new HashMap<String, BundleLoader>();
 		containers = new HashMap<String, ObjectContainer>();
-		logger.debug("Db4oServerManager#start() - OUT");
+		logger.debug("%s#start() - OUT", getClass().getName());
 	}
 
 	public ObjectContainer getObjectContainer(Bundle bundle, String dbName) {
@@ -103,9 +103,9 @@ public class Db4oContainerManager implements DiagnosticListener {
 		BundleLoader loader = new BundleLoader();
 		loader.bundles.add(bundle);
 		loaders.put(dbName, loader);
-	
+
 		EmbeddedConfiguration config = createConfiguration(loader);
-	
+
 		container = Db4oEmbedded.openFile(config, dbName + ".db4o");
 		return container;
 	}
@@ -123,7 +123,7 @@ public class Db4oContainerManager implements DiagnosticListener {
 
 	class BundleLoader implements JdkLoader {
 
-		public final Set<Bundle> bundles = new HashSet<Bundle>();
+		public Set<Bundle> bundles = new HashSet<Bundle>();
 
 		public BundleLoader() {
 		}
@@ -139,21 +139,23 @@ public class Db4oContainerManager implements DiagnosticListener {
 				try {
 					clazz = bundle.loadClass(className);
 					if (clazz != null) {
-						logger.debug("BundleLoader#loadClass(%s) from %s", className, bundle);
+						logger.debug("%s#loadClass(%s) from %s", getClass().getName(), className, bundle);
 						return clazz;
 					}
 				} catch (ClassNotFoundException e) {
 				}
 			}
 
-			logger.debug("BundleLoader#loadClass(%s) FAILED", className);
+			logger.debug("%s#loadClass(%s) FAILED", getClass().getName(), className);
 			return null;
 		}
 
 		@Override
 		public Object deepClone(Object context) {
-			// return new BundleLoader(bundles, loader);
-			return null;
+			logger.debug("%s#deepClone()", getClass().getName());
+			BundleLoader loader = new BundleLoader();
+			loader.bundles = new HashSet<Bundle>(bundles);
+			return loader;
 		}
 
 	}

@@ -88,7 +88,7 @@ public class World implements MudWorld {
 		logger.debug("%s#createEmptyWorld() - IN", getClass().getSimpleName());
 
 		try {
-			WorldFactory.init(db);
+			WorldBuilder.createWorld(db);
 		} catch (Exception e) {
 			logger.error(e, "Failed to create world.");
 		}
@@ -99,7 +99,7 @@ public class World implements MudWorld {
 	private MudPlace findStartingPlace() {
 		if (null == startingPlace) {
 			SimplePlace example = new SimplePlace();
-			example.setTag(WorldFactory.STARTING_PLACE);
+			example.setTag(WorldBuilder.STARTING_PLACE);
 			startingPlace = (MudPlace) db.queryByExample(example).get(0);
 		}
 		return startingPlace;

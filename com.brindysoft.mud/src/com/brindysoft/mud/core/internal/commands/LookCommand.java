@@ -49,11 +49,11 @@ public class LookCommand implements MudCommand {
 			}
 		}
 
-		Set<MudObject> objects = place.getObjects();
+		Set<MudObject.Listable> objects = place.getObjects(MudObject.Listable.class);
 		if (!objects.isEmpty()) {
 			user.println("");
 			user.println("You see:");
-			for (MudObject object : objects) {
+			for (MudObject.Listable object : objects) {
 				user.println(object.getListName());
 			}
 		}
