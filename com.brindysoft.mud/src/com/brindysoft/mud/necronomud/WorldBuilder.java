@@ -1,18 +1,18 @@
 package com.brindysoft.mud.necronomud;
 
 import com.brindysoft.mud.necronomud.objects.BusStop;
-import com.db4o.ObjectContainer;
+import com.brindysoft.oodb.api.Database;
 
 public class WorldBuilder {
 
 	public static final String STARTING_PLACE = "bus stop";
-	private final ObjectContainer db;
+	private final Database db;
 
-	private WorldBuilder(ObjectContainer db) {
+	private WorldBuilder(Database db) {
 		this.db = db;
 	}
 
-	public static void createWorld(ObjectContainer db) {
+	public static void createWorld(Database db) {
 		new WorldBuilder(db).createWorld();
 	}
 

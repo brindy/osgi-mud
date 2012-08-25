@@ -5,25 +5,25 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
-import com.brindysoft.db4o.api.Db4oService;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudUserManager;
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
+import com.brindysoft.oodb.api.Database;
+import com.brindysoft.oodb.api.DatabaseService;
+import com.brindysoft.oodb.api.QueryResult;
 
 @Component
 public class UserManager implements MudUserManager {
 
 	private Logger logger;
 
-	private ObjectContainer db;
+	private Database db;
 
-	private Db4oService service;
+	private DatabaseService dbService;
 
 	@Reference
-	public void setDb4oService(Db4oService service) {
-		this.service = service;
+	public void setDb4oService(DatabaseService dbService) {
+		this.dbService = dbService;
 	}
 
 	@Reference
@@ -34,7 +34,7 @@ public class UserManager implements MudUserManager {
 	@Activate
 	public void start() {
 		logger.debug("UserManager#start() - IN");
-		db = service.getDatabase("necronomicon");
+		db = dbService.getDatabase("necronomicon");
 		logger.debug("UserManager#start() - OUT");
 	}
 
@@ -73,7 +73,7 @@ public class UserManager implements MudUserManager {
 	public MudUser find(String username) {
 		User user = new User();
 		user.setName(username);
-		ObjectSet<User> results = db.queryByExample(user);
+		QueryResult<User> results = db.queryByExample(user);
 		if (!results.isEmpty()) {
 			return results.next();
 		}

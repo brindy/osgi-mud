@@ -10,3 +10,11 @@ com.brindysoft.logging/bin_test
 com.brindysoft.db4o/generated
 com.brindysoft.db4o/bin
 com.brindysoft.db4o/bin_test
+com.brindysoft.db/.classpath
+com.brindysoft.db/.project
+com.brindysoft.db/generated
+com.brindysoft.oodb/generated
+com.brindysoft.oodb/bin
+com.brindysoft.oodb/.settings
+com.brindysoft.oodb/.classpath
+com.brindysoft.oodb/.project

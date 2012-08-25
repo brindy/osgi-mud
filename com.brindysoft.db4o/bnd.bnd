@@ -2,7 +2,8 @@
 	biz.aQute.bnd.annotation,\
 	osgi.core,\
 	osgi.cmpn,\
-	com.brindysoft.logging.api;version=latest
+	com.brindysoft.logging.api;version=latest,\
+	com.brindysoft.oodb;version=latest
 Export-Package: com.brindysoft.db4o.api
 Service-Component: *
 Private-Package: com.brindysoft.db4o

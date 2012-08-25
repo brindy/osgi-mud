@@ -7,6 +7,6 @@ Service-Component: *
 	biz.aQute.bnd.annotation,\
 	junit.osgi,\
 	com.brindysoft.logging.api;version=latest,\
-	com.db4o.java5,\
-	com.brindysoft.db4o;version=latest
+	javax.servlet,\
+	com.brindysoft.oodb;version=latest
 -sub: *.bnd

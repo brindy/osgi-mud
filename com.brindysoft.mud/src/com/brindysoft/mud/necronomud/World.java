@@ -5,28 +5,28 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
-import com.brindysoft.db4o.api.Db4oService;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
-import com.db4o.query.Predicate;
+import com.brindysoft.oodb.api.Database;
+import com.brindysoft.oodb.api.DatabaseService;
+import com.brindysoft.oodb.api.QueryPredicate;
+import com.brindysoft.oodb.api.QueryResult;
 
 @Component
 public class World implements MudWorld {
 
 	private Logger logger;
 
-	private ObjectContainer db;
+	private Database db;
 
-	private Db4oService service;
+	private DatabaseService service;
 
 	private MudPlace startingPlace;
 
 	@Reference
-	public void setDb4oService(Db4oService service) {
+	public void setDatabaseService(DatabaseService service) {
 		this.service = service;
 	}
 
@@ -40,7 +40,7 @@ public class World implements MudWorld {
 		logger.debug("%s#start() - IN", getClass().getSimpleName());
 		db = service.getDatabase("necronomicon");
 
-		ObjectSet<MudPlace> query = db.query(MudPlace.class);
+		QueryResult<MudPlace> query = db.query(MudPlace.class);
 		if (query.isEmpty()) {
 			createEmptyWorld();
 		}
@@ -71,7 +71,7 @@ public class World implements MudWorld {
 
 	@Override
 	public MudPlace findPlaceContaining(MudUser user) {
-		ObjectSet<MudPlace> query = db.query(new FindPlaceContainingUserPredicate(user));
+		QueryResult<MudPlace> query = db.query(new FindPlaceContainingUserPredicate(user));
 		MudPlace place = query.isEmpty() ? null : query.get(0);
 		return place;
 	}
@@ -105,9 +105,7 @@ public class World implements MudWorld {
 		return startingPlace;
 	}
 
-	static class FindPlaceContainingUserPredicate extends Predicate<MudPlace> {
-
-		private static final long serialVersionUID = 1L;
+	static class FindPlaceContainingUserPredicate implements QueryPredicate<MudPlace> {
 
 		private final MudUser user;
 

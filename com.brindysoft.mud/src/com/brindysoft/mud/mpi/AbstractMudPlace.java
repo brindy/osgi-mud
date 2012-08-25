@@ -118,6 +118,7 @@ public abstract class AbstractMudPlace implements MudPlace {
 		objects.add(object);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends MudObject> Set<T> getObjects(Class<T> type) {
 		if (null == objects) {
