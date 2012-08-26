@@ -21,8 +21,8 @@ public class UserManager implements MudUserManager {
 
 	private DatabaseService dbService;
 
-	@Reference
-	public void setDb4oService(DatabaseService dbService) {
+	@Reference(target = "(type=db4o)")
+	public void setDatabaseService(DatabaseService dbService) {
 		this.dbService = dbService;
 	}
 

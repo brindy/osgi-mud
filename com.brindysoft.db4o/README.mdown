@@ -1,0 +1,38 @@
+
+# DB4O support for OSGI
+
+This is an improved OSGi provider for the DB4O database.  By using a service factory, it correctly manages which bundles are using containers delegating classloading to those bundles.  If your bundle can access a class, so can the db4o database.
+
+## Database Names
+
+### plain
+
+Creates an in-memory database identified by this name.
+
+### mem://
+
+Everything after the mem:// scheme is used to identify database.
+
+_example: mem://my.db creates an in-memory database using the name my.db_
+
+### file://
+
+Everything after the file:// scheme is used to identify a path on the file system.  If the file or path does not already exist, it will attempt to create the full path to the file.
+
+_example: mem:///tmp/my.db would create a file in /tmp/my.db_
+
+_example: mem://my.db would create the file my.db relative to where the current Java process was started_
+
+_example: mem://~/databases/my.db would create a file in the database folder of the home directory of the user that started the current Java process_
+
+### eserver://
+
+Creates or connects to an embedded server but otherwise is the same as the _file://_ scheme
+
+_example: eserver:///tmp/my.db creates a file database at the given location and creates a server for it on port 0 (embedded), then returns a client_
+
+### client://
+
+Connects to the server at the specified location.
+
+_example: client://localhost:1234 connects to the server running on localhost on the given port_

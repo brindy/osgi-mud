@@ -20,6 +20,11 @@ public class Db4oDatabase implements Database {
 	}
 
 	@Override
+	public void remove(Object object) {
+		db.delete(object);
+	}
+
+	@Override
 	public <T> QueryResult<T> query(Class<T> type) {
 		return new Db4oQueryResult<T>(db.query(type));
 	}

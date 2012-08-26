@@ -11,7 +11,7 @@ import com.brindysoft.logging.api.Logger;
 import com.brindysoft.oodb.api.Database;
 import com.brindysoft.oodb.api.DatabaseService;
 
-@Component(provide = DatabaseService.class, servicefactory = true)
+@Component(provide = DatabaseService.class, servicefactory = true, properties = "type=db4o")
 public class DatabaseServiceFactory implements DatabaseService {
 
 	private Logger logger;

@@ -4,6 +4,8 @@ public interface Database {
 
 	void store(Object object);
 
+	void remove(Object object);
+	
 	<T> QueryResult<T> query(Class<T> type);
 
 	<T> QueryResult<T> query(QueryPredicate<T> predicate);
