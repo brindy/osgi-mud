@@ -112,7 +112,7 @@ public class World implements MudWorld {
 
 	@Override
 	public MudPlace findPlaceContaining(MudUser user) {
-		QueryResult<MudPlace> query = db.query(new FindPlaceContainingUserPredicate(user));
+		QueryResult<MudPlace> query = db.query(new FindPlaceContainingUserPredicate((User) user));
 		MudPlace place = query.isEmpty() ? null : query.get(0);
 		return place;
 	}
@@ -132,15 +132,15 @@ public class World implements MudWorld {
 
 	static class FindPlaceContainingUserPredicate implements QueryPredicate<MudPlace> {
 
-		private final MudUser user;
+		private final User user;
 
-		public FindPlaceContainingUserPredicate(MudUser user) {
+		public FindPlaceContainingUserPredicate(User user) {
 			this.user = user;
 		}
 
 		@Override
 		public boolean match(MudPlace place) {
-			return place.containsUser(user);
+			return place.containsUser(user) || place.getTag().equals(user.getPlaceTag());
 		}
 
 	}

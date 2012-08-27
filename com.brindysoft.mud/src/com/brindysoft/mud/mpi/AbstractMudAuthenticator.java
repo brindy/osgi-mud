@@ -26,9 +26,22 @@ public abstract class AbstractMudAuthenticator implements MudAuthenticator {
 			} else {
 				String password = promptForNewPassword(socket, username);
 				socket.println("");
+
+				String confirm = promptForPasswordConfirmation(socket, username);
+				if (!password.equals(confirm)) {
+					socket.println("Sorry, those passwords did not match.");
+					continue;
+				}
+
 				return userManager.create(username, password);
 			}
 		}
+	}
+
+	protected String promptForPasswordConfirmation(MudSocketHandler socket, String name) {
+		socket.println("");
+		socket.print("Please confirm your password: ", name);
+		return socket.readLine();
 	}
 
 	protected String promptForNewPassword(MudSocketHandler socket, String name) {

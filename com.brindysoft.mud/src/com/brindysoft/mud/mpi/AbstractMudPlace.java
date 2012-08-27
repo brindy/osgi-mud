@@ -1,5 +1,6 @@
 package com.brindysoft.mud.mpi;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -47,18 +48,18 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	@Override
 	public void broadcastByUser(MudUser user, String message, Object... args) {
-		for (MudUser recipient : getUsers()) {
-			if (user == recipient || user.getName().equals(recipient.getName())) {
-				continue;
+		Set<MudUser> users = getUsers();
+		users.removeAll(Arrays.asList(user));
+		for (MudUser recipient : users) {
+			if (recipient.isAttached()) {
+				recipient.println(message, args);
 			}
-			recipient.println(message, args);
 		}
 	}
 
 	@Override
 	public Set<String> getExits() {
-		return null == connections ? Collections.<String> emptySet() : Collections.unmodifiableSet(new HashSet<String>(
-				connections.keySet()));
+		return null == connections ? Collections.<String> emptySet() : new HashSet<String>(connections.keySet());
 	}
 
 	@Override
@@ -73,7 +74,7 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	@Override
 	public synchronized void userArrives(MudUser user, String direction) {
-		broadcast("%s arrives from the %s.", user.getName(), opposites.get(direction));
+		broadcast("{text:green}%s{text} arrives from the %s.", user.getName(), opposites.get(direction));
 		addUser(user);
 	}
 
@@ -124,8 +125,7 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	@Override
 	public Set<MudUser> getUsers() {
-		return null == users ? Collections.<MudUser> emptySet() : Collections.unmodifiableSet(new HashSet<MudUser>(
-				this.users));
+		return null == users ? Collections.<MudUser> emptySet() : new HashSet<MudUser>(this.users);
 	}
 
 	@Override
@@ -138,7 +138,7 @@ public abstract class AbstractMudPlace implements MudPlace {
 	@Override
 	public synchronized void userLeaves(MudUser user, String direction) {
 		removeUser(user);
-		broadcast("%s heads %s.", user.getName(), direction);
+		broadcast("{text:green}%s{text} heads %s.", user.getName(), direction);
 	}
 
 	@Override
@@ -178,6 +178,11 @@ public abstract class AbstractMudPlace implements MudPlace {
 			opposites = new HashMap<String, String>();
 		}
 		return opposites;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("MudPlace, %s, '%s'", tag, description);
 	}
 
 }
