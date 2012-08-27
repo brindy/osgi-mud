@@ -4,6 +4,8 @@ import com.brindysoft.mud.mpi.AbstractMudUser;
 
 public class User extends AbstractMudUser {
 
+	private String placeTag;
+
 	private String name;
 
 	private int insanity;
@@ -23,6 +25,14 @@ public class User extends AbstractMudUser {
 
 	public void setInsanity(int insanity) {
 		this.insanity = insanity;
+	}
+
+	public String getPlaceTag() {
+		return placeTag;
+	}
+
+	public void setPlaceTag(String placeTag) {
+		this.placeTag = placeTag;
 	}
 
 }

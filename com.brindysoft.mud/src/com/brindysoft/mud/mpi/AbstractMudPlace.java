@@ -6,17 +6,23 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.brindysoft.mud.necronomud.User;
+
 public abstract class AbstractMudPlace implements MudPlace {
+
+	protected Set<String> userNames;
+
+	protected Set<MudObject> objects;
+
+	protected Set<MudUser> users;
 
 	protected Map<String, MudPlace> connections;
 
 	protected Map<String, String> opposites;
 
-	protected Set<MudUser> users;
+	protected String tag;
 
-	protected Set<MudObject> objects;
-
-	private String description;
+	protected String description;
 
 	@Override
 	public String getDescription(MudUser user) {
@@ -28,32 +34,8 @@ public abstract class AbstractMudPlace implements MudPlace {
 	}
 
 	@Override
-	public synchronized void addUser(MudUser user) {
-		if (users == null) {
-			users = new HashSet<MudUser>();
-		}
-		users.add(user);
-	}
-
-	@Override
-	public boolean contains(Object object) {
-		return null == users ? false : users.contains(object);
-	}
-
-	@Override
-	public Set<MudUser> getUsers() {
-		return null == users ? Collections.<MudUser> emptySet() : Collections.unmodifiableSet(new HashSet<MudUser>(
-				this.users));
-	}
-
-	@Override
 	public MudPlace placeInDirection(String direction) {
 		return null == connections ? null : connections.get(direction);
-	}
-
-	@Override
-	public void removeUser(MudUser user) {
-		users.remove(user);
 	}
 
 	@Override
@@ -90,12 +72,6 @@ public abstract class AbstractMudPlace implements MudPlace {
 	}
 
 	@Override
-	public synchronized void userLeaves(MudUser user, String direction) {
-		users.remove(user);
-		broadcast("%s heads %s.", user.getName(), direction);
-	}
-
-	@Override
 	public synchronized void userArrives(MudUser user, String direction) {
 		broadcast("%s arrives from the %s.", user.getName(), opposites.get(direction));
 		addUser(user);
@@ -107,6 +83,54 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 		otherPlace.getConnections().put(fromDirection, this);
 		otherPlace.getOpposites().put(fromDirection, inDirection);
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+	@Override
+	public String getTag() {
+		return tag;
+	}
+
+	@Override
+	public synchronized void addUser(MudUser user) {
+		if (userNames == null) {
+			userNames = new HashSet<String>();
+		}
+		userNames.add(user.getName());
+
+		if (users == null) {
+			users = new HashSet<MudUser>();
+		}
+		users.add(user);
+
+		((User) user).setPlaceTag(getTag());
+	}
+
+	@Override
+	public boolean contains(Object object) {
+		return null == users ? false : users.contains(object);
+	}
+
+	@Override
+	public Set<MudUser> getUsers() {
+		return null == users ? Collections.<MudUser> emptySet() : Collections.unmodifiableSet(new HashSet<MudUser>(
+				this.users));
+	}
+
+	@Override
+	public void removeUser(MudUser user) {
+		users.remove(user);
+		userNames.remove(user.getName());
+		((User) user).setPlaceTag(null);
+	}
+
+	@Override
+	public synchronized void userLeaves(MudUser user, String direction) {
+		users.remove(user);
+		broadcast("%s heads %s.", user.getName(), direction);
 	}
 
 	@Override

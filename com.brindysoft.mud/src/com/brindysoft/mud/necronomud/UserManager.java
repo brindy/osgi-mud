@@ -15,6 +15,7 @@ import com.brindysoft.oodb.api.QueryResult;
 @Component
 public class UserManager implements MudUserManager {
 
+	public final static String USERS_DB = "necro-users";
 	private Logger logger;
 
 	private Database db;
@@ -34,7 +35,7 @@ public class UserManager implements MudUserManager {
 	@Activate
 	public void start() {
 		logger.debug("UserManager#start() - IN");
-		db = dbService.getDatabase("necronomicon");
+		db = dbService.getDatabase(USERS_DB);
 		logger.debug("UserManager#start() - OUT");
 	}
 
@@ -78,6 +79,10 @@ public class UserManager implements MudUserManager {
 			return results.next();
 		}
 		return null;
+	}
+
+	Iterable<User> allUsers() {
+		return db.query(User.class);
 	}
 
 }

@@ -1,84 +1,138 @@
 package com.brindysoft.mud.necronomud;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import aQute.bnd.annotation.component.Activate;
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
+import com.brindysoft.mud.mpi.AbstractMudPlace;
+import com.brindysoft.mud.mpi.MudPlace;
+import com.brindysoft.mud.mpi.MudPlaceProvider;
+import com.brindysoft.mud.mpi.MudUserManager;
 import com.brindysoft.mud.necronomud.objects.BusStop;
-import com.brindysoft.oodb.api.Database;
 
-public class WorldBuilder {
+@Component(immediate=true)
+public class WorldBuilder implements MudPlaceProvider {
 
-	public static final String STARTING_PLACE = "bus stop";
-	private final Database db;
+	public static final String STARTING_PLACE = "0001";
 
-	private WorldBuilder(Database db) {
-		this.db = db;
+	private List<MudPlace> places = new ArrayList<MudPlace>();
+
+	private MudUserManager userManager;
+
+	@Reference
+	public void setUserManager(MudUserManager userManager) {
+		this.userManager = userManager;
 	}
 
-	public static void createWorld(Database db) {
-		new WorldBuilder(db).createWorld();
+	@Override
+	public MudPlace[] getPlaces() {
+		return places.toArray(new MudPlace[places.size()]);
 	}
 
-	public void createWorld() {
+	@Activate
+	public void start() {
 
 		// create key places
-		SimplePlace dunwichTurnoff = createDunwichTurnOff();
-		SimplePlace aBridge = createBridgeBetweenDunwichAndTurnOff();
-		SimplePlace cornerOfEastCreekAndDunwich = createCornerOfEastCreedAndDunwich();
-		SimplePlace busStop = createBusStop();
+		Place busStop = createBusStop();
+		Place dunwichTurnoff = createDunwichTurnOff();
+		Place aBridge = createBridgeBetweenDunwichAndTurnOff();
+		Place northOfTheBridge = createNorthOfTheBridge();
+		Place cornerOfEastCreekAndDunwich = createCornerOfEastCreedAndDunwich();
+		Place endOfDirtTrack = createEndOfDirtTrackNearPottersPondCreek();
 
-		// TODO make this longer
-		connect(aBridge, cornerOfEastCreekAndDunwich, "Dunwich Road, between the bridge and East Creek Road junction.",
-				"nwnnw");
-
-		// TODO make this longer
+		// create connections
+		busStop.connect(dunwichTurnoff, "east", "west");
 		connect(dunwichTurnoff, aBridge, "Dunwich Road, between the turnoff and the bridge.", "nwn");
+		aBridge.connect(northOfTheBridge, "north", "south");
+		connect(northOfTheBridge, cornerOfEastCreekAndDunwich,
+				"Dunwich Road, between the bridge and East Creek Road junction.", "wnnw");
+		connect(northOfTheBridge, endOfDirtTrack, "A dirt track between the bridge and Potter's Pond Creek.",
+				"eesesennwn");
 
-		// connect places
-		connect(busStop, dunwichTurnoff, "The main road to Aylesbury and Arkham, "
-				+ "running east to west respectively.", "e");
+		Map<String, AbstractMudPlace> places = new HashMap<String, AbstractMudPlace>();
+		for (MudPlace place : this.places) {
+			places.put(place.getTag(), (AbstractMudPlace) place);
+		}
 
-		db.store(busStop);
-		db.commit();
+		// reconnect users
+		for (User user : ((UserManager) userManager).allUsers()) {
+			String tag = user.getPlaceTag();
+			AbstractMudPlace place = places.get(tag);
+			if (null != place) {
+				place.addUser(user);
+			}
+		}
+
 	}
 
-	private SimplePlace createBusStop() {
-		SimplePlace place = new SimplePlace();
+	private Place createBusStop() {
+		Place place = new Place();
 		place.setTag(STARTING_PLACE);
 		place.setDescription("This is the bus stop at Dean's Corners.  "
 				+ "The main road to Aylesbury and Arkham runs east to west respectively.  ");
 
 		BusStop busStopObject = new BusStop();
 		place.addObject(busStopObject);
+		places.add(place);
 		return place;
 	}
 
-	private SimplePlace createDunwichTurnOff() {
-		SimplePlace place = new SimplePlace();
-		place.setTag("turnoff");
+	private Place createDunwichTurnOff() {
+		Place place = new Place();
+		place.setTag("0002");
 		place.setDescription("This is the Dunwich Turnoff.  "
 				+ "The main road to Aylesbury and Arkham runs east to west respectively.  "
 				+ "The road to Dunwich, little more than an improved dirt road, heads north.");
+		places.add(place);
 		return place;
 	}
 
-	private SimplePlace createBridgeBetweenDunwichAndTurnOff() {
-		SimplePlace place = new SimplePlace();
-		place.setTag("turnoff-dunwich-bridge");
+	private Place createBridgeBetweenDunwichAndTurnOff() {
+		Place place = new Place();
+		place.setTag("0003");
 		place.setDescription("This is a covered bridge made mainly of wooden planks.  "
 				+ "Dunwich Road continues to the north and south.  " + "A river flows east to west below the bridge.");
+		places.add(place);
 		return place;
 	}
 
-	private SimplePlace createCornerOfEastCreedAndDunwich() {
-		SimplePlace place = new SimplePlace();
-		place.setTag("eastcreek-dunwich-corner");
+	private Place createNorthOfTheBridge() {
+		Place place = new Place();
+		place.setTag("0004");
+		place.setDescription("The road to Dunwich continues west.  A dirt track heads east.");
+		places.add(place);
+		return place;
+	}
+
+	private Place createCornerOfEastCreedAndDunwich() {
+		Place place = new Place();
+		place.setTag("0005");
 		place.setDescription("Dunwich Road turns sharply from the east to the north.  "
 				+ "East Creek Road leads off to the west.");
+		places.add(place);
 		return place;
 	}
 
-	private void connect(SimplePlace start, SimplePlace end, String description, String directions) {
+	private Place createEndOfDirtTrackNearPottersPondCreek() {
+		Place place = new Place();
+		place.setTag("0006");
+		place.setDescription("The dirt track to the south ends abruptly.  "
+				+ "The creek continues to flow north towards the sound of bullfrogs.");
+		places.add(place);
+		return place;
+	}
+
+	private void connect(Place start, Place end, String description, String directions) {
 		for (int i = 0; i < directions.length() - 1; i++) {
 			char direction = directions.charAt(i);
-			SimplePlace next = new SimplePlace();
+			Place next = new Place();
+			next.setTag(start.getTag() + "-" + i + "-" + end.getTag());
+
 			next.setDescription(description);
 
 			connect(start, next, direction);
@@ -88,7 +142,7 @@ public class WorldBuilder {
 		connect(start, end, direction);
 	}
 
-	private void connect(SimplePlace start, SimplePlace next, char direction) {
+	private void connect(Place start, Place next, char direction) {
 		switch (direction) {
 		case 'n':
 			start.connect(next, "north", "south");

@@ -1,5 +1,7 @@
 package com.brindysoft.db4o;
 
+import java.util.Iterator;
+
 import com.brindysoft.oodb.api.QueryResult;
 import com.db4o.ObjectSet;
 
@@ -26,4 +28,23 @@ public class Db4oQueryResult<T> implements QueryResult<T> {
 		return result.next();
 	}
 
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			@Override
+			public boolean hasNext() {
+				return result.hasNext();
+			}
+
+			@Override
+			public T next() {
+				return result.next();
+			}
+
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException();
+			}
+		};
+	}
 }

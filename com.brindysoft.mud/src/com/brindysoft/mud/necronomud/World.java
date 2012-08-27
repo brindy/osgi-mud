@@ -1,5 +1,8 @@
 package com.brindysoft.mud.necronomud;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Deactivate;
@@ -7,6 +10,7 @@ import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.mpi.MudPlace;
+import com.brindysoft.mud.mpi.MudPlaceProvider;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
 import com.brindysoft.oodb.api.Database;
@@ -17,6 +21,8 @@ import com.brindysoft.oodb.api.QueryResult;
 @Component
 public class World implements MudWorld {
 
+	public static final String PLACES_DB = "necro-places";
+
 	private Logger logger;
 
 	private Database db;
@@ -24,6 +30,17 @@ public class World implements MudWorld {
 	private DatabaseService service;
 
 	private MudPlace startingPlace;
+
+	private Set<MudPlaceProvider> providers = new HashSet<MudPlaceProvider>();
+
+	@Reference(multiple = true)
+	public void addPlaceProvider(MudPlaceProvider provider) {
+		providers.add(provider);
+	}
+
+	public void removePlaceProvider(MudPlaceProvider provider) {
+		providers.remove(provider);
+	}
 
 	@Reference
 	public void setDatabaseService(DatabaseService service) {
@@ -38,11 +55,17 @@ public class World implements MudWorld {
 	@Activate
 	public void start() {
 		logger.debug("%s#start() - IN", getClass().getSimpleName());
-		db = service.getDatabase("necronomicon");
+		db = service.getDatabase(PLACES_DB);
 
-		QueryResult<MudPlace> query = db.query(MudPlace.class);
-		if (query.isEmpty()) {
-			createEmptyWorld();
+		Set<String> tags = new HashSet<String>();
+		for (MudPlaceProvider provider : providers) {
+			for (MudPlace place : provider.getPlaces()) {
+				if (!tags.add(place.getTag())) {
+					logger.error("MudPlace with tag %s already exists", place.getTag());
+					throw new RuntimeException("MudPlace with tag " + place.getTag() + " already exists");
+				}
+				db.store(place);
+			}
 		}
 
 		logger.debug("%s#start() - OUT", getClass().getSimpleName());
@@ -84,21 +107,9 @@ public class World implements MudWorld {
 		db.commit();
 	}
 
-	private void createEmptyWorld() {
-		logger.debug("%s#createEmptyWorld() - IN", getClass().getSimpleName());
-
-		try {
-			WorldBuilder.createWorld(db);
-		} catch (Exception e) {
-			logger.error(e, "Failed to create world.");
-		}
-
-		logger.debug("%s#createEmptyWorld() - OUT", getClass().getSimpleName());
-	}
-
 	private MudPlace findStartingPlace() {
 		if (null == startingPlace) {
-			SimplePlace example = new SimplePlace();
+			Place example = new Place();
 			example.setTag(WorldBuilder.STARTING_PLACE);
 			startingPlace = (MudPlace) db.queryByExample(example).get(0);
 		}

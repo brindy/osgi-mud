@@ -14,6 +14,13 @@ public interface MudPlace {
 	String getDescription(MudUser user);
 
 	/**
+	 * A unique id for this place.
+	 * 
+	 * @return a unique id for this place. MUST NOT be null
+	 */
+	String getTag();
+
+	/**
 	 * The user appears in this place without specifying a direction.
 	 * 
 	 * @param user
