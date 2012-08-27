@@ -1,5 +1,7 @@
 package com.brindysoft.oodb.api;
 
+import java.util.Properties;
+
 public interface DatabaseService {
 
 	/**
@@ -8,10 +10,14 @@ public interface DatabaseService {
 	 * databases MUST support basic naming, though the peristence of that
 	 * database is implementation specific.
 	 * 
-	 * @param string
+	 * @param name
 	 *            the name of the database to get
+	 * @param configuration
+	 *            an appropriate configuration for this database
 	 * @return the database
 	 */
-	Database getDatabase(String string);
+	Database getDatabase(String name, Properties configuration);
+
+	Database getDatabase(String name);
 
 }

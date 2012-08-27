@@ -15,7 +15,7 @@ import com.brindysoft.oodb.api.QueryResult;
 @Component
 public class UserManager implements MudUserManager {
 
-	public final static String USERS_DB = "necro-users";
+	public final static String USERS_DB = "file://databases/necro-users.db4o";
 	private Logger logger;
 
 	private Database db;
@@ -49,7 +49,7 @@ public class UserManager implements MudUserManager {
 	@Override
 	public boolean checkPassword(MudUser user, String password) {
 		UserCredentials creds = new UserCredentials();
-		creds.setUser(user);
+		creds.setName(user.getName());
 		creds.setPassword(password);
 		return !db.queryByExample(creds).isEmpty();
 	}
@@ -60,7 +60,7 @@ public class UserManager implements MudUserManager {
 		user.setName(username);
 
 		UserCredentials creds = new UserCredentials();
-		creds.setUser(user);
+		creds.setName(username);
 		creds.setPassword(password);
 
 		db.store(user);
@@ -75,14 +75,24 @@ public class UserManager implements MudUserManager {
 		User user = new User();
 		user.setName(username);
 		QueryResult<User> results = db.queryByExample(user);
-		if (!results.isEmpty()) {
-			return results.next();
+		if (results.size() > 1) {
+			logger.error("%s#find(%s) Too many users %s", getClass().getName(), username, results.size());
+			throw new RuntimeException("Too many users called " + username);
+		} else if (results.size() == 0) {
+			return null;
 		}
-		return null;
+
+		return results.next();
 	}
 
-	Iterable<User> allUsers() {
+	public Iterable<User> allUsers() {
 		return db.query(User.class);
+	}
+
+	@Override
+	public void save(MudUser user) {
+		db.store(user);
+		db.commit();
 	}
 
 }

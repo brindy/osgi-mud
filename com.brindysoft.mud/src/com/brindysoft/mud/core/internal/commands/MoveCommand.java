@@ -9,6 +9,7 @@ import aQute.bnd.annotation.component.Reference;
 import com.brindysoft.mud.mpi.MudCommand;
 import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudUser;
+import com.brindysoft.mud.mpi.MudUserManager;
 import com.brindysoft.mud.mpi.MudWorld;
 
 @Component
@@ -32,6 +33,7 @@ public class MoveCommand implements MudCommand {
 	}
 
 	private MudWorld world;
+	private MudUserManager userManager;
 	private MudCommand lookCommand;
 
 	@Reference(target = "(type=look)")
@@ -42,6 +44,11 @@ public class MoveCommand implements MudCommand {
 	@Reference
 	public void setWorld(MudWorld world) {
 		this.world = world;
+	}
+
+	@Reference
+	public void setUserManager(MudUserManager userManager) {
+		this.userManager = userManager;
 	}
 
 	@Override
@@ -65,6 +72,7 @@ public class MoveCommand implements MudCommand {
 			source.userLeaves(user, direction);
 			source.getExit(direction).userArrives(user, direction);
 			world.save(source, source.getExit(direction));
+			userManager.save(user);
 			return lookCommand.invoke(new String[] { lookCommand.getVerbs()[0] }, user);
 		}
 

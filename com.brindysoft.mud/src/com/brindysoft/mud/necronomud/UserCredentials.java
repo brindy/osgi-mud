@@ -1,19 +1,17 @@
 package com.brindysoft.mud.necronomud;
 
-import com.brindysoft.mud.mpi.MudUser;
-
 public class UserCredentials {
 
-	private MudUser user;
+	private String name;
 
 	private String password;
 
-	public MudUser getUser() {
-		return user;
+	public String getName() {
+		return name;
 	}
 
-	public void setUser(MudUser user) {
-		this.user = user;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {

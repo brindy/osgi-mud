@@ -29,13 +29,13 @@ public interface MudPlace {
 	void addUser(MudUser user);
 
 	/**
-	 * Does this place contain this object?
+	 * Does this place contain this user?
 	 * 
-	 * @param object
-	 *            the object
-	 * @return true if the place contains the object
+	 * @param user
+	 *            the user
+	 * @return true if the place contains the user
 	 */
-	boolean contains(Object object);
+	boolean containsUser(MudUser user);
 
 	/**
 	 * Return a set containing the users at this location. Changes to this set

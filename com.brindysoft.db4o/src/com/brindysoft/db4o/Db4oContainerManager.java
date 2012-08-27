@@ -1,9 +1,13 @@
 package com.brindysoft.db4o;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.osgi.framework.Bundle;
@@ -35,6 +39,8 @@ public class Db4oContainerManager implements DiagnosticListener {
 
 	private Logger logger;
 
+	private Bundle bundle;
+
 	@Reference
 	public void setLogger(Logger logger) {
 		this.logger = logger;
@@ -45,22 +51,25 @@ public class Db4oContainerManager implements DiagnosticListener {
 		logger.debug("%s#start() - IN", getClass().getName());
 		loaders = new HashMap<String, BundleLoader>();
 		containers = new HashMap<String, ObjectContainer>();
+		bundle = ctx.getBundle();
 		logger.debug("%s#start() - OUT", getClass().getName());
 	}
 
-	public ObjectContainer getObjectContainer(Bundle bundle, String dbName) {
-		logger.debug("%s#getObjectContainer() - IN (%s, %s)", getClass().getSimpleName(), bundle, dbName);
+	public ObjectContainer getObjectContainer(Bundle bundle, String dbName, Properties properties) {
+		logger.debug("%s#getObjectContainer(%s, %s, %s)", getClass().getSimpleName(), bundle, dbName, properties);
 
-		ObjectContainer container = containers.get(dbName);
-		if (null == container) {
-			container = openContainer(bundle, dbName);
-			containers.put(dbName, container);
-		} else {
-			BundleLoader loader = loaders.get(dbName);
-			loader.bundles.add(bundle);
+		try {
+			URI uri = new URI(dbName);
+			return openContainer(bundle, uri, properties);
+		} catch (URISyntaxException e) {
+			logger.error(e, "Invalid URI %s", dbName);
+			throw new RuntimeException(e);
 		}
-		logger.debug("%s#getObjectContainer() - OUT", getClass().getSimpleName());
-		return container;
+
+	}
+
+	public ObjectContainer getObjectContainer(Bundle bundle, String dbName) {
+		return getObjectContainer(bundle, dbName, new Properties());
 	}
 
 	public synchronized void unregister(Bundle usingBundle, String dbName) {
@@ -74,7 +83,7 @@ public class Db4oContainerManager implements DiagnosticListener {
 		}
 
 		loader.bundles.remove(usingBundle);
-		if (0 == loader.bundles.size()) {
+		if (1 == loader.bundles.size()) {
 			logger.debug("%s#unregister() - closing and removing database %s", getClass().getName(), dbName);
 			containers.remove(dbName).close();
 			loaders.remove(dbName);
@@ -98,23 +107,69 @@ public class Db4oContainerManager implements DiagnosticListener {
 		logger.debug("%s#onDiagnostic(%s)", getClass().getSimpleName(), diag);
 	}
 
-	private ObjectContainer openContainer(Bundle bundle, String dbName) {
-		ObjectContainer container;
-		BundleLoader loader = new BundleLoader();
-		loader.bundles.add(bundle);
-		loaders.put(dbName, loader);
+	private ObjectContainer openContainer(Bundle bundle, URI uri, Properties properties) {
+		logger.debug("%s#openContainer() - IN (%s, %s)", getClass().getSimpleName(), bundle, uri);
 
-		EmbeddedConfiguration config = createConfiguration(loader);
+		String scheme = uri.getScheme();
+		String dbName = uri.toString();
 
-		container = Db4oEmbedded.openFile(config, dbName + ".db4o");
+		logger.debug("%s#openContainer(), scheme [%s], name [%s]", getClass().getSimpleName(), scheme, dbName);
+
+		ObjectContainer container = containers.get(dbName);
+		if (null == container) {
+
+			if (scheme == null || "mem".equals(scheme)) {
+				container = openInMemoryContainer(bundle, dbName, properties);
+			} else if ("file".equals(scheme)) {
+				container = openFileContainer(bundle,
+						uri.getHost() == null ? uri.getPath() : uri.getHost() + "/" + uri.getPath(), properties);
+			} else {
+				logger.error("%s is not a supported database scheme", scheme);
+				throw new UnsupportedOperationException(scheme + " is not a supported database scheme");
+			}
+
+			containers.put(dbName, container);
+		} else {
+			BundleLoader loader = loaders.get(dbName);
+			loader.bundles.add(bundle);
+		}
+
+		logger.debug("%s#openContainer() - OUT (%s, %s)", getClass().getSimpleName(), bundle, uri);
 		return container;
 	}
 
-	private EmbeddedConfiguration createConfiguration(BundleLoader loader) {
+	private ObjectContainer openFileContainer(Bundle bundle, String dbName, Properties properties) {
+		logger.debug("%s#openFileContainer(%s, %s)", getClass().getName(), bundle, dbName);
+
+		File f = new File(dbName);
+		if (null != f.getParent()) {
+			File parent = new File(f.getParent());
+			if (!parent.exists() && !parent.mkdirs()) {
+				logger.error("new File(%s).mkdirs() failed", f.getParent());
+				throw new RuntimeException("new File(" + f.getParent() + ").mkdirs() failed");
+			}
+		}
+
+		logger.debug("%s#openFileContainer(%s, %s)", getClass().getName(), bundle, dbName);
+		EmbeddedConfiguration config = createCommonConfiguration(bundle, dbName, properties);
+		return Db4oEmbedded.openFile(config, dbName);
+	}
+
+	private ObjectContainer openInMemoryContainer(Bundle bundle, String dbName, Properties properties) {
+		EmbeddedConfiguration config = createCommonConfiguration(bundle, dbName, properties);
+		config.file().storage(new MemoryStorage());
+		return Db4oEmbedded.openFile(config, dbName);
+	}
+
+	private EmbeddedConfiguration createCommonConfiguration(Bundle bundle, String dbName, Properties properties) {
+		BundleLoader loader = new BundleLoader();
+		loader.bundles.add(this.bundle);
+		loader.bundles.add(bundle);
+		loaders.put(dbName, loader);
+
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 		JdkReflector reflector = new JdkReflector(loader);
 
-		config.file().storage(new MemoryStorage());
 		config.common().diagnostic().addListener(this);
 		config.common().exceptionsOnNotStorable(true);
 		config.common().reflectWith(reflector);

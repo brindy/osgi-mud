@@ -13,4 +13,6 @@ public interface QueryResult<T> extends Iterable<T> {
 	@Override
 	public Iterator<T> iterator();
 
+	int size();
+
 }

@@ -24,6 +24,11 @@ public class Db4oQueryResult<T> implements QueryResult<T> {
 	}
 
 	@Override
+	public int size() {
+		return result.size();
+	}
+
+	@Override
 	public T next() {
 		return result.next();
 	}

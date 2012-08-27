@@ -6,15 +6,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.brindysoft.mud.necronomud.User;
-
 public abstract class AbstractMudPlace implements MudPlace {
 
 	protected Set<String> userNames;
 
 	protected Set<MudObject> objects;
 
-	protected Set<MudUser> users;
+	protected transient Set<MudUser> users;
 
 	protected Map<String, MudPlace> connections;
 
@@ -41,14 +39,16 @@ public abstract class AbstractMudPlace implements MudPlace {
 	@Override
 	public synchronized void broadcast(String message, Object... args) {
 		for (MudUser user : getUsers()) {
-			user.println(message, args);
+			if (user.isAttached()) {
+				user.println(message, args);
+			}
 		}
 	}
 
 	@Override
 	public void broadcastByUser(MudUser user, String message, Object... args) {
 		for (MudUser recipient : getUsers()) {
-			if (user == recipient) {
+			if (user == recipient || user.getName().equals(recipient.getName())) {
 				continue;
 			}
 			recipient.println(message, args);
@@ -79,10 +79,10 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	public void connect(AbstractMudPlace otherPlace, String inDirection, String fromDirection) {
 		getConnections().put(inDirection, otherPlace);
-		getOpposites().put(inDirection, fromDirection);
+		getOpposites().put(fromDirection, inDirection);
 
 		otherPlace.getConnections().put(fromDirection, this);
-		otherPlace.getOpposites().put(fromDirection, inDirection);
+		otherPlace.getOpposites().put(inDirection, fromDirection);
 	}
 
 	public void setTag(String tag) {
@@ -106,12 +106,20 @@ public abstract class AbstractMudPlace implements MudPlace {
 		}
 		users.add(user);
 
-		((User) user).setPlaceTag(getTag());
+		user.setPlaceTag(getTag());
 	}
 
 	@Override
-	public boolean contains(Object object) {
-		return null == users ? false : users.contains(object);
+	public boolean containsUser(MudUser user) {
+		if (null != users && users.contains(user)) {
+			return true;
+		}
+
+		if (null != userNames && userNames.contains(user.getName())) {
+			return true;
+		}
+
+		return false;
 	}
 
 	@Override
@@ -124,12 +132,12 @@ public abstract class AbstractMudPlace implements MudPlace {
 	public void removeUser(MudUser user) {
 		users.remove(user);
 		userNames.remove(user.getName());
-		((User) user).setPlaceTag(null);
+		user.setPlaceTag(null);
 	}
 
 	@Override
 	public synchronized void userLeaves(MudUser user, String direction) {
-		users.remove(user);
+		removeUser(user);
 		broadcast("%s heads %s.", user.getName(), direction);
 	}
 

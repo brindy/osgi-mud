@@ -18,3 +18,5 @@ com.brindysoft.oodb/bin
 com.brindysoft.oodb/.settings
 com.brindysoft.oodb/.classpath
 com.brindysoft.oodb/.project
+com.brindysoft.mud/databases
+RemoteSystemsTempFiles

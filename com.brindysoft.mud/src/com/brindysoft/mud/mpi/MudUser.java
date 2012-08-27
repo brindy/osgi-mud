@@ -11,4 +11,6 @@ public interface MudUser extends MudIo {
 
 	String getName();
 
+	void setPlaceTag(String tag);
+
 }
