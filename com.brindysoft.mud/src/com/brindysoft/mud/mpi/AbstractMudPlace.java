@@ -13,7 +13,7 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	protected Set<MudObject> objects;
 
-	protected transient Set<MudUser> users;
+	protected Set<MudUser> users;
 
 	protected Map<String, MudPlace> connections;
 
@@ -47,7 +47,7 @@ public abstract class AbstractMudPlace implements MudPlace {
 	}
 
 	@Override
-	public void broadcastByUser(MudUser user, String message, Object... args) {
+	public synchronized void broadcastByUser(MudUser user, String message, Object... args) {
 		Set<MudUser> users = getUsers();
 		users.removeAll(Arrays.asList(user));
 		for (MudUser recipient : users) {
@@ -76,6 +76,12 @@ public abstract class AbstractMudPlace implements MudPlace {
 	public synchronized void userArrives(MudUser user, String direction) {
 		broadcast("{text:green}%s{text} arrives from the %s.", user.getName(), opposites.get(direction));
 		addUser(user);
+	}
+
+	@Override
+	public synchronized void userLeaves(MudUser user, String direction) {
+		removeUser(user);
+		broadcast("{text:green}%s{text} heads %s.", user.getName(), direction);
 	}
 
 	public void connect(AbstractMudPlace otherPlace, String inDirection, String fromDirection) {
@@ -133,12 +139,6 @@ public abstract class AbstractMudPlace implements MudPlace {
 		users.remove(user);
 		userNames.remove(user.getName());
 		user.setPlaceTag(null);
-	}
-
-	@Override
-	public synchronized void userLeaves(MudUser user, String direction) {
-		removeUser(user);
-		broadcast("{text:green}%s{text} heads %s.", user.getName(), direction);
 	}
 
 	@Override
