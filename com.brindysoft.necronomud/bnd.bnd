@@ -1,7 +1,8 @@
 Private-Package: com.brindysoft.necronomud,\
 	com.brindysoft.necronomud.commands,\
 	com.brindysoft.necronomud.objects,\
-	com.brindysoft.necronomud.places
+	com.brindysoft.necronomud.places,\
+	com.brindysoft.necronomud.ai
 -runbundles: osgi.cmpn,\
 	org.apache.felix.scr,\
 	org.apache.felix.gogo.shell,\

@@ -21,7 +21,7 @@ import com.brindysoft.oodb.api.DatabaseService;
 import com.brindysoft.oodb.api.QueryPredicate;
 import com.brindysoft.oodb.api.QueryResult;
 
-@Component
+@Component(immediate = true)
 public class World implements MudWorld {
 
 	public static final String PLACES_DB = "mem://necro-places.db4o";
@@ -36,7 +36,7 @@ public class World implements MudWorld {
 
 	private MudPlace startingPlace;
 
-	@Reference(multiple = true, target = "(world=necro)")
+	@Reference(optional = false, multiple = true, target = "(world=necro)")
 	public void addPlaceProvider(MudPlaceProvider provider) {
 		providers.add(provider);
 	}

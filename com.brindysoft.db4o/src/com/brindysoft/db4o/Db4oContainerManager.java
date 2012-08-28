@@ -47,7 +47,7 @@ public class Db4oContainerManager implements DiagnosticListener {
 	}
 
 	@Activate
-	public void start(BundleContext ctx) throws IOException {
+	public synchronized void start(BundleContext ctx) throws IOException {
 		logger.debug("%s#start() - IN", getClass().getName());
 		loaders = new HashMap<String, BundleLoader>();
 		containers = new HashMap<String, ObjectContainer>();
@@ -92,13 +92,15 @@ public class Db4oContainerManager implements DiagnosticListener {
 	}
 
 	@Deactivate
-	public void stop() {
+	public synchronized void stop() {
 		logger.debug("%s#stop() - IN", getClass().getSimpleName());
 		for (ObjectContainer container : containers.values()) {
 			container.close();
 		}
 		containers.clear();
 		containers = null;
+		loaders.clear();
+		loaders = null;
 		logger.debug("%s#stop() - OUT", getClass().getSimpleName());
 	}
 
@@ -110,8 +112,8 @@ public class Db4oContainerManager implements DiagnosticListener {
 	private ObjectContainer openContainer(Bundle bundle, URI uri, Properties properties) {
 		logger.debug("%s#openContainer() - IN (%s, %s)", getClass().getSimpleName(), bundle, uri);
 
-		String scheme = uri.getScheme();
-		String dbName = uri.toString();
+		String scheme = null == uri.getScheme() ? "mem" : uri.getScheme();
+		String dbName = uri.getPath() == null ? uri.getHost() : uri.getHost() + uri.getPath();
 
 		logger.debug("%s#openContainer(), scheme [%s], name [%s]", getClass().getSimpleName(), scheme, dbName);
 
@@ -121,8 +123,7 @@ public class Db4oContainerManager implements DiagnosticListener {
 			if (scheme == null || "mem".equals(scheme)) {
 				container = openInMemoryContainer(bundle, dbName, properties);
 			} else if ("file".equals(scheme)) {
-				container = openFileContainer(bundle,
-						uri.getHost() == null ? uri.getPath() : uri.getHost() + "/" + uri.getPath(), properties);
+				container = openFileContainer(bundle, dbName, properties);
 			} else {
 				logger.error("%s is not a supported database scheme", scheme);
 				throw new UnsupportedOperationException(scheme + " is not a supported database scheme");
@@ -139,7 +140,7 @@ public class Db4oContainerManager implements DiagnosticListener {
 	}
 
 	private ObjectContainer openFileContainer(Bundle bundle, String dbName, Properties properties) {
-		logger.debug("%s#openFileContainer(%s, %s)", getClass().getName(), bundle, dbName);
+		logger.debug("%s#openFileContainer(%s, %s) - IN", getClass().getSimpleName(), bundle, dbName);
 
 		File f = new File(dbName);
 		if (null != f.getParent()) {
@@ -150,8 +151,8 @@ public class Db4oContainerManager implements DiagnosticListener {
 			}
 		}
 
-		logger.debug("%s#openFileContainer(%s, %s)", getClass().getName(), bundle, dbName);
 		EmbeddedConfiguration config = createCommonConfiguration(bundle, dbName, properties);
+		logger.debug("%s#openFileContainer(%s, %s) - OUT", getClass().getSimpleName(), bundle, dbName);
 		return Db4oEmbedded.openFile(config, dbName);
 	}
 

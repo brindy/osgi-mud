@@ -44,11 +44,15 @@ public class TeleportCommand implements MudCommand {
 		}
 
 		MudPlace sourcePlace = world.findPlaceContaining(user);
+		MudPlace destinationPlace = world.findPlaceByTag(args[1]);
+		if (null == destinationPlace) {
+			user.println("Could not find place with tag [%s]", args[1]);
+			return true;
+		}
 
 		sourcePlace.removeUser(user);
 		sourcePlace.broadcast("{text:green}%s has teleported to %s{text}", user.getName(), args[1]);
 
-		MudPlace destinationPlace = world.findPlaceByTag(args[1]);
 		destinationPlace.addUser(user);
 		destinationPlace.broadcastByUser(user, "{text:green}%s{text} appears!");
 		world.save(sourcePlace, destinationPlace);
