@@ -78,6 +78,11 @@ public class World implements MudWorld {
 			}
 		}
 
+		if (null == startingPlace) {
+			logger.error("%s#start() No place with tag '0001'", getClass().getSimpleName());
+			throw new RuntimeException("No place with tag '0001'");
+		}
+
 		// make connections
 		for (MudPlaceProvider provider : providers) {
 			for (MudPlaceProvider.Connection connection : provider.getConnections()) {
@@ -101,7 +106,7 @@ public class World implements MudWorld {
 
 		MudPlace place = findPlaceContaining(user);
 		if (null == place) {
-			place = findStartingPlace();
+			place = startingPlace;
 		}
 
 		place.broadcastByUser(user, "{text:green}%s{text} appears!", user.getName());
@@ -126,10 +131,6 @@ public class World implements MudWorld {
 		db.commit();
 	}
 
-	private MudPlace findStartingPlace() {
-		return startingPlace;
-	}
-
 	static class FindPlaceContainingUserPredicate implements QueryPredicate<MudPlace> {
 
 		private final User user;
@@ -143,6 +144,11 @@ public class World implements MudWorld {
 			return place.containsUser(user) || place.getTag().equals(user.getPlaceTag());
 		}
 
+	}
+
+	public MudPlace findPlaceByTag(String tag) {
+		QueryResult<Place> result = db.queryByExample(new Place(tag, null));
+		return result.size() > 0 ? result.get(0) : null;
 	}
 
 }

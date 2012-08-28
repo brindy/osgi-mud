@@ -16,17 +16,28 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 		// create key places
 		Place busStop = createBusStop();
 		Place dunwichTurnoff = createDunwichTurnOff();
+		Place southOfTheBridge = createSouthOfTheBridge();
 		Place aBridge = createBridgeBetweenDunwichAndTurnOff();
 		Place northOfTheBridge = createNorthOfTheBridge();
-		Place cornerOfEastCreekAndDunwich = createCornerOfEastCreedAndDunwich();
+		Place eastCreekJunction = createEastCreekJunction();
 
 		// create connections
 		busStop.connect(dunwichTurnoff, "east", "west");
-		connect(dunwichTurnoff, aBridge, "Dunwich Road, between the turnoff and the bridge.", "nwn");
+		connect(dunwichTurnoff, southOfTheBridge, "Dunwich Road, between the turnoff and the bridge.", "nwn");
+		southOfTheBridge.connect(aBridge, "north", "south");
 		aBridge.connect(northOfTheBridge, "north", "south");
-		connect(northOfTheBridge, cornerOfEastCreekAndDunwich,
-				"Dunwich Road, between the bridge and East Creek Road junction.", "wnnw");
+		connect(northOfTheBridge, eastCreekJunction, "Dunwich Road, between the bridge and East Creek Road junction.",
+				"wnnw");
 
+	}
+
+	private Place createSouthOfTheBridge() {
+		Place place = new Place();
+		place.setTag("0007");
+		place.setDescription("A dangerous looking, old covered bridge, crosses the creek to the north.  "
+				+ "The road to the Dunwich Turnoff heads south.");
+		places.add(place);
+		return place;
 	}
 
 	private Place createBusStop() {
@@ -68,7 +79,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 		return place;
 	}
 
-	private Place createCornerOfEastCreedAndDunwich() {
+	private Place createEastCreekJunction() {
 		Place place = new Place();
 		place.setTag("0005");
 		place.setDescription("Dunwich Road turns sharply from the east to the north.  "

@@ -14,6 +14,13 @@ public class PottersPondCreek extends AbstractPlaceProvider {
 
 		Place startOfDirtTrack = createStartOfDirtTrack();
 		Place endOfDirtTrack = createEndOfDirtTrack();
+		Place southEastPond = new Place("0011",
+				"A path leads around Potter's Pond.  The sound of bullfrogs is almost deafening.");
+
+		connect(southEastPond, southEastPond,
+				"The path around Potter's Pond.  The sound of bullfrogs is almost deafening.", "wnes");
+
+		endOfDirtTrack.connect(southEastPond, "west", "east");
 
 		connect(startOfDirtTrack, endOfDirtTrack, "A dirt track between the bridge and Potter's Pond Creek.",
 				"eesesennwn");
