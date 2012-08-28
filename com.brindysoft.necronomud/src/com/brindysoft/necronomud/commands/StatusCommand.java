@@ -1,10 +1,10 @@
-package com.brindysoft.mud.necronomud.commands;
+package com.brindysoft.necronomud.commands;
 
 import aQute.bnd.annotation.component.Component;
 
 import com.brindysoft.mud.mpi.MudCommand;
 import com.brindysoft.mud.mpi.MudUser;
-import com.brindysoft.mud.necronomud.User;
+import com.brindysoft.necronomud.User;
 
 @Component
 public class StatusCommand implements MudCommand {

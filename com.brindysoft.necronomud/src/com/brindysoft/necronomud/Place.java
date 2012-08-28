@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomud;
+package com.brindysoft.necronomud;
 
 import com.brindysoft.mud.mpi.AbstractMudPlace;
 

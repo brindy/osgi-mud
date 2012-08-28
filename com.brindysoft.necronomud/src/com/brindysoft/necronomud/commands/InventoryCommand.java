@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomud.commands;
+package com.brindysoft.necronomud.commands;
 
 import aQute.bnd.annotation.component.Component;
 

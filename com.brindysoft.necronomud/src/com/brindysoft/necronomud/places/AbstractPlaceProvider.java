@@ -1,11 +1,11 @@
-package com.brindysoft.mud.necronomud.places;
+package com.brindysoft.necronomud.places;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudPlaceProvider;
-import com.brindysoft.mud.necronomud.Place;
+import com.brindysoft.necronomud.Place;
 
 public class AbstractPlaceProvider implements MudPlaceProvider {
 

@@ -1,11 +1,11 @@
-package com.brindysoft.mud.necronomud.places;
+package com.brindysoft.necronomud.places;
 
 import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;
 
 import com.brindysoft.mud.mpi.MudPlaceProvider;
-import com.brindysoft.mud.necronomud.Place;
-import com.brindysoft.mud.necronomud.objects.BusStop;
+import com.brindysoft.necronomud.Place;
+import com.brindysoft.necronomud.objects.BusStop;
 
 @Component(immediate = true, provide = MudPlaceProvider.class, properties = "world=necro")
 public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {

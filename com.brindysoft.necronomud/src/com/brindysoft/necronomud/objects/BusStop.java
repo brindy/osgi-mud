@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomud.objects;
+package com.brindysoft.necronomud.objects;
 
 import com.brindysoft.mud.mpi.MudObject;
 import com.brindysoft.mud.mpi.MudUser;

@@ -20,3 +20,9 @@ com.brindysoft.oodb/.classpath
 com.brindysoft.oodb/.project
 com.brindysoft.mud/databases
 RemoteSystemsTempFiles
+com.brindysoft.necronomud/bin
+com.brindysoft.necronomud/.settings
+com.brindysoft.necronomud/generated
+com.brindysoft.necronomud/.classpath
+com.brindysoft.necronomud/.project
+com.brindysoft.necronomud/databases

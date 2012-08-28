@@ -1,4 +1,4 @@
-package com.brindysoft.mud.necronomud;
+package com.brindysoft.necronomud;
 
 import java.util.Arrays;
 import java.util.HashMap;
