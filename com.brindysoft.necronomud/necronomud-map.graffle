@@ -128,8 +128,8 @@
 					<integer>66</integer>
 					<key>Points</key>
 					<array>
-						<string>{313.55035157420986, 611.11289640810253}</string>
-						<string>{393.44258016974504, 605.29294276179826}</string>
+						<string>{313.5503236008268, 611.08350505176077}</string>
+						<string>{393.44249135534579, 605.20203715563616}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -161,8 +161,8 @@
 					<integer>65</integer>
 					<key>Points</key>
 					<array>
-						<string>{250.69534588588883, 575.80050820037593}</string>
-						<string>{218.96010917667135, 526.82329539795512}</string>
+						<string>{250.69534588588792, 575.80050820037593}</string>
+						<string>{218.96010917666919, 526.82329539795512}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -2256,8 +2256,8 @@
 					<integer>46</integer>
 					<key>Points</key>
 					<array>
-						<string>{443.53946879268409, 1135.8841323736526}</string>
-						<string>{757.45464726713794, 1135.8841323736526}</string>
+						<string>{443.53946879268398, 1135.8841323736526}</string>
+						<string>{757.45464726706973, 1135.8841323736526}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -3280,15 +3280,15 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-163, 88.461541706288472}, {1444.23082220484, 1476.9231310962946}}</string>
+		<string>{{453.0973470447226, 885.84071170267055}, {664.60177271598957, 679.64602056708384}}</string>
 		<key>Zoom</key>
-		<real>0.51999998092651367</real>
+		<real>1.1299999952316284</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Detail</string>
-				<real>0.51999998092651367</real>
-				<real>0.67000001668930054</real>
+				<real>1.1299999952316284</real>
+				<real>1.059999942779541</real>
 			</array>
 			<array>
 				<string>Big Picture</string>

@@ -135,11 +135,69 @@ public interface MudPlace {
 	public void addObject(MudObject object);
 
 	/**
+	 * Remove the object from this place.
+	 * 
+	 * @param object
+	 *            the object
+	 */
+	void removeObject(MudObject object);
+
+	/**
+	 * Does this place contain this object?
+	 * 
+	 * @param object
+	 *            the object
+	 * @return true if the object is in this place
+	 */
+	boolean containsObject(MudObject object);
+
+	/**
 	 * Return set of objects at this location. Changes to this set will MUST NOT
 	 * be reflected in the under lying data of the place.
 	 * 
 	 * @return the objects
 	 */
 	<T extends MudObject> Set<T> getObjects(Class<T> type);
+
+	/**
+	 * Add a listener to this place.
+	 * 
+	 * @param listener
+	 *            a listener
+	 */
+	void addListener(Listener listener);
+
+	/**
+	 * Remove a listener from this place
+	 * 
+	 * @param listener
+	 *            a listener
+	 */
+	void removeListener(Listener listener);
+
+	public static interface Listener {
+		void onUserArrives(MudPlace place, MudUser user, String heading, String from);
+
+		void onUserAdded(MudPlace place, MudUser user);
+
+		void onUserLeaves(MudPlace place, MudUser user, String toDirection);
+
+		void onUserRemoved(MudPlace place, MudUser user);
+	}
+
+	public static abstract class AbstractListener implements Listener {
+
+		public void onUserArrives(MudPlace place, MudUser user, String heading, String from) {
+		}
+
+		public void onUserAdded(MudPlace place, MudUser user) {
+		}
+
+		public void onUserLeaves(MudPlace place, MudUser user, String toDirection) {
+		}
+
+		public void onUserRemoved(MudPlace place, MudUser user) {
+		}
+	}
 
 }

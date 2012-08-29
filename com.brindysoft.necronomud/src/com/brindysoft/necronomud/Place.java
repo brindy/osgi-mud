@@ -12,4 +12,5 @@ public class Place extends AbstractMudPlace {
 		this.description = description;
 	}
 
+
 }

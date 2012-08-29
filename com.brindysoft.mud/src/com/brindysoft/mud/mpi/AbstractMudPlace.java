@@ -9,9 +9,11 @@ import java.util.Set;
 
 public abstract class AbstractMudPlace implements MudPlace {
 
-	protected Set<String> userNames;
+	protected transient Set<MudPlace.Listener> listeners = new HashSet<MudPlace.Listener>();
 
-	protected Set<MudObject> objects;
+	protected transient Set<MudObject> objects;
+
+	protected Set<String> userNames;
 
 	protected Set<MudUser> users;
 
@@ -74,6 +76,13 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	@Override
 	public synchronized void userArrives(MudUser user, String direction) {
+
+		synchronized (listeners) {
+			for (Listener listener : listeners) {
+				listener.onUserArrives(this, user, direction, opposites.get(direction));
+			}
+		}
+
 		broadcast("{text:green}%s{text} arrives from the %s.", user.getName(), opposites.get(direction));
 		addUser(user);
 	}
@@ -82,6 +91,12 @@ public abstract class AbstractMudPlace implements MudPlace {
 	public synchronized void userLeaves(MudUser user, String direction) {
 		removeUser(user);
 		broadcast("{text:green}%s{text} heads %s.", user.getName(), direction);
+
+		synchronized (listeners) {
+			for (Listener listener : listeners) {
+				listener.onUserLeaves(this, user, direction);
+			}
+		}
 	}
 
 	public void connect(AbstractMudPlace otherPlace, String inDirection, String fromDirection) {
@@ -114,6 +129,11 @@ public abstract class AbstractMudPlace implements MudPlace {
 		users.add(user);
 
 		user.setPlaceTag(getTag());
+		synchronized (listeners) {
+			for (Listener listener : listeners) {
+				listener.onUserAdded(this, user);
+			}
+		}
 	}
 
 	@Override
@@ -150,6 +170,16 @@ public abstract class AbstractMudPlace implements MudPlace {
 		objects.add(object);
 	}
 
+	@Override
+	public void removeObject(MudObject object) {
+		objects.remove(object);
+	}
+
+	@Override
+	public boolean containsObject(MudObject object) {
+		return null == objects ? false : objects.contains(object);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends MudObject> Set<T> getObjects(Class<T> type) {
@@ -164,6 +194,20 @@ public abstract class AbstractMudPlace implements MudPlace {
 			}
 		}
 		return objects;
+	}
+
+	@Override
+	public void addListener(Listener listener) {
+		synchronized (listeners) {
+			listeners.add(listener);
+		}
+	}
+
+	@Override
+	public void removeListener(Listener listener) {
+		synchronized (listeners) {
+			listeners.remove(listener);
+		}
 	}
 
 	private Map<String, MudPlace> getConnections() {

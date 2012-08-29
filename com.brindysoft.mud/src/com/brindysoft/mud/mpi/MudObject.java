@@ -36,4 +36,6 @@ public interface MudObject {
 
 	}
 
+	// TODO Killable?
+	
 }
