@@ -74,6 +74,10 @@ public class BullfrogAi extends AbstractListener implements Heart {
 	@Override
 	public void tick() {
 
+		if (users <= 0) {
+			return;
+		}
+
 		long time = System.currentTimeMillis();
 
 		synchronized (bullfrogData) {
@@ -97,12 +101,34 @@ public class BullfrogAi extends AbstractListener implements Heart {
 
 	@Override
 	public void onUserAdded(MudPlace place, MudUser user) {
+		logger.debug("%s#onUserAdded() %s", getClass().getSimpleName(), user.getName());
 		users++;
 	}
 
 	@Override
 	public void onUserLeaves(MudPlace place, MudUser user, String toDirection) {
+		logger.debug("%s#onUserLeaves() %s", getClass().getSimpleName(), user.getName());
 		users--;
+	}
+
+	public void examinedBy(Bullfrog bullfrog, MudUser user) {
+		Data data = getDataFor(bullfrog, user);
+	
+		switch (data.examineCount) {
+		case 0:
+			user.println("The bullfrog croaks loudly and you think you see its eyes flash red for a moment.  "
+					+ "Maybe you should leave it alone?");
+			move(bullfrog);
+			break;
+	
+		default:
+			user.println("The bullfrog appears to squint, and then its long, strangely tentacle like tongue "
+					+ "flicks from its mouth, narrowly missing your eye.  It looks annoyed.");
+			move(bullfrog);
+			break;
+		}
+	
+		data.examineCount++;
 	}
 
 	private void spawn() {
@@ -110,26 +136,6 @@ public class BullfrogAi extends AbstractListener implements Heart {
 		MudPlace current = patrolRoute.get(0);
 		current.addObject(new Bullfrog(this));
 		current.broadcast("A bullfrog emerges from the pond.  Something about it isn't quite right.");
-	}
-
-	public void examinedBy(Bullfrog bullfrog, MudUser user) {
-		Data data = getDataFor(bullfrog, user);
-
-		switch (data.examineCount) {
-		case 0:
-			user.println("The bullfrog croaks loudly and you think you see its eyes flash red for a moment.  "
-					+ "Maybe you should leave it alone?");
-			move(bullfrog);
-			break;
-
-		default:
-			user.println("The bullfrog appears to squint, and then its long, strangely tentacle like tongue "
-					+ "flicks from its mouth, narrowly missing your eye.  It looks annoyed.");
-			move(bullfrog);
-			break;
-		}
-
-		data.examineCount++;
 	}
 
 	private void move(Bullfrog bullfrog) {

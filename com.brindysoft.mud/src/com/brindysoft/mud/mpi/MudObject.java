@@ -24,6 +24,9 @@ public interface MudObject {
 
 	}
 
+	/**
+	 * Can the object be examined?
+	 */
 	static interface Examinable extends MudObject {
 
 		/**
@@ -37,5 +40,24 @@ public interface MudObject {
 	}
 
 	// TODO Killable?
-	
+
+	static interface HasCommandSynonyms extends MudObject {
+
+		/**
+		 * Return synonyms for the given string, if any.
+		 * 
+		 * @param string
+		 *            the command string
+		 * @return an array of synonyms or null
+		 */
+		String getSynonymFor(String string);
+
+	}
+
+	static interface Commandable extends MudObject {
+
+		MudCommand findCommand(String string, MudUser user);
+
+	}
+
 }

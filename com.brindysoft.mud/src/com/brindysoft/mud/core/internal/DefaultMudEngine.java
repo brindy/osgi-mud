@@ -75,7 +75,7 @@ public class DefaultMudEngine implements MudEngine {
 			String[] args = commandLine.split("\\s+");
 			logger.debug("%s#run() args : %s", getClass().getSimpleName(), Arrays.asList(args));
 
-			MudCommand command = commandRegistry.find(args[0]);
+			MudCommand command = commandRegistry.find(args[0], user);
 			if (null == command || !command.invoke(args, user)) {
 				user.println("I don't know how to '%s'", commandLine);
 			}
