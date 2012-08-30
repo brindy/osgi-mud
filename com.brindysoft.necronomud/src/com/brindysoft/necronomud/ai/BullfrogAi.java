@@ -2,11 +2,9 @@ package com.brindysoft.necronomud.ai;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import aQute.bnd.annotation.component.Activate;
@@ -22,11 +20,12 @@ import com.brindysoft.mud.mpi.MudWorld;
 import com.brindysoft.necronomud.World;
 import com.brindysoft.necronomud.ai.AiTicker.Heart;
 import com.brindysoft.necronomud.objects.Bullfrog;
+import com.brindysoft.necronomud.objects.Bullfrog.UserData;
 
 @Component(immediate = true)
 public class BullfrogAi extends AbstractListener implements Heart {
 
-	private Map<Bullfrog, Map<String, Data>> bullfrogData = new HashMap<Bullfrog, Map<String, Data>>();
+	private Set<Bullfrog> bullfrogs = new HashSet<Bullfrog>();
 
 	private List<MudPlace> patrolRoute = new ArrayList<MudPlace>(4);
 
@@ -80,16 +79,14 @@ public class BullfrogAi extends AbstractListener implements Heart {
 
 		long time = System.currentTimeMillis();
 
-		synchronized (bullfrogData) {
-			Set<Map<String, Data>> toRemove = new HashSet<Map<String, Data>>();
-			for (Map<String, Data> userData : bullfrogData.values()) {
-				for (Data data : userData.values()) {
+		synchronized (bullfrogs) {
+			for (Bullfrog frog : bullfrogs) {
+				for (UserData data : new HashSet<UserData>(frog.getAllUserData())) {
 					if (time - data.lastInteractionTime > 30000) {
-						toRemove.add(userData);
+						frog.removeUserData(data.userName);
 					}
 				}
 			}
-			bullfrogData.values().removeAll(toRemove);
 		}
 
 	}
@@ -112,22 +109,22 @@ public class BullfrogAi extends AbstractListener implements Heart {
 	}
 
 	public void examinedBy(Bullfrog bullfrog, MudUser user) {
-		Data data = getDataFor(bullfrog, user);
-	
+		UserData data = bullfrog.getUserData(user.getName());
+
 		switch (data.examineCount) {
 		case 0:
 			user.println("The bullfrog croaks loudly and you think you see its eyes flash red for a moment.  "
 					+ "Maybe you should leave it alone?");
 			move(bullfrog);
 			break;
-	
+
 		default:
 			user.println("The bullfrog appears to squint, and then its long, strangely tentacle like tongue "
 					+ "flicks from its mouth, narrowly missing your eye.  It looks annoyed.");
 			move(bullfrog);
 			break;
 		}
-	
+
 		data.examineCount++;
 	}
 
@@ -158,33 +155,6 @@ public class BullfrogAi extends AbstractListener implements Heart {
 
 				break;
 			}
-		}
-
-	}
-
-	private Data getDataFor(Bullfrog bullfrog, MudUser user) {
-		Map<String, Data> userData = bullfrogData.get(bullfrog);
-		if (null == userData) {
-			userData = new HashMap<String, Data>();
-			bullfrogData.put(bullfrog, userData);
-		}
-
-		Data data = userData.get(user.getName());
-		if (null == data) {
-			data = new Data();
-			userData.put(user.getName(), data);
-		}
-
-		data.lastInteractionTime = System.currentTimeMillis();
-		return data;
-	}
-
-	class Data {
-
-		long lastInteractionTime;
-		int examineCount;
-
-		public Data() {
 		}
 
 	}
