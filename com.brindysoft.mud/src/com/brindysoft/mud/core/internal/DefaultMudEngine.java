@@ -11,6 +11,7 @@ import aQute.bnd.annotation.component.Reference;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.mpi.MudCommand;
 import com.brindysoft.mud.mpi.MudUser;
+import com.brindysoft.mud.mpi.MudUserManager;
 import com.brindysoft.mud.mpi.MudWorld;
 
 @Component
@@ -20,6 +21,12 @@ public class DefaultMudEngine implements MudEngine {
 	private MudWorld world;
 	private MudCommandRegistry commandRegistry;
 	private MudCommand lookCommand;
+	private MudUserManager userManager;
+
+	@Reference
+	public void setUserManager(MudUserManager userManager) {
+		this.userManager = userManager;
+	}
 
 	@Reference
 	public void setCommandRegistry(MudCommandRegistry commandRegistry) {
@@ -78,6 +85,8 @@ public class DefaultMudEngine implements MudEngine {
 			MudCommand command = commandRegistry.find(args[0], user);
 			if (null == command || !command.invoke(args, user)) {
 				user.println("I don't know how to '%s'", commandLine);
+			} else {
+				userManager.save(user);
 			}
 		}
 

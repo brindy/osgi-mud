@@ -17,10 +17,13 @@ import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudPlace.AbstractListener;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
+import com.brindysoft.necronomud.User;
 import com.brindysoft.necronomud.World;
 import com.brindysoft.necronomud.ai.AiTicker.Heart;
 import com.brindysoft.necronomud.objects.Bullfrog;
 import com.brindysoft.necronomud.objects.Bullfrog.UserData;
+
+// TODO why doesn't this get activated??
 
 @Component(immediate = true)
 public class BullfrogAi extends AbstractListener implements Heart {
@@ -108,7 +111,8 @@ public class BullfrogAi extends AbstractListener implements Heart {
 		users--;
 	}
 
-	public void examinedBy(Bullfrog bullfrog, MudUser user) {
+	public void examinedBy(Bullfrog bullfrog, MudUser mudUser) {
+		User user = (User) mudUser;
 		UserData data = bullfrog.getUserData(user.getName());
 
 		switch (data.examineCount) {
@@ -121,6 +125,12 @@ public class BullfrogAi extends AbstractListener implements Heart {
 		default:
 			user.println("The bullfrog appears to squint, and then its long, strangely tentacle like tongue "
 					+ "flicks from its mouth, narrowly missing your eye.  It looks annoyed.");
+
+			if (!user.getPropertyAsBoolean("bullfrog.tongue")) {
+				user.setProperty("bullfrog.tongue", true);
+				user.incInsanity(1);
+			}
+
 			move(bullfrog);
 			break;
 		}

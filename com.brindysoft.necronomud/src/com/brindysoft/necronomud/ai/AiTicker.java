@@ -25,7 +25,7 @@ public class AiTicker implements Runnable, UncaughtExceptionHandler {
 		this.logger = logger;
 	}
 
-	@Reference(optional = true, multiple = true, dynamic = true)
+	@Reference(multiple = true)
 	public void addHeart(Heart heart) {
 		logger.debug("%s#addHeart(%s) - IN, hearts = %s", getClass().getSimpleName(), heart, hearts);
 		hearts.put(heart, 0L);
