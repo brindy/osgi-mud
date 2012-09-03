@@ -22,7 +22,7 @@ import aQute.bnd.annotation.component.Reference;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.api.MudSocketHandler;
 
-@Component(immediate = true, provide = EventHandler.class, properties = "event.topics=" + ExceptionEvent.TOPIC)
+@Component(immediate = true, properties = { "event.topics=" + ExceptionEvent.TOPIC, "spawn=true", "port=20128" })
 public class MudServer implements Runnable, EventHandler {
 
 	private final Map<MudSocketHandler, ComponentInstance> socketHandlers = new HashMap<MudSocketHandler, ComponentInstance>();
@@ -45,18 +45,17 @@ public class MudServer implements Runnable, EventHandler {
 	}
 
 	@Activate
-	public void start() throws Exception {
-		logger.debug("MudServer#start() - IN");
+	public void start(Map<String, String> properties) throws Exception {
+		logger.debug("%s#start() - IN", getClass().getSimpleName());
 		socketHandlers.clear();
-		serverSocket = new ServerSocket(20128);
-		thread = new Thread(this);
-		thread.start();
-		logger.debug("MudServer#start() - OUT");
+		serverSocket = new ServerSocket(Integer.parseInt(properties.get("port")));
+		logger.debug("%s#start() - OUT", getClass().getSimpleName());
 	}
 
 	@Override
 	public void run() {
-		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#run() IN");
+		logger.debug("%s(" + Thread.currentThread().getName() + ")#run() IN", getClass().getSimpleName());
+		thread = Thread.currentThread();
 
 		while (null != thread) {
 
@@ -80,7 +79,7 @@ public class MudServer implements Runnable, EventHandler {
 
 		}
 
-		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#run() OUT");
+		logger.debug("%s(" + Thread.currentThread().getName() + ")#run() OUT", getClass().getSimpleName());
 	}
 
 	@Deactivate

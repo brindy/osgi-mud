@@ -73,8 +73,6 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 			socket = (Socket) properties.get(SOCKET_PROPERTY);
 			inputStream = new BufferedInputStream(socket.getInputStream());
 			outputStream = socket.getOutputStream();
-			// thread = new Thread(this);
-			// thread.start();
 		} catch (IOException e) {
 			ExceptionEvent.postEvent(eventAdmin, e, this);
 		}
