@@ -10,7 +10,7 @@ public interface MudWorld {
 	 * @param user
 	 *            the user that is being added to the world or has reconnected.
 	 */
-	void addUser(MudUser user);
+	void connectUser(MudUser user);
 
 	/**
 	 * Find the place where the user is currently at.
@@ -28,5 +28,13 @@ public interface MudWorld {
 	 *            the objects that changed
 	 */
 	void save(Object... objects);
+
+	/**
+	 * The user has disconnected from the world.
+	 * 
+	 * @param user
+	 *            the user
+	 */
+	void disconnectUser(MudUser user);
 
 }

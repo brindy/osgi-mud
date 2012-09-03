@@ -54,4 +54,9 @@ public class Db4oDatabase implements Database {
 		db.rollback();
 	}
 
+	@Override
+	public void activate(Object o, int depth) {
+		db.activate(o, depth);
+	}
+
 }

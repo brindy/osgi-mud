@@ -82,7 +82,9 @@ public class UserManager implements MudUserManager {
 			return null;
 		}
 
-		return results.next();
+		MudUser result = results.next();
+		db.activate(result, Integer.MAX_VALUE);
+		return result;
 	}
 
 	public Iterable<User> allUsers() {
@@ -91,6 +93,7 @@ public class UserManager implements MudUserManager {
 
 	@Override
 	public void save(MudUser user) {
+		logger.debug("Saving user %s", user.getName());
 		db.store(user);
 		db.commit();
 	}

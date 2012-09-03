@@ -106,7 +106,7 @@ public class Db4oContainerManager implements DiagnosticListener {
 
 	@Override
 	public void onDiagnostic(Diagnostic diag) {
-		logger.debug("%s#onDiagnostic(%s)", getClass().getSimpleName(), diag);
+		// logger.debug("%s#onDiagnostic(%s)", getClass().getSimpleName(), diag);
 	}
 
 	private ObjectContainer openContainer(Bundle bundle, URI uri, Properties properties) {

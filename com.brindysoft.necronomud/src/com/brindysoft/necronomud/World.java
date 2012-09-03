@@ -36,7 +36,7 @@ public class World implements MudWorld {
 
 	private MudPlace startingPlace;
 
-	@Reference(optional = false, multiple = true, target = "(world=necro)")
+	@Reference(multiple = true, target = "(world=necro)")
 	public void addPlaceProvider(MudPlaceProvider provider) {
 		providers.add(provider);
 	}
@@ -80,14 +80,19 @@ public class World implements MudWorld {
 
 		if (null == startingPlace) {
 			logger.error("%s#start() No place with tag '0001'", getClass().getSimpleName());
-			throw new RuntimeException("No place with tag '0001'");
+			// throw new RuntimeException("No place with tag '0001'");
 		}
 
 		// make connections
 		for (MudPlaceProvider provider : providers) {
 			for (MudPlaceProvider.Connection connection : provider.getConnections()) {
 				Place destination = (Place) tags.get(connection.connectedTo);
-				destination.connect((Place) connection.place, connection.fromDirection, connection.toDirection);
+				if (null != destination) {
+					destination.connect((Place) connection.place, connection.fromDirection, connection.toDirection);
+				} else {
+					logger.info("%s#start() - no destination called [%s]", getClass().getSimpleName(),
+							connection.connectedTo);
+				}
 			}
 		}
 
@@ -102,7 +107,7 @@ public class World implements MudWorld {
 	}
 
 	@Override
-	public void addUser(MudUser user) {
+	public void connectUser(MudUser user) {
 
 		MudPlace place = findPlaceContaining(user);
 		if (null == place) {
@@ -129,6 +134,15 @@ public class World implements MudWorld {
 			db.store(o);
 		}
 		db.commit();
+	}
+
+	@Override
+	public void disconnectUser(MudUser mudUser) {
+		User user = (User) mudUser;
+		Place place = (Place) findPlaceByTag(user.getPlaceTag());
+		if (null != place) {
+			place.disconnectUser(user);
+		}
 	}
 
 	static class FindPlaceContainingUserPredicate implements QueryPredicate<MudPlace> {

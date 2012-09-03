@@ -6,7 +6,7 @@ import aQute.bnd.annotation.component.Component;
 import com.brindysoft.mud.mpi.MudPlaceProvider;
 import com.brindysoft.necronomud.Place;
 
-@Component(immediate = true, provide = MudPlaceProvider.class, properties = "world=necro")
+@Component(provide = MudPlaceProvider.class, properties = "world=necro")
 public class PottersPondCreek extends AbstractPlaceProvider {
 
 	@Activate

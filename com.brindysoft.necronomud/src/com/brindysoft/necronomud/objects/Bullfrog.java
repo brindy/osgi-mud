@@ -36,7 +36,7 @@ public class Bullfrog implements MudObject, MudObject.Examinable, MudObject.List
 	public String getListName() {
 		return "A bullfrog";
 	}
-
+	
 	@Override
 	public String getSynonymFor(String string) {
 		return synonyms.get(string);

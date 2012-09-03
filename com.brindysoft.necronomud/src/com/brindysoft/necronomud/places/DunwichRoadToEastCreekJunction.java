@@ -7,7 +7,7 @@ import com.brindysoft.mud.mpi.MudPlaceProvider;
 import com.brindysoft.necronomud.Place;
 import com.brindysoft.necronomud.objects.BusStop;
 
-@Component(immediate = true, provide = MudPlaceProvider.class, properties = "world=necro")
+@Component(provide = MudPlaceProvider.class, properties = "world=necro")
 public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 
 	@Activate

@@ -28,7 +28,7 @@ import com.brindysoft.mud.api.MudSocketHandler;
 import com.brindysoft.mud.mpi.MudAuthenticator;
 import com.brindysoft.mud.mpi.MudUser;
 
-@Component(factory = DefaultMudSocketHandler.FACTORY)
+@Component(factory = DefaultMudSocketHandler.FACTORY, provide = { MudSocketHandler.class, Runnable.class }, properties = { "spawn=true" })
 public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 	public static final String FACTORY = "com.brindysoft.mud.core.SocketHandler";
@@ -68,36 +68,42 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 
 	@Activate
 	public void activate(Map<String, Object> properties) {
-		logger.debug("%s(%s)#run() IN", getClass().getSimpleName(), Thread.currentThread().getName());
+		logger.debug("%s(%s)#activate() IN", getClass().getSimpleName(), Thread.currentThread().getName());
 		try {
 			socket = (Socket) properties.get(SOCKET_PROPERTY);
 			inputStream = new BufferedInputStream(socket.getInputStream());
 			outputStream = socket.getOutputStream();
-			thread = new Thread(this);
-			thread.start();
+			// thread = new Thread(this);
+			// thread.start();
 		} catch (IOException e) {
 			ExceptionEvent.postEvent(eventAdmin, e, this);
 		}
-		logger.debug("%s(%s)#run() OUT", getClass().getSimpleName(), Thread.currentThread().getName());
+		logger.debug("%s(%s)#activate() OUT", getClass().getSimpleName(), Thread.currentThread().getName());
 	}
 
 	@Override
 	public void run() {
-		logger.debug("DefaultSocketHandler(%s)#run() IN", getClass().getSimpleName(), Thread.currentThread().getName());
+		logger.debug("%s(%s)#run() IN", getClass().getSimpleName(), Thread.currentThread().getName());
+		thread = Thread.currentThread();
 
+		MudUser user = null;
 		try {
 			beginTerminalNegotiation();
 			println("");
 
-			MudUser user = authenticator.authenticate(this);
+			user = authenticator.authenticate(this);
 			if (null == user) {
 				throw new Exception("Unable to authenticate user");
 			}
 
-			user.attachToSocket(this);
+			user.setSocketHandler(this);
 			engine.run(user);
 		} catch (Exception e) {
 			ExceptionEvent.postEvent(eventAdmin, e, this);
+		} finally {
+			if (null != user) {
+				user.setSocketHandler(null);
+			}
 		}
 
 		logger.debug("%s(%s)#run() OUT", getClass().getSimpleName(), Thread.currentThread().getName());

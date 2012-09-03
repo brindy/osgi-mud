@@ -3,6 +3,7 @@ package com.brindysoft.mud.core.internal;
 import java.util.HashMap;
 import java.util.Map;
 
+import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
@@ -32,9 +33,6 @@ public class DefaultMudCommandRegistry implements MudCommandRegistry {
 
 	@Reference(optional = true, multiple = true)
 	public void addCommand(MudCommand command) {
-		if (null != logger) {
-			logger.debug("DefaultMudCommandRegistry#addCommand(%s)", command);
-		}
 		for (String verb : command.getVerbs()) {
 			if (null != commands.put(verb, command)) {
 				throw new RuntimeException("Command already registered for " + verb);
@@ -46,6 +44,11 @@ public class DefaultMudCommandRegistry implements MudCommandRegistry {
 		for (String verb : command.getVerbs()) {
 			commands.remove(verb);
 		}
+	}
+
+	@Activate
+	public void start() {
+		logger.debug("%s#start()", getClass().getName());
 	}
 
 	@Override

@@ -159,6 +159,23 @@ public abstract class AbstractMudPlace implements MudPlace {
 		users.remove(user);
 		userNames.remove(user.getName());
 		user.setPlaceTag(null);
+
+		synchronized (listeners) {
+			for (Listener listener : listeners) {
+				listener.onUserRemoved(this, user);
+			}
+		}
+
+	}
+
+	@Override
+	public void disconnectUser(MudUser user) {
+		synchronized (listeners) {
+			for (Listener listener : listeners) {
+				listener.onUserDisconnected(this, user);
+			}
+		}
+
 	}
 
 	@Override

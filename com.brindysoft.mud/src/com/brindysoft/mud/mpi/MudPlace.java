@@ -63,6 +63,14 @@ public interface MudPlace {
 	void removeUser(MudUser user);
 
 	/**
+	 * The user has disconnected.
+	 * 
+	 * @param user
+	 *            the user
+	 */
+	void disconnectUser(MudUser user);
+
+	/**
 	 * Broadcast a message to all users in the place.
 	 * 
 	 * @param message
@@ -183,21 +191,32 @@ public interface MudPlace {
 		void onUserLeaves(MudPlace place, MudUser user, String toDirection);
 
 		void onUserRemoved(MudPlace place, MudUser user);
+
+		void onUserDisconnected(MudPlace place, MudUser user);
 	}
 
 	public static abstract class AbstractListener implements Listener {
 
+		@Override
 		public void onUserArrives(MudPlace place, MudUser user, String heading, String from) {
 		}
 
+		@Override
 		public void onUserAdded(MudPlace place, MudUser user) {
 		}
 
+		@Override
 		public void onUserLeaves(MudPlace place, MudUser user, String toDirection) {
 		}
 
+		@Override
 		public void onUserRemoved(MudPlace place, MudUser user) {
 		}
+
+		@Override
+		public void onUserDisconnected(MudPlace place, MudUser user) {
+		}
+
 	}
 
 }

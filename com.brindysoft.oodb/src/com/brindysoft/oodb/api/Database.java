@@ -15,5 +15,7 @@ public interface Database {
 	void commit();
 
 	void rollback();
+	
+	void activate(Object o, int depth);
 
 }

@@ -16,7 +16,7 @@ public abstract class AbstractMudUser implements MudUser {
 	protected String name;
 
 	@Override
-	public void attachToSocket(MudSocketHandler socket) {
+	public void setSocketHandler(MudSocketHandler socket) {
 	
 		if (this.socket != null) {
 			this.socket.close();

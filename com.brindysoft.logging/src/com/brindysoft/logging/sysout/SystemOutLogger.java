@@ -8,7 +8,7 @@ import com.brindysoft.logging.api.Logger;
 
 @Component
 public class SystemOutLogger implements Logger {
-
+	
 	@Override
 	public void debug(String message, Object... args) {
 		log("debug", null, message, args);

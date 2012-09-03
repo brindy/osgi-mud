@@ -62,32 +62,36 @@ public class DefaultMudEngine implements MudEngine {
 	public void run(MudUser user) throws IOException {
 		logger.debug("%s#run() - IN", getClass().getSimpleName());
 
-		world.addUser(user);
-		lookCommand.invoke(null, user);
+		world.connectUser(user);
+		try {
+			lookCommand.invoke(null, user);
 
-		// start reading commands
-		while (true) {
-			user.println("");
-			user.print("{text:blue}%s{text} > ", user.getName());
-			String commandLine = user.readLine();
-			if (null == commandLine) {
-				break;
+			// start reading commands
+			while (true) {
+				user.println("");
+				user.print("{text:blue}%s{text} > ", user.getName());
+				String commandLine = user.readLine();
+				if (null == commandLine) {
+					break;
+				}
+
+				commandLine = commandLine.trim();
+				if (commandLine.length() == 0) {
+					continue;
+				}
+
+				String[] args = commandLine.split("\\s+");
+				logger.debug("%s#run() args : %s", getClass().getSimpleName(), Arrays.asList(args));
+
+				MudCommand command = commandRegistry.find(args[0], user);
+				if (null == command || !command.invoke(args, user)) {
+					user.println("I don't know how to '%s'", commandLine);
+				} else {
+					userManager.save(user);
+				}
 			}
-
-			commandLine = commandLine.trim();
-			if (commandLine.length() == 0) {
-				continue;
-			}
-
-			String[] args = commandLine.split("\\s+");
-			logger.debug("%s#run() args : %s", getClass().getSimpleName(), Arrays.asList(args));
-
-			MudCommand command = commandRegistry.find(args[0], user);
-			if (null == command || !command.invoke(args, user)) {
-				user.println("I don't know how to '%s'", commandLine);
-			} else {
-				userManager.save(user);
-			}
+		} finally {
+			world.disconnectUser(user);
 		}
 
 		logger.debug("%s#run() - OUT", getClass().getSimpleName());

@@ -5,7 +5,7 @@ import com.brindysoft.mud.api.MudSocketHandler;
 
 public interface MudUser extends MudIo {
 
-	void attachToSocket(MudSocketHandler socket);
+	void setSocketHandler(MudSocketHandler socket);
 
 	boolean isAttached();
 

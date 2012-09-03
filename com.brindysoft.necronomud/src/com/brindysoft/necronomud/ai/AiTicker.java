@@ -1,6 +1,5 @@
 package com.brindysoft.necronomud.ai;
 
-import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,13 +9,14 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
+import com.brindysoft.necronomud.Tickable;
 
-@Component(immediate = true)
-public class AiTicker implements Runnable, UncaughtExceptionHandler {
+@Component(immediate = true, properties = { "spawn=true" })
+public class AiTicker implements Runnable {
 
 	private Logger logger;
 
-	private Map<Heart, Long> hearts = new HashMap<Heart, Long>();
+	private Map<Tickable, Long> hearts = new HashMap<Tickable, Long>();
 
 	private Thread thread;
 
@@ -25,33 +25,33 @@ public class AiTicker implements Runnable, UncaughtExceptionHandler {
 		this.logger = logger;
 	}
 
-	@Reference(multiple = true)
-	public void addHeart(Heart heart) {
-		logger.debug("%s#addHeart(%s) - IN, hearts = %s", getClass().getSimpleName(), heart, hearts);
+	@Reference(optional = true, multiple = true, dynamic = true)
+	public void add(Tickable heart) {
 		hearts.put(heart, 0L);
 	}
 
-	public void removeHeart(Heart heart) {
-		logger.debug("%s#removeHeart(%s) - IN, hearts = %s", getClass().getSimpleName(), heart, hearts);
+	public void remove(Tickable heart) {
 		hearts.remove(heart);
 	}
 
 	@Activate
 	public void start() {
 		logger.debug("%s#start() - IN, hearts = %s", getClass().getSimpleName(), hearts);
-		thread = new Thread(this);
-		thread.setUncaughtExceptionHandler(this);
-		thread.start();
+		// thread = new Thread(this);
+		// thread.setUncaughtExceptionHandler(this);
+		// thread.start();
 		logger.debug("%s#start() - OUT", getClass().getSimpleName());
 	}
 
 	@Override
 	public void run() {
-		logger.debug("%s#run() - IN", getClass().getSimpleName());
+		logger.debug("%s#run(%s) - IN", getClass().getSimpleName(), Thread.currentThread());
+
+		thread = Thread.currentThread();
 
 		while (null != thread) {
 			long time = System.currentTimeMillis();
-			for (Map.Entry<Heart, Long> entry : hearts.entrySet()) {
+			for (Map.Entry<Tickable, Long> entry : hearts.entrySet()) {
 				if (time > entry.getValue()) {
 					entry.getKey().tick();
 					entry.setValue(entry.getKey().delay() + System.currentTimeMillis());
@@ -76,19 +76,6 @@ public class AiTicker implements Runnable, UncaughtExceptionHandler {
 		thread.interrupt();
 
 		logger.debug("%s#stop() - OUT", getClass().getSimpleName());
-	}
-
-	@Override
-	public void uncaughtException(Thread thread, Throwable throwable) {
-		logger.error(throwable, "%s#uncaughtException(%s, %s) - IN", getClass().getSimpleName(), thread, throwable);
-	}
-
-	static interface Heart {
-
-		long delay();
-
-		void tick();
-
 	}
 
 }

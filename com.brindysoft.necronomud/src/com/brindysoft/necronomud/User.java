@@ -12,7 +12,7 @@ public class User extends AbstractMudUser {
 
 	public void incInsanity(int by) {
 		insanity += by;
-		println("You gain %s points of insanity.", insanity);
+		println("You gain %s points of insanity.", by);
 	}
 
 	@Override

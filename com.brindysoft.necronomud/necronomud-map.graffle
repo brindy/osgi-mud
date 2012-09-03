@@ -3280,15 +3280,15 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{453.0973470447226, 885.84071170267055}, {664.60177271598957, 679.64602056708384}}</string>
+		<string>{{140.90909167262151, 693.18182193789596}, {853.40909553337701, 872.72727745623627}}</string>
 		<key>Zoom</key>
-		<real>1.1299999952316284</real>
+		<real>0.87999999523162842</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Detail</string>
-				<real>1.1299999952316284</real>
-				<real>1.059999942779541</real>
+				<real>0.87999999523162842</real>
+				<real>0.82999998331069946</real>
 			</array>
 			<array>
 				<string>Big Picture</string>

@@ -17,16 +17,16 @@ import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudPlace.AbstractListener;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
+import com.brindysoft.necronomud.Tickable;
 import com.brindysoft.necronomud.User;
 import com.brindysoft.necronomud.World;
-import com.brindysoft.necronomud.ai.AiTicker.Heart;
 import com.brindysoft.necronomud.objects.Bullfrog;
 import com.brindysoft.necronomud.objects.Bullfrog.UserData;
 
 // TODO why doesn't this get activated??
 
-@Component(immediate = true)
-public class BullfrogAi extends AbstractListener implements Heart {
+@Component
+public class BullfrogAi extends AbstractListener implements Tickable {
 
 	private Set<Bullfrog> bullfrogs = new HashSet<Bullfrog>();
 
@@ -70,7 +70,15 @@ public class BullfrogAi extends AbstractListener implements Heart {
 
 	@Deactivate
 	public void stop() {
-		logger.debug("%s#stop()", getClass().getSimpleName());
+		logger.debug("%s#stop() - IN", getClass().getSimpleName());
+
+		for (MudPlace place : patrolRoute) {
+			for (Bullfrog frog : bullfrogs) {
+				place.removeObject(frog);
+			}
+		}
+
+		logger.debug("%s#stop() - OUT", getClass().getSimpleName());
 	}
 
 	@Override
@@ -83,6 +91,7 @@ public class BullfrogAi extends AbstractListener implements Heart {
 		long time = System.currentTimeMillis();
 
 		synchronized (bullfrogs) {
+			logger.debug("%s#tick()", getClass().getName());
 			for (Bullfrog frog : bullfrogs) {
 				for (UserData data : new HashSet<UserData>(frog.getAllUserData())) {
 					if (time - data.lastInteractionTime > 30000) {
@@ -106,8 +115,14 @@ public class BullfrogAi extends AbstractListener implements Heart {
 	}
 
 	@Override
-	public void onUserLeaves(MudPlace place, MudUser user, String toDirection) {
-		logger.debug("%s#onUserLeaves() %s", getClass().getSimpleName(), user.getName());
+	public void onUserRemoved(MudPlace place, MudUser user) {
+		logger.debug("%s#onUserRemoved() %s", getClass().getSimpleName(), user.getName());
+		users--;
+	}
+	
+	@Override
+	public void onUserDisconnected(MudPlace place, MudUser user) {
+		logger.debug("%s#onUserDisconnected() %s", getClass().getSimpleName(), user.getName());
 		users--;
 	}
 
@@ -139,10 +154,12 @@ public class BullfrogAi extends AbstractListener implements Heart {
 	}
 
 	private void spawn() {
-		Collections.shuffle(patrolRoute);
-		MudPlace current = patrolRoute.get(0);
-		current.addObject(new Bullfrog(this));
-		current.broadcast("A bullfrog emerges from the pond.  Something about it isn't quite right.");
+		if (patrolRoute.size() > 0) {
+			Collections.shuffle(patrolRoute);
+			MudPlace current = patrolRoute.get(0);
+			current.addObject(new Bullfrog(this));
+			current.broadcast("A bullfrog emerges from the pond.  Something about it isn't quite right.");
+		}
 	}
 
 	private void move(Bullfrog bullfrog) {
