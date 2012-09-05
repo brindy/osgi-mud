@@ -33,8 +33,6 @@ public class MapGraph {
 
 	public boolean contains(int x, int y) {
 		String key = x + "," + y;
-		System.out.println("*** contains? " + key);
-		
 		return places.containsKey(key);
 	}
 
@@ -45,7 +43,7 @@ public class MapGraph {
 		places.clear();
 		list.clear();
 		for (MapNode node : nodes) {
-			if (node.x == x) {
+			if ((xMod < 0 && node.x <= x) || (xMod > 0 && node.x >= x)) {
 				node.x += xMod;
 			}
 			add(node);
@@ -92,7 +90,7 @@ public class MapGraph {
 			node.x += xMod;
 			node.y += yMod;
 		}
-		
+
 	}
 
 	public MapNode find(MudPlace place) {

@@ -32,6 +32,7 @@ public class SvgModel {
 	public static class TextElement extends Element {
 
 		private String text;
+		private List<Setter> setters = new LinkedList<Setter>();
 
 		public TextElement(String text) {
 			super("text");
@@ -42,9 +43,39 @@ public class SvgModel {
 		public void render(PrintWriter out) {
 			out.println("<text ");
 			for (Map.Entry<String, String> entry : attributes.entrySet()) {
-				out.println("\t" + entry.getKey() + "=\"" + entry.getValue() + "\"");
+				out.println("\t" + entry.getKey() + "=\"" + entry.getValue() + "\" ");
 			}
-			out.println(">" + text + "</text>");
+			out.println(">" + text);
+
+			for (Setter setter : setters) {
+				out.println("<set attributeName=\"" + setter.attributeName + "\" from=\"" + setter.from + "\" to=\""
+						+ setter.to + "\" begin=\"" + setter.begin + "\" end=\"" + setter.end + "\" />");
+			}
+
+			out.println("</text>");
+		}
+
+		public void addSetter(String attributeName, String from, String to, String begin, String end) {
+			setters.add(new Setter(attributeName, from, to, begin, end));
+		}
+
+		static class Setter {
+
+			final String attributeName;
+			final String from;
+			final String to;
+			final String begin;
+			final String end;
+
+			public Setter(String attributeName, String from, String to, String begin, String end) {
+				super();
+				this.attributeName = attributeName;
+				this.from = from;
+				this.to = to;
+				this.begin = begin;
+				this.end = end;
+			}
+
 		}
 
 	}
@@ -93,10 +124,25 @@ public class SvgModel {
 	}
 
 	public void writeTo(OutputStream stream) {
+
+		List<Element> sorted = new LinkedList<SvgModel.Element>();
+
+		for (Element e : list) {
+			if (!(e instanceof TextElement)) {
+				sorted.add(e);
+			}
+		}
+
+		for (Element e : list) {
+			if ((e instanceof TextElement)) {
+				sorted.add(e);
+			}
+		}
+
 		PrintWriter out = new PrintWriter(stream);
 		out.println("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" + width + "\" height=\"" + height + "\">");
 
-		for (Element e : list) {
+		for (Element e : sorted) {
 			e.render(out);
 		}
 

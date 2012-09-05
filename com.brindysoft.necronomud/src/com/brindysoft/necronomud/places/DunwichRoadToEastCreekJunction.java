@@ -27,7 +27,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 		southOfTheBridge.connect(aBridge, "north", "south");
 		aBridge.connect(northOfTheBridge, "north", "south");
 		connect(northOfTheBridge, eastCreekJunction, "Dunwich Road, between the bridge and East Creek Road junction.",
-				"wnnw");
+				"wnw");
 
 	}
 

@@ -23,10 +23,10 @@ public class PottersPondCreek extends AbstractPlaceProvider {
 		endOfDirtTrack.connect(southEastPond, "north", "south");
 		
 		connect(startOfDirtTrack, endOfDirtTrack, "A dirt track between the bridge and Potter's Pond Creek.",
-				"eesesennwn");
-
+				"esesennwn");
+		
 		connections.add(new Connection(startOfDirtTrack, "0004", "east", "west"));
-
+		
 	}
 
 	private Place createEndOfDirtTrack() {

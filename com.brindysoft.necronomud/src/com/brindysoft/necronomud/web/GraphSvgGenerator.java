@@ -43,6 +43,11 @@ public class GraphSvgGenerator {
 			boundsY = Math.max(y, boundsY);
 
 			Element e = new SimpleElement("rect");
+
+			if (node.place.getTag() != null) {
+				e.setAttribute("id", "tag" + node.place.getTag().replaceAll("-", ""));
+			}
+
 			e.setAttribute("fill", colorForProvider(colours, node));
 			e.setAttribute("stroke", "#000");
 			e.setAttribute("stroke-weight", "3");
@@ -53,13 +58,25 @@ public class GraphSvgGenerator {
 			e.setAttribute("y", y);
 			model.add(e);
 
-			if (node.place.getTag() != null && node.place.getTag().length() == 4) {
-				TextElement t = new TextElement(node.place.getTag());
-				t.setAttribute("x", x + 5);
-				t.setAttribute("y", y + (SIZE / 2) + 3);
-				t.setAttribute("class", "mud-label");
-				t.setAttribute("style", "font-family: tahoma;");
-				model.add(t);
+			if (node.place.getTag() != null) {
+
+				if (node.place.getTag().length() == 4) {
+					TextElement t = new TextElement(node.place.getTag());
+					t.setAttribute("x", x + 6);
+					t.setAttribute("y", y + (SIZE / 2) + 5);
+					t.setAttribute("class", "mud-label");
+					t.setAttribute("style", "font-family: tahoma;");
+					model.add(t);
+				}
+				
+				TextElement tip = new TextElement(node.place.getDescription(null));
+				tip.setAttribute("id", "tip" + node.place.getTag().replace("-", ""));
+				tip.setAttribute("x", 5);
+				tip.setAttribute("y", y + (SIZE / 2) + 15);
+				tip.setAttribute("visibility", "hidden");
+				tip.addSetter("visibility", "hidden", "visible", "tag" + node.place.getTag().replaceAll("-", "")
+						+ ".mouseover", "tag" + node.place.getTag().replaceAll("-", "") + ".mouseout");
+				model.add(tip);
 			}
 
 			addLinesForConnections(graph, connections, model, node, "north");
