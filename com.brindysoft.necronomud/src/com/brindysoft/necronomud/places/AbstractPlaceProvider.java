@@ -29,7 +29,7 @@ public class AbstractPlaceProvider implements MudPlaceProvider {
 
 		for (int i = 0; i < directions.length() - 1; i++) {
 			char direction = directions.charAt(i);
-			Place next = new Place();
+			Place next = new Place(this);
 			next.setTag(startTag + "-" + i + "-" + endTag);
 
 			next.setDescription(description);

@@ -1,5 +1,6 @@
 package com.brindysoft.necronomud;
 
+import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +17,9 @@ import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudPlaceProvider;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
+import com.brindysoft.necronomud.web.GraphSvgGenerator;
+import com.brindysoft.necronomud.web.MapGraph;
+import com.brindysoft.necronomud.web.MapGraphGenerator;
 import com.brindysoft.oodb.api.Database;
 import com.brindysoft.oodb.api.DatabaseService;
 import com.brindysoft.oodb.api.QueryPredicate;
@@ -96,6 +100,17 @@ public class World implements MudWorld {
 			}
 		}
 
+		if (null != startingPlace) {
+			try {
+				MapGraph graph = new MapGraphGenerator().generate(startingPlace);
+				graph.normalise();
+
+				new GraphSvgGenerator().generate(graph, 10, 10).writeTo(new FileOutputStream("world.svg"));
+			} catch (Exception e) {
+				logger.error(e, "%s#start() Error writing world.svg", getClass().getSimpleName());
+			}
+		}
+
 		logger.debug("%s#start() - OUT", getClass().getSimpleName());
 	}
 
@@ -161,7 +176,7 @@ public class World implements MudWorld {
 	}
 
 	public MudPlace findPlaceByTag(String tag) {
-		QueryResult<Place> result = db.queryByExample(new Place(tag, null));
+		QueryResult<Place> result = db.queryByExample(new Place(null, tag, null));
 		return result.size() > 0 ? result.get(0) : null;
 	}
 

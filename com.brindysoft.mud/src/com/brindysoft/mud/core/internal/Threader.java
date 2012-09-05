@@ -7,7 +7,7 @@ import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
 
-@Component(immediate = true)
+@Component(immediate = true, provide = {})
 public class Threader implements UncaughtExceptionHandler {
 
 	private Logger logger;

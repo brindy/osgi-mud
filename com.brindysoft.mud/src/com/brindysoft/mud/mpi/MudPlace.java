@@ -14,6 +14,13 @@ public interface MudPlace {
 	String getDescription(MudUser user);
 
 	/**
+	 * Get the provider of this place.
+	 * 
+	 * @return the provider of this place
+	 */
+	MudPlaceProvider getProvider();
+
+	/**
 	 * A unique id for this place.
 	 * 
 	 * @return a unique id for this place. MUST NOT be null

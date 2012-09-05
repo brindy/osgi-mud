@@ -8,5 +8,6 @@ Private-Package: com.brindysoft.necronomud,\
 	com.brindysoft.necronomud.ai,\
 	com.brindysoft.necronomud.commands,\
 	com.brindysoft.necronomud.objects,\
-	com.brindysoft.necronomud.places
+	com.brindysoft.necronomud.places,\
+	com.brindysoft.necronomud.web
 Service-Component: *

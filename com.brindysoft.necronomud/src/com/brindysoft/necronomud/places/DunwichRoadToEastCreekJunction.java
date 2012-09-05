@@ -32,7 +32,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 	}
 
 	private Place createSouthOfTheBridge() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0007");
 		place.setDescription("A dangerous looking, old covered bridge, crosses the creek to the north.  "
 				+ "The road to the Dunwich Turnoff heads south.");
@@ -41,7 +41,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 	}
 
 	private Place createBusStop() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0001");
 		place.setDescription("This is the bus stop at Dean's Corners.  "
 				+ "The main road to Aylesbury and Arkham runs east to west respectively.  ");
@@ -53,7 +53,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 	}
 
 	private Place createDunwichTurnOff() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0002");
 		place.setDescription("This is the Dunwich Turnoff.  "
 				+ "The main road to Aylesbury and Arkham runs east to west respectively.  "
@@ -63,7 +63,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 	}
 
 	private Place createBridgeBetweenDunwichAndTurnOff() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0003");
 		place.setDescription("This is a covered bridge made mainly of wooden planks.  "
 				+ "Dunwich Road continues to the north and south.  " + "A river flows east to west below the bridge.");
@@ -72,7 +72,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 	}
 
 	private Place createNorthOfTheBridge() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0004");
 		place.setDescription("The road to Dunwich continues west.  A dirt track heads east.");
 		places.add(place);
@@ -80,7 +80,7 @@ public class DunwichRoadToEastCreekJunction extends AbstractPlaceProvider {
 	}
 
 	private Place createEastCreekJunction() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0005");
 		place.setDescription("Dunwich Road turns sharply from the east to the north.  "
 				+ "East Creek Road leads off to the west.");

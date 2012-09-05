@@ -13,6 +13,8 @@ public abstract class AbstractMudPlace implements MudPlace {
 
 	protected transient Set<MudObject> objects;
 
+	protected final transient MudPlaceProvider provider;
+
 	protected Set<String> userNames;
 
 	protected Set<MudUser> users;
@@ -24,6 +26,15 @@ public abstract class AbstractMudPlace implements MudPlace {
 	protected String tag;
 
 	protected String description;
+
+	public AbstractMudPlace(MudPlaceProvider provider) {
+		this.provider = provider;
+	}
+
+	@Override
+	public MudPlaceProvider getProvider() {
+		return provider;
+	}
 
 	@Override
 	public String getDescription(MudUser user) {

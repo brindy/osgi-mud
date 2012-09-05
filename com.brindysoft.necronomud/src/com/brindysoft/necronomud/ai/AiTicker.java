@@ -36,11 +36,7 @@ public class AiTicker implements Runnable {
 
 	@Activate
 	public void start() {
-		logger.debug("%s#start() - IN, hearts = %s", getClass().getSimpleName(), hearts);
-		// thread = new Thread(this);
-		// thread.setUncaughtExceptionHandler(this);
-		// thread.start();
-		logger.debug("%s#start() - OUT", getClass().getSimpleName());
+		logger.debug("%s#start(), hearts = %s", getClass().getSimpleName(), hearts);
 	}
 
 	@Override

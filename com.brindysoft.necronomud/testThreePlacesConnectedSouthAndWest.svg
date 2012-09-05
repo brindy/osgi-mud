@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130">
+<line
+	stroke="#000"
+	y1="25"
+	y2="25"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="95"
+	y2="25"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="95"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#39a"
+	class="mud-place"
+	stroke-weight="3"
+	y="70"
+	x="70"
+/>
+<text 
+	y="95"
+	x="70"
+>0001</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#39a"
+	class="mud-place"
+	stroke-weight="3"
+	y="0"
+	x="70"
+/>
+<text 
+	y="25"
+	x="70"
+>0002</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#39a"
+	class="mud-place"
+	stroke-weight="3"
+	y="0"
+	x="0"
+/>
+<text 
+	y="25"
+	x="0"
+>0003</text>
+</svg>

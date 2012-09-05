@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-08-28 16:57:41 +0000</string>
+	<string>2012-09-05 17:46:24 +0000</string>
 	<key>Modifier</key>
 	<string>Christopher Brind</string>
 	<key>NotesVisible</key>
@@ -128,8 +128,8 @@
 					<integer>66</integer>
 					<key>Points</key>
 					<array>
-						<string>{313.5503236008268, 611.08350505176077}</string>
-						<string>{393.44249135534579, 605.20203715563616}</string>
+						<string>{313.55032066547665, 611.08043266534378}</string>
+						<string>{393.4424822620831, 605.19253444236608}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -161,8 +161,8 @@
 					<integer>65</integer>
 					<key>Points</key>
 					<array>
-						<string>{250.69534588588792, 575.80050820037593}</string>
-						<string>{218.96010917666919, 526.82329539795512}</string>
+						<string>{250.69534588588775, 575.80050820037593}</string>
+						<string>{218.96010917666879, 526.82329539795512}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -2256,8 +2256,8 @@
 					<integer>46</integer>
 					<key>Points</key>
 					<array>
-						<string>{443.53946879268398, 1135.8841323736526}</string>
-						<string>{757.45464726706973, 1135.8841323736526}</string>
+						<string>{443.53946879268392, 1135.8841323736526}</string>
+						<string>{757.45464726706962, 1135.8841323736526}</string>
 					</array>
 					<key>Style</key>
 					<dict>
@@ -3280,7 +3280,7 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{140.90909167262151, 693.18182193789596}, {853.40909553337701, 872.72727745623627}}</string>
+		<string>{{156.81818266791745, 693.18182193789607}, {853.4090955333769, 872.72727745623615}}</string>
 		<key>Zoom</key>
 		<real>0.87999999523162842</real>
 		<key>ZoomValues</key>

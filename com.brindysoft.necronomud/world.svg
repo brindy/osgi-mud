@@ -1,0 +1,592 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="1120">
+<line
+	stroke="#000"
+	y1="95"
+	y2="25"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="95"
+	y2="95"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="95"
+	y2="95"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="235"
+/>
+<line
+	stroke="#000"
+	y1="165"
+	y2="95"
+	class="mud-direction"
+	x2="235"
+	stroke-weight="5"
+	x1="235"
+/>
+<line
+	stroke="#000"
+	y1="235"
+	y2="165"
+	class="mud-direction"
+	x2="235"
+	stroke-weight="5"
+	x1="235"
+/>
+<line
+	stroke="#000"
+	y1="235"
+	y2="235"
+	class="mud-direction"
+	x2="235"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="235"
+	y2="235"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="235"
+	y2="235"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="305"
+	y2="235"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="375"
+	y2="305"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="375"
+	y2="375"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="375"
+	y2="375"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="445"
+	y2="375"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="445"
+	y2="445"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="445"
+	y2="445"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="515"
+	y2="445"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="585"
+	y2="515"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="655"
+	y2="585"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="25"
+/>
+<line
+	stroke="#000"
+	y1="655"
+	y2="655"
+	class="mud-direction"
+	x2="25"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="725"
+	y2="655"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="795"
+	y2="725"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="95"
+/>
+<line
+	stroke="#000"
+	y1="795"
+	y2="795"
+	class="mud-direction"
+	x2="95"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="865"
+	y2="795"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="935"
+	y2="865"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="1005"
+	y2="935"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="165"
+/>
+<line
+	stroke="#000"
+	y1="1005"
+	y2="1005"
+	class="mud-direction"
+	x2="165"
+	stroke-weight="5"
+	x1="235"
+/>
+<line
+	stroke="#000"
+	y1="1075"
+	y2="1005"
+	class="mud-direction"
+	x2="235"
+	stroke-weight="5"
+	x1="235"
+/>
+<line
+	stroke="#000"
+	y1="1075"
+	y2="1075"
+	class="mud-direction"
+	x2="235"
+	stroke-weight="5"
+	x1="165"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="1060"
+	x="150"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="1088"
+	x="155"
+>0001</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="1060"
+	x="220"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="1088"
+	x="225"
+>0002</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="990"
+	x="220"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="990"
+	x="150"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="920"
+	x="150"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="948"
+	x="155"
+>0007</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="850"
+	x="150"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="878"
+	x="155"
+>0003</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="780"
+	x="150"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="808"
+	x="155"
+>0004</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="780"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="710"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="640"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#cdc8b1"
+	class="mud-place"
+	stroke-weight="3"
+	y="640"
+	x="10"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="668"
+	x="15"
+>0005</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="570"
+	x="10"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="598"
+	x="15"
+>0009</text>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="500"
+	x="10"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="430"
+	x="10"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="430"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="430"
+	x="150"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="360"
+	x="150"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="360"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="360"
+	x="10"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="290"
+	x="10"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="220"
+	x="10"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="220"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="220"
+	x="150"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="220"
+	x="220"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="150"
+	x="220"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="80"
+	x="220"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="80"
+	x="150"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="80"
+	x="80"
+/>
+<rect
+	stroke="#000"
+	height="50"
+	width="50"
+	fill="#f0fff0"
+	class="mud-place"
+	stroke-weight="3"
+	y="10"
+	x="80"
+/>
+<text 
+	style="font-family: tahoma;"
+	class="mud-label"
+	y="38"
+	x="85"
+>0010</text>
+</svg>

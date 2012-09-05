@@ -12,12 +12,12 @@ public class EastCreekJunctionToDunwichBridge extends AbstractPlaceProvider {
 	@Activate
 	public void start() {
 
-		Place northOfJunction = new Place();
+		Place northOfJunction = new Place(this);
 		northOfJunction.setTag("0009");
 		northOfJunction.setDescription("East Creek Junction is to the south.  The road to Dunwich continues north.");
 		places.add(northOfJunction);
 
-		Place southOfDunwichBridge = new Place();
+		Place southOfDunwichBridge = new Place(this);
 		southOfDunwichBridge.setTag("0010");
 		southOfDunwichBridge
 				.setDescription("To the north is a dangerous looking, rackety old wooden bridge which crosses Miskatonic River in to Dunwich.  "

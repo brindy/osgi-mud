@@ -139,7 +139,7 @@ public class BullfrogAi extends AbstractListener implements Tickable {
 
 		default:
 			user.println("The bullfrog appears to squint, and then its long, strangely tentacle like tongue "
-					+ "flicks from its mouth, narrowly missing your eye.  It looks annoyed.");
+					+ "flicks from its mouth, narrowly missing your eye.  It looks really annoyed.");
 
 			if (!user.getPropertyAsBoolean("bullfrog.tongue")) {
 				user.setProperty("bullfrog.tongue", true);

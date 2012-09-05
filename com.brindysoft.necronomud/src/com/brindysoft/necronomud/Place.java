@@ -1,13 +1,16 @@
 package com.brindysoft.necronomud;
 
 import com.brindysoft.mud.mpi.AbstractMudPlace;
+import com.brindysoft.mud.mpi.MudPlaceProvider;
 
 public class Place extends AbstractMudPlace {
 
-	public Place() {
+	public Place(MudPlaceProvider provider) {
+		super(provider);
 	}
 
-	public Place(String tag, String description) {
+	public Place(MudPlaceProvider provider, String tag, String description) {
+		this(provider);
 		this.tag = tag;
 		this.description = description;
 	}

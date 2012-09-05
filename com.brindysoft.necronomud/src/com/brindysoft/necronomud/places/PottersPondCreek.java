@@ -14,14 +14,14 @@ public class PottersPondCreek extends AbstractPlaceProvider {
 
 		Place startOfDirtTrack = createStartOfDirtTrack();
 		Place endOfDirtTrack = createEndOfDirtTrack();
-		Place southEastPond = new Place("0011",
+		Place southEastPond = new Place(this, "0011",
 				"A path leads around Potter's Pond.  The sound of bullfrogs is almost deafening.");
 
 		connect(southEastPond, southEastPond,
 				"The path around Potter's Pond.  The sound of bullfrogs is almost deafening.", "wnes");
 
-		endOfDirtTrack.connect(southEastPond, "west", "east");
-
+		endOfDirtTrack.connect(southEastPond, "north", "south");
+		
 		connect(startOfDirtTrack, endOfDirtTrack, "A dirt track between the bridge and Potter's Pond Creek.",
 				"eesesennwn");
 
@@ -30,7 +30,7 @@ public class PottersPondCreek extends AbstractPlaceProvider {
 	}
 
 	private Place createEndOfDirtTrack() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0006");
 		place.setDescription("The dirt track to the south ends abruptly.  "
 				+ "The creek continues to flow north towards the sound of bullfrogs.");
@@ -39,7 +39,7 @@ public class PottersPondCreek extends AbstractPlaceProvider {
 	}
 
 	private Place createStartOfDirtTrack() {
-		Place place = new Place();
+		Place place = new Place(this);
 		place.setTag("0008");
 		place.setDescription("The start of a dirt track which heads east.  There is a road to the west.");
 		places.add(place);
