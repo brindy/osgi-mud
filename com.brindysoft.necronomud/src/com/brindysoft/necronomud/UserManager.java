@@ -8,6 +8,7 @@ import aQute.bnd.annotation.component.Reference;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudUserManager;
+import com.brindysoft.mud.utils.UsernameAndPasswordCredentials;
 import com.brindysoft.oodb.api.Database;
 import com.brindysoft.oodb.api.DatabaseService;
 import com.brindysoft.oodb.api.QueryResult;
@@ -48,8 +49,8 @@ public class UserManager implements MudUserManager {
 
 	@Override
 	public boolean checkPassword(MudUser user, String password) {
-		UserCredentials creds = new UserCredentials();
-		creds.setName(user.getName());
+		UsernameAndPasswordCredentials creds = new UsernameAndPasswordCredentials();
+		creds.setUsername(user.getName());
 		creds.setPassword(password);
 		return !db.queryByExample(creds).isEmpty();
 	}
@@ -59,8 +60,8 @@ public class UserManager implements MudUserManager {
 		User user = new User();
 		user.setName(username);
 
-		UserCredentials creds = new UserCredentials();
-		creds.setName(username);
+		UsernameAndPasswordCredentials creds = new UsernameAndPasswordCredentials();
+		creds.setUsername(username);
 		creds.setPassword(password);
 
 		db.store(user);
@@ -85,10 +86,6 @@ public class UserManager implements MudUserManager {
 		MudUser result = results.next();
 		db.activate(result, Integer.MAX_VALUE);
 		return result;
-	}
-
-	public Iterable<User> allUsers() {
-		return db.query(User.class);
 	}
 
 	@Override

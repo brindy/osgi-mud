@@ -31,7 +31,7 @@ public class Authenticator extends AbstractMudAuthenticator implements MudAuthen
 		logger.debug("%s#authenticate() - IN", getClass().getName());
 		socket.println("Welcome to {text:red}Necronomud{text} v2.");
 		socket.println("");
-		socket.println("Beware investigator!  "
+		socket.println("{text:bold}{text:red}Beware investigator!{text}  "
 				+ "What you find beyond may leave a permanent mark on your psyche!  You have been warned.");
 		logger.debug("%s#authenticate() - OUT", getClass().getName());
 		return super.authenticate(socket);

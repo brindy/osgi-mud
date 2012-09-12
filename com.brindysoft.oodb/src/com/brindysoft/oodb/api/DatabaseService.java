@@ -16,8 +16,6 @@ public interface DatabaseService {
 	 *            an appropriate configuration for this database
 	 * @return the database
 	 */
-	Database getDatabase(String name, Properties configuration);
-
 	Database getDatabase(String name);
 
 }

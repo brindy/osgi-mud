@@ -15,9 +15,9 @@ import aQute.bnd.annotation.component.Reference;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudPlace.AbstractListener;
+import com.brindysoft.mud.mpi.MudBackgroundTask;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
-import com.brindysoft.necronomud.Tickable;
 import com.brindysoft.necronomud.User;
 import com.brindysoft.necronomud.World;
 import com.brindysoft.necronomud.objects.Bullfrog;
@@ -26,7 +26,7 @@ import com.brindysoft.necronomud.objects.Bullfrog.UserData;
 // TODO why doesn't this get activated??
 
 @Component
-public class BullfrogAi extends AbstractListener implements Tickable {
+public class BullfrogAi extends AbstractListener implements MudBackgroundTask {
 
 	private Set<Bullfrog> bullfrogs = new HashSet<Bullfrog>();
 
@@ -105,7 +105,7 @@ public class BullfrogAi extends AbstractListener implements Tickable {
 
 	@Override
 	public long delay() {
-		return 5000;
+		return Integer.MAX_VALUE;
 	}
 
 	@Override

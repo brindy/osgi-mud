@@ -1,7 +1,5 @@
 package com.brindysoft.db4o;
 
-import java.util.Properties;
-
 import org.osgi.service.component.ComponentContext;
 
 import aQute.bnd.annotation.component.Activate;
@@ -41,11 +39,6 @@ public class DatabaseServiceFactory implements DatabaseService {
 	public Database getDatabase(String dbName) {
 		this.dbName = dbName;
 		return new Db4oDatabase(serverManager.getObjectContainer(ctx.getUsingBundle(), dbName));
-	}
-
-	@Override
-	public Database getDatabase(String name, Properties configuration) {
-		return new Db4oDatabase(serverManager.getObjectContainer(ctx.getUsingBundle(), dbName, configuration));
 	}
 
 	@Deactivate

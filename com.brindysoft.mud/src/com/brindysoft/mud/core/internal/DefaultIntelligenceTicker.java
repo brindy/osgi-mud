@@ -1,4 +1,4 @@
-package com.brindysoft.necronomud.ai;
+package com.brindysoft.mud.core.internal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,14 +9,14 @@ import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.logging.api.Logger;
-import com.brindysoft.necronomud.Tickable;
+import com.brindysoft.mud.mpi.MudBackgroundTask;
 
 @Component(immediate = true, properties = { "spawn=true" })
-public class AiTicker implements Runnable {
+public class DefaultIntelligenceTicker implements Runnable {
 
 	private Logger logger;
 
-	private Map<Tickable, Long> hearts = new HashMap<Tickable, Long>();
+	private Map<MudBackgroundTask, Long> tasks = new HashMap<MudBackgroundTask, Long>();
 
 	private Thread thread;
 
@@ -26,17 +26,17 @@ public class AiTicker implements Runnable {
 	}
 
 	@Reference(optional = true, multiple = true, dynamic = true)
-	public void add(Tickable heart) {
-		hearts.put(heart, 0L);
+	public void add(MudBackgroundTask heart) {
+		tasks.put(heart, 0L);
 	}
 
-	public void remove(Tickable heart) {
-		hearts.remove(heart);
+	public void remove(MudBackgroundTask heart) {
+		tasks.remove(heart);
 	}
 
 	@Activate
 	public void start() {
-		logger.debug("%s#start(), hearts = %s", getClass().getSimpleName(), hearts);
+		logger.debug("%s#start(), hearts = %s", getClass().getSimpleName(), tasks);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class AiTicker implements Runnable {
 
 		while (null != thread) {
 			long time = System.currentTimeMillis();
-			for (Map.Entry<Tickable, Long> entry : hearts.entrySet()) {
+			for (Map.Entry<MudBackgroundTask, Long> entry : tasks.entrySet()) {
 				if (time > entry.getValue()) {
 					entry.getKey().tick();
 					entry.setValue(entry.getKey().delay() + System.currentTimeMillis());
