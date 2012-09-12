@@ -1,6 +1,5 @@
 package com.brindysoft.oodb.api;
 
-import java.util.Properties;
 
 public interface DatabaseService {
 

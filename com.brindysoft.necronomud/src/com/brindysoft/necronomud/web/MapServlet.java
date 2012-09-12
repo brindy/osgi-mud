@@ -14,18 +14,17 @@ import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
 import com.brindysoft.mud.mpi.MudWorld;
-import com.brindysoft.necronomud.World;
 
 @Component
 public class MapServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private World world;
+	private MudWorld world;
 
 	@Reference
 	public void setWorld(MudWorld world) {
-		this.world = (World) world;
+		this.world = world;
 	}
 
 	@Reference(multiple = true, dynamic = true, optional = true)
