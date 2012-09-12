@@ -1,381 +1,219 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="490" height="1050">
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="560">
 <line
 	stroke="#000"
-	y1="95"
-	y2="25"
+	y1="175"
+	y2="175"
 	class="mud-direction"
-	x2="95"
+	x2="35"
 	stroke-weight="5"
-	x1="95"
+	x1="105"
 />
 <line
 	stroke="#000"
-	y1="95"
-	y2="95"
+	y1="245"
+	y2="175"
 	class="mud-direction"
-	x2="95"
+	x2="105"
 	stroke-weight="5"
-	x1="165"
+	x1="105"
 />
 <line
 	stroke="#000"
-	y1="95"
-	y2="95"
+	y1="35"
+	y2="105"
 	class="mud-direction"
-	x2="165"
+	x2="315"
 	stroke-weight="5"
-	x1="235"
+	x1="315"
 />
 <line
 	stroke="#000"
-	y1="165"
-	y2="95"
+	y1="35"
+	y2="35"
 	class="mud-direction"
-	x2="235"
+	x2="315"
 	stroke-weight="5"
-	x1="235"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="235"
-	y2="165"
+	y1="105"
+	y2="105"
 	class="mud-direction"
-	x2="235"
+	x2="315"
 	stroke-weight="5"
-	x1="235"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="235"
-	y2="235"
+	y1="105"
+	y2="35"
 	class="mud-direction"
-	x2="235"
+	x2="385"
 	stroke-weight="5"
-	x1="165"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="235"
-	y2="235"
+	y1="175"
+	y2="105"
 	class="mud-direction"
-	x2="165"
+	x2="385"
 	stroke-weight="5"
-	x1="95"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="235"
-	y2="235"
+	y1="245"
+	y2="175"
 	class="mud-direction"
-	x2="95"
+	x2="385"
 	stroke-weight="5"
-	x1="25"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="305"
-	y2="235"
+	y1="245"
+	y2="245"
 	class="mud-direction"
-	x2="25"
+	x2="385"
 	stroke-weight="5"
-	x1="25"
+	x1="455"
 />
 <line
 	stroke="#000"
-	y1="375"
-	y2="305"
+	y1="315"
+	y2="245"
 	class="mud-direction"
-	x2="25"
+	x2="455"
 	stroke-weight="5"
-	x1="25"
+	x1="455"
 />
 <line
 	stroke="#000"
-	y1="375"
-	y2="375"
+	y1="385"
+	y2="315"
 	class="mud-direction"
-	x2="25"
+	x2="455"
 	stroke-weight="5"
-	x1="95"
+	x1="455"
 />
 <line
 	stroke="#000"
-	y1="375"
-	y2="375"
+	y1="385"
+	y2="385"
 	class="mud-direction"
-	x2="95"
+	x2="455"
 	stroke-weight="5"
-	x1="165"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="445"
-	y2="375"
+	y1="315"
+	y2="385"
 	class="mud-direction"
-	x2="165"
+	x2="385"
 	stroke-weight="5"
-	x1="165"
+	x1="385"
 />
 <line
 	stroke="#000"
-	y1="445"
-	y2="445"
+	y1="315"
+	y2="315"
 	class="mud-direction"
-	x2="165"
+	x2="385"
 	stroke-weight="5"
-	x1="95"
+	x1="315"
 />
 <line
 	stroke="#000"
-	y1="445"
-	y2="445"
+	y1="245"
+	y2="315"
 	class="mud-direction"
-	x2="95"
+	x2="315"
 	stroke-weight="5"
-	x1="25"
+	x1="315"
 />
 <line
 	stroke="#000"
-	y1="515"
-	y2="445"
+	y1="245"
+	y2="245"
 	class="mud-direction"
-	x2="25"
+	x2="315"
 	stroke-weight="5"
-	x1="25"
+	x1="245"
 />
 <line
 	stroke="#000"
-	y1="585"
-	y2="515"
+	y1="245"
+	y2="245"
 	class="mud-direction"
-	x2="25"
+	x2="105"
 	stroke-weight="5"
-	x1="25"
+	x1="175"
 />
 <line
 	stroke="#000"
-	y1="655"
-	y2="585"
+	y1="245"
+	y2="245"
 	class="mud-direction"
-	x2="25"
+	x2="245"
 	stroke-weight="5"
-	x1="25"
+	x1="175"
 />
 <line
 	stroke="#000"
-	y1="655"
-	y2="655"
+	y1="315"
+	y2="245"
 	class="mud-direction"
-	x2="25"
+	x2="175"
 	stroke-weight="5"
-	x1="95"
+	x1="175"
 />
 <line
 	stroke="#000"
-	y1="725"
-	y2="655"
+	y1="385"
+	y2="315"
 	class="mud-direction"
-	x2="95"
+	x2="175"
 	stroke-weight="5"
-	x1="95"
+	x1="175"
 />
 <line
 	stroke="#000"
-	y1="515"
-	y2="585"
+	y1="455"
+	y2="385"
 	class="mud-direction"
-	x2="305"
+	x2="175"
 	stroke-weight="5"
-	x1="305"
+	x1="175"
 />
 <line
 	stroke="#000"
-	y1="515"
-	y2="515"
+	y1="455"
+	y2="455"
 	class="mud-direction"
-	x2="305"
+	x2="175"
 	stroke-weight="5"
-	x1="375"
+	x1="245"
 />
 <line
 	stroke="#000"
-	y1="585"
-	y2="585"
+	y1="525"
+	y2="455"
 	class="mud-direction"
-	x2="305"
+	x2="245"
 	stroke-weight="5"
-	x1="375"
+	x1="245"
 />
 <line
 	stroke="#000"
-	y1="585"
-	y2="515"
+	y1="525"
+	y2="525"
 	class="mud-direction"
-	x2="375"
+	x2="245"
 	stroke-weight="5"
-	x1="375"
-/>
-<line
-	stroke="#000"
-	y1="655"
-	y2="585"
-	class="mud-direction"
-	x2="375"
-	stroke-weight="5"
-	x1="375"
-/>
-<line
-	stroke="#000"
-	y1="725"
-	y2="655"
-	class="mud-direction"
-	x2="375"
-	stroke-weight="5"
-	x1="375"
-/>
-<line
-	stroke="#000"
-	y1="725"
-	y2="725"
-	class="mud-direction"
-	x2="375"
-	stroke-weight="5"
-	x1="445"
-/>
-<line
-	stroke="#000"
-	y1="795"
-	y2="725"
-	class="mud-direction"
-	x2="445"
-	stroke-weight="5"
-	x1="445"
-/>
-<line
-	stroke="#000"
-	y1="865"
-	y2="795"
-	class="mud-direction"
-	x2="445"
-	stroke-weight="5"
-	x1="445"
-/>
-<line
-	stroke="#000"
-	y1="865"
-	y2="865"
-	class="mud-direction"
-	x2="445"
-	stroke-weight="5"
-	x1="375"
-/>
-<line
-	stroke="#000"
-	y1="795"
-	y2="865"
-	class="mud-direction"
-	x2="375"
-	stroke-weight="5"
-	x1="375"
-/>
-<line
-	stroke="#000"
-	y1="795"
-	y2="795"
-	class="mud-direction"
-	x2="375"
-	stroke-weight="5"
-	x1="305"
-/>
-<line
-	stroke="#000"
-	y1="725"
-	y2="795"
-	class="mud-direction"
-	x2="305"
-	stroke-weight="5"
-	x1="305"
-/>
-<line
-	stroke="#000"
-	y1="725"
-	y2="725"
-	class="mud-direction"
-	x2="305"
-	stroke-weight="5"
-	x1="235"
-/>
-<line
-	stroke="#000"
-	y1="725"
-	y2="725"
-	class="mud-direction"
-	x2="95"
-	stroke-weight="5"
-	x1="165"
-/>
-<line
-	stroke="#000"
-	y1="725"
-	y2="725"
-	class="mud-direction"
-	x2="235"
-	stroke-weight="5"
-	x1="165"
-/>
-<line
-	stroke="#000"
-	y1="795"
-	y2="725"
-	class="mud-direction"
-	x2="165"
-	stroke-weight="5"
-	x1="165"
-/>
-<line
-	stroke="#000"
-	y1="865"
-	y2="795"
-	class="mud-direction"
-	x2="165"
-	stroke-weight="5"
-	x1="165"
-/>
-<line
-	stroke="#000"
-	y1="935"
-	y2="865"
-	class="mud-direction"
-	x2="165"
-	stroke-weight="5"
-	x1="165"
-/>
-<line
-	stroke="#000"
-	y1="935"
-	y2="935"
-	class="mud-direction"
-	x2="165"
-	stroke-weight="5"
-	x1="235"
-/>
-<line
-	stroke="#000"
-	y1="1005"
-	y2="935"
-	class="mud-direction"
-	x2="235"
-	stroke-weight="5"
-	x1="235"
-/>
-<line
-	stroke="#000"
-	y1="1005"
-	y2="1005"
-	class="mud-direction"
-	x2="235"
-	stroke-weight="5"
-	x1="165"
+	x1="175"
 />
 <rect
 	id="tag0001"
@@ -385,7 +223,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="990"
+	y="500"
 	x="150"
 />
 <rect
@@ -396,7 +234,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="990"
+	y="500"
 	x="220"
 />
 <rect
@@ -407,7 +245,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="920"
+	y="430"
 	x="220"
 />
 <rect
@@ -418,7 +256,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="920"
+	y="430"
 	x="150"
 />
 <rect
@@ -429,7 +267,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="850"
+	y="360"
 	x="150"
 />
 <rect
@@ -440,7 +278,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="780"
+	y="290"
 	x="150"
 />
 <rect
@@ -451,7 +289,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="710"
+	y="220"
 	x="150"
 />
 <rect
@@ -462,7 +300,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="710"
+	y="220"
 	x="220"
 />
 <rect
@@ -473,7 +311,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="710"
+	y="220"
 	x="290"
 />
 <rect
@@ -484,7 +322,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="780"
+	y="290"
 	x="290"
 />
 <rect
@@ -495,7 +333,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="780"
+	y="290"
 	x="360"
 />
 <rect
@@ -506,7 +344,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="850"
+	y="360"
 	x="360"
 />
 <rect
@@ -517,7 +355,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="850"
+	y="360"
 	x="430"
 />
 <rect
@@ -528,7 +366,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="780"
+	y="290"
 	x="430"
 />
 <rect
@@ -539,7 +377,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="710"
+	y="220"
 	x="430"
 />
 <rect
@@ -550,7 +388,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="710"
+	y="220"
 	x="360"
 />
 <rect
@@ -561,7 +399,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="640"
+	y="150"
 	x="360"
 />
 <rect
@@ -572,7 +410,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="570"
+	y="80"
 	x="360"
 />
 <rect
@@ -583,7 +421,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="500"
+	y="10"
 	x="360"
 />
 <rect
@@ -594,7 +432,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="500"
+	y="10"
 	x="290"
 />
 <rect
@@ -605,7 +443,7 @@
 	fill="#f0fff0"
 	class="mud-place"
 	stroke-weight="3"
-	y="570"
+	y="80"
 	x="290"
 />
 <rect
@@ -616,7 +454,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="710"
+	y="220"
 	x="80"
 />
 <rect
@@ -627,7 +465,7 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="640"
+	y="150"
 	x="80"
 />
 <rect
@@ -638,218 +476,20 @@
 	fill="#cdc8b1"
 	class="mud-place"
 	stroke-weight="3"
-	y="640"
-	x="10"
-/>
-<rect
-	id="tag0009"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="570"
-	x="10"
-/>
-<rect
-	id="tag000900010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="500"
-	x="10"
-/>
-<rect
-	id="tag000910010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="430"
-	x="10"
-/>
-<rect
-	id="tag000920010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="430"
-	x="80"
-/>
-<rect
-	id="tag000930010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="430"
-	x="150"
-/>
-<rect
-	id="tag000940010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="360"
-	x="150"
-/>
-<rect
-	id="tag000950010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="360"
-	x="80"
-/>
-<rect
-	id="tag000960010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="360"
-	x="10"
-/>
-<rect
-	id="tag000970010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="290"
-	x="10"
-/>
-<rect
-	id="tag000980010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="220"
-	x="10"
-/>
-<rect
-	id="tag000990010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="220"
-	x="80"
-/>
-<rect
-	id="tag0009100010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="220"
-	x="150"
-/>
-<rect
-	id="tag0009110010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="220"
-	x="220"
-/>
-<rect
-	id="tag0009120010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
 	y="150"
-	x="220"
-/>
-<rect
-	id="tag0009130010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="80"
-	x="220"
-/>
-<rect
-	id="tag0009140010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="80"
-	x="150"
-/>
-<rect
-	id="tag0009150010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="80"
-	x="80"
-/>
-<rect
-	id="tag0010"
-	stroke="#000"
-	height="50"
-	width="50"
-	fill="#bdb76b"
-	class="mud-place"
-	stroke-weight="3"
-	y="10"
-	x="80"
+	x="10"
 />
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="1020" 
+	y="530" 
 	x="156" 
 >0001
 </text>
 <text 
 	id="tip0001" 
 	visibility="hidden" 
-	y="1030" 
+	y="540" 
 	x="5" 
 >This is the bus stop at Dean's Corners.  The main road to Aylesbury and Arkham runs east to west respectively.  
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0001.mouseover" end="tag0001.mouseout" />
@@ -857,14 +497,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="1020" 
+	y="530" 
 	x="226" 
 >0002
 </text>
 <text 
 	id="tip0002" 
 	visibility="hidden" 
-	y="1030" 
+	y="540" 
 	x="5" 
 >This is the Dunwich Turnoff.  The main road to Aylesbury and Arkham runs east to west respectively.  The road to Dunwich, little more than an improved dirt road, heads north.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0002.mouseover" end="tag0002.mouseout" />
@@ -872,7 +512,7 @@
 <text 
 	id="tip000200007" 
 	visibility="hidden" 
-	y="960" 
+	y="470" 
 	x="5" 
 >Dunwich Road, between the turnoff and the bridge.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000200007.mouseover" end="tag000200007.mouseout" />
@@ -880,7 +520,7 @@
 <text 
 	id="tip000210007" 
 	visibility="hidden" 
-	y="960" 
+	y="470" 
 	x="5" 
 >Dunwich Road, between the turnoff and the bridge.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000210007.mouseover" end="tag000210007.mouseout" />
@@ -888,14 +528,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="880" 
+	y="390" 
 	x="156" 
 >0007
 </text>
 <text 
 	id="tip0007" 
 	visibility="hidden" 
-	y="890" 
+	y="400" 
 	x="5" 
 >A dangerous looking, old covered bridge, crosses the creek to the north.  The road to the Dunwich Turnoff heads south.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0007.mouseover" end="tag0007.mouseout" />
@@ -903,14 +543,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="810" 
+	y="320" 
 	x="156" 
 >0003
 </text>
 <text 
 	id="tip0003" 
 	visibility="hidden" 
-	y="820" 
+	y="330" 
 	x="5" 
 >This is a covered bridge made mainly of wooden planks.  Dunwich Road continues to the north and south.  A river flows east to west below the bridge.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0003.mouseover" end="tag0003.mouseout" />
@@ -918,14 +558,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="740" 
+	y="250" 
 	x="156" 
 >0004
 </text>
 <text 
 	id="tip0004" 
 	visibility="hidden" 
-	y="750" 
+	y="260" 
 	x="5" 
 >The road to Dunwich continues west.  A dirt track heads east.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0004.mouseover" end="tag0004.mouseout" />
@@ -933,14 +573,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="740" 
+	y="250" 
 	x="226" 
 >0008
 </text>
 <text 
 	id="tip0008" 
 	visibility="hidden" 
-	y="750" 
+	y="260" 
 	x="5" 
 >The start of a dirt track which heads east.  There is a road to the west.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0008.mouseover" end="tag0008.mouseout" />
@@ -948,7 +588,7 @@
 <text 
 	id="tip000800006" 
 	visibility="hidden" 
-	y="750" 
+	y="260" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000800006.mouseover" end="tag000800006.mouseout" />
@@ -956,7 +596,7 @@
 <text 
 	id="tip000810006" 
 	visibility="hidden" 
-	y="820" 
+	y="330" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000810006.mouseover" end="tag000810006.mouseout" />
@@ -964,7 +604,7 @@
 <text 
 	id="tip000820006" 
 	visibility="hidden" 
-	y="820" 
+	y="330" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000820006.mouseover" end="tag000820006.mouseout" />
@@ -972,7 +612,7 @@
 <text 
 	id="tip000830006" 
 	visibility="hidden" 
-	y="890" 
+	y="400" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000830006.mouseover" end="tag000830006.mouseout" />
@@ -980,7 +620,7 @@
 <text 
 	id="tip000840006" 
 	visibility="hidden" 
-	y="890" 
+	y="400" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000840006.mouseover" end="tag000840006.mouseout" />
@@ -988,7 +628,7 @@
 <text 
 	id="tip000850006" 
 	visibility="hidden" 
-	y="820" 
+	y="330" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000850006.mouseover" end="tag000850006.mouseout" />
@@ -996,7 +636,7 @@
 <text 
 	id="tip000860006" 
 	visibility="hidden" 
-	y="750" 
+	y="260" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000860006.mouseover" end="tag000860006.mouseout" />
@@ -1004,7 +644,7 @@
 <text 
 	id="tip000870006" 
 	visibility="hidden" 
-	y="750" 
+	y="260" 
 	x="5" 
 >A dirt track between the bridge and Potter's Pond Creek.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000870006.mouseover" end="tag000870006.mouseout" />
@@ -1012,14 +652,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="670" 
+	y="180" 
 	x="366" 
 >0006
 </text>
 <text 
 	id="tip0006" 
 	visibility="hidden" 
-	y="680" 
+	y="190" 
 	x="5" 
 >The dirt track to the south ends abruptly.  The creek continues to flow north towards the sound of bullfrogs.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0006.mouseover" end="tag0006.mouseout" />
@@ -1027,14 +667,14 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="600" 
+	y="110" 
 	x="366" 
 >0011
 </text>
 <text 
 	id="tip0011" 
 	visibility="hidden" 
-	y="610" 
+	y="120" 
 	x="5" 
 >A path leads around Potter's Pond.  The sound of bullfrogs is almost deafening.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0011.mouseover" end="tag0011.mouseout" />
@@ -1042,7 +682,7 @@
 <text 
 	id="tip001120011" 
 	visibility="hidden" 
-	y="540" 
+	y="50" 
 	x="5" 
 >The path around Potter's Pond.  The sound of bullfrogs is almost deafening.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag001120011.mouseover" end="tag001120011.mouseout" />
@@ -1050,7 +690,7 @@
 <text 
 	id="tip001110011" 
 	visibility="hidden" 
-	y="540" 
+	y="50" 
 	x="5" 
 >The path around Potter's Pond.  The sound of bullfrogs is almost deafening.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag001110011.mouseover" end="tag001110011.mouseout" />
@@ -1058,7 +698,7 @@
 <text 
 	id="tip001100011" 
 	visibility="hidden" 
-	y="610" 
+	y="120" 
 	x="5" 
 >The path around Potter's Pond.  The sound of bullfrogs is almost deafening.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag001100011.mouseover" end="tag001100011.mouseout" />
@@ -1066,7 +706,7 @@
 <text 
 	id="tip000400005" 
 	visibility="hidden" 
-	y="750" 
+	y="260" 
 	x="5" 
 >Dunwich Road, between the bridge and East Creek Road junction.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000400005.mouseover" end="tag000400005.mouseout" />
@@ -1074,7 +714,7 @@
 <text 
 	id="tip000410005" 
 	visibility="hidden" 
-	y="680" 
+	y="190" 
 	x="5" 
 >Dunwich Road, between the bridge and East Creek Road junction.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag000410005.mouseover" end="tag000410005.mouseout" />
@@ -1082,174 +722,16 @@
 <text 
 	style="font-family: tahoma;" 
 	class="mud-label" 
-	y="670" 
+	y="180" 
 	x="16" 
 >0005
 </text>
 <text 
 	id="tip0005" 
 	visibility="hidden" 
-	y="680" 
+	y="190" 
 	x="5" 
 >Dunwich Road turns sharply from the east to the north.  East Creek Road leads off to the west.
 <set attributeName="visibility" from="hidden" to="visible" begin="tag0005.mouseover" end="tag0005.mouseout" />
-</text>
-<text 
-	style="font-family: tahoma;" 
-	class="mud-label" 
-	y="600" 
-	x="16" 
->0009
-</text>
-<text 
-	id="tip0009" 
-	visibility="hidden" 
-	y="610" 
-	x="5" 
->East Creek Junction is to the south.  The road to Dunwich continues north.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009.mouseover" end="tag0009.mouseout" />
-</text>
-<text 
-	id="tip000900010" 
-	visibility="hidden" 
-	y="540" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000900010.mouseover" end="tag000900010.mouseout" />
-</text>
-<text 
-	id="tip000910010" 
-	visibility="hidden" 
-	y="470" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000910010.mouseover" end="tag000910010.mouseout" />
-</text>
-<text 
-	id="tip000920010" 
-	visibility="hidden" 
-	y="470" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000920010.mouseover" end="tag000920010.mouseout" />
-</text>
-<text 
-	id="tip000930010" 
-	visibility="hidden" 
-	y="470" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000930010.mouseover" end="tag000930010.mouseout" />
-</text>
-<text 
-	id="tip000940010" 
-	visibility="hidden" 
-	y="400" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000940010.mouseover" end="tag000940010.mouseout" />
-</text>
-<text 
-	id="tip000950010" 
-	visibility="hidden" 
-	y="400" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000950010.mouseover" end="tag000950010.mouseout" />
-</text>
-<text 
-	id="tip000960010" 
-	visibility="hidden" 
-	y="400" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000960010.mouseover" end="tag000960010.mouseout" />
-</text>
-<text 
-	id="tip000970010" 
-	visibility="hidden" 
-	y="330" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000970010.mouseover" end="tag000970010.mouseout" />
-</text>
-<text 
-	id="tip000980010" 
-	visibility="hidden" 
-	y="260" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000980010.mouseover" end="tag000980010.mouseout" />
-</text>
-<text 
-	id="tip000990010" 
-	visibility="hidden" 
-	y="260" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag000990010.mouseover" end="tag000990010.mouseout" />
-</text>
-<text 
-	id="tip0009100010" 
-	visibility="hidden" 
-	y="260" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009100010.mouseover" end="tag0009100010.mouseout" />
-</text>
-<text 
-	id="tip0009110010" 
-	visibility="hidden" 
-	y="260" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009110010.mouseover" end="tag0009110010.mouseout" />
-</text>
-<text 
-	id="tip0009120010" 
-	visibility="hidden" 
-	y="190" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009120010.mouseover" end="tag0009120010.mouseout" />
-</text>
-<text 
-	id="tip0009130010" 
-	visibility="hidden" 
-	y="120" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009130010.mouseover" end="tag0009130010.mouseout" />
-</text>
-<text 
-	id="tip0009140010" 
-	visibility="hidden" 
-	y="120" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009140010.mouseover" end="tag0009140010.mouseout" />
-</text>
-<text 
-	id="tip0009150010" 
-	visibility="hidden" 
-	y="120" 
-	x="5" 
->The road between Dunwich and East Creek Junction.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0009150010.mouseover" end="tag0009150010.mouseout" />
-</text>
-<text 
-	style="font-family: tahoma;" 
-	class="mud-label" 
-	y="40" 
-	x="86" 
->0010
-</text>
-<text 
-	id="tip0010" 
-	visibility="hidden" 
-	y="50" 
-	x="5" 
->To the north is a dangerous looking, rackety old wooden bridge which crosses Miskatonic River in to Dunwich.  The road south heads to East Creek Junction.  South River Road runs east to west.
-<set attributeName="visibility" from="hidden" to="visible" begin="tag0010.mouseover" end="tag0010.mouseout" />
 </text>
 </svg>

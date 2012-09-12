@@ -22,6 +22,15 @@ public interface MudWorld {
 	MudPlace findPlaceContaining(MudUser user);
 
 	/**
+	 * Find a place by its tag.
+	 * 
+	 * @param tag
+	 *            the tag
+	 * @return the place
+	 */
+	MudPlace findPlaceByTag(String tag);
+
+	/**
 	 * Save the given object.
 	 * 
 	 * @param objects

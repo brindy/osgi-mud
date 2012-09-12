@@ -58,40 +58,45 @@ public class GraphSvgGenerator {
 			e.setAttribute("y", y);
 			model.add(e);
 
-			if (node.place.getTag() != null) {
+			addText(model, node, x, y);
 
-				if (node.place.getTag().length() == 4) {
-					TextElement t = new TextElement(node.place.getTag());
-					t.setAttribute("x", x + 6);
-					t.setAttribute("y", y + (SIZE / 2) + 5);
-					t.setAttribute("class", "mud-label");
-					t.setAttribute("style", "font-family: tahoma;");
-					model.add(t);
-				}
-				
-				TextElement tip = new TextElement(node.place.getDescription(null));
-				tip.setAttribute("id", "tip" + node.place.getTag().replace("-", ""));
-				tip.setAttribute("x", 5);
-				tip.setAttribute("y", y + (SIZE / 2) + 15);
-				tip.setAttribute("visibility", "hidden");
-				tip.addSetter("visibility", "hidden", "visible", "tag" + node.place.getTag().replaceAll("-", "")
-						+ ".mouseover", "tag" + node.place.getTag().replaceAll("-", "") + ".mouseout");
-				model.add(tip);
-			}
-
-			addLinesForConnections(graph, connections, model, node, "north");
-			addLinesForConnections(graph, connections, model, node, "east");
-			addLinesForConnections(graph, connections, model, node, "south");
-			addLinesForConnections(graph, connections, model, node, "west");
+			addLinesForConnections(graph, connections, model, node, "north", offsetX, offsetY);
+			addLinesForConnections(graph, connections, model, node, "east", offsetX, offsetY);
+			addLinesForConnections(graph, connections, model, node, "south", offsetX, offsetY);
+			addLinesForConnections(graph, connections, model, node, "west", offsetX, offsetY);
 
 		}
 
-		model.setWidth(boundsX + SIZE + 10);
-		model.setHeight(boundsY + SIZE + 10);
+		model.setWidth(boundsX + offsetX + SIZE + 10);
+		model.setHeight(boundsY + offsetY + SIZE + 10);
 
 		return model;
 	}
 
+	private void addText(SvgModel model, MapNode node, int x, int y) {
+		if (node.place.getTag() != null) {
+
+			if (node.place.getTag().length() == 4) {
+				TextElement t = new TextElement(node.place.getTag());
+				t.setAttribute("x", x + 6);
+				t.setAttribute("y", y + (SIZE / 2) + 5);
+				t.setAttribute("class", "mud-label");
+				t.setAttribute("style", "font-family: tahoma;");
+				model.add(t);
+			}
+
+			TextElement tip = new TextElement(node.place.getDescription(null));
+			tip.setAttribute("id", "tip" + node.place.getTag().replace("-", ""));
+			tip.setAttribute("x", 5);
+			tip.setAttribute("y", y + (SIZE / 2) + 40);
+			tip.setAttribute("style", "font-family: tahoma");
+			tip.setAttribute("visibility", "hidden");
+			tip.addSetter("visibility", "hidden", "visible", "tag" + node.place.getTag().replaceAll("-", "")
+					+ ".mouseover", "tag" + node.place.getTag().replaceAll("-", "") + ".mouseout");
+			model.add(tip);
+		}
+	}
+	
 	private String colorForProvider(Map<MudPlaceProvider, String> colours, MapNode node) {
 		MudPlaceProvider provider = node.place.getProvider();
 
@@ -104,7 +109,7 @@ public class GraphSvgGenerator {
 	}
 
 	private void addLinesForConnections(MapGraph graph, Set<Set<MapNode>> connections, SvgModel model, MapNode node,
-			String exit) {
+			String exit, int offsetX, int offsetY) {
 		if (null != node.place.getExit(exit)) {
 
 			// find the destination
@@ -117,13 +122,13 @@ public class GraphSvgGenerator {
 			// has the line already been added
 			if (connections.add(connection)) {
 				// no it hasn't
-				model.add(lineBetween(node, destination));
+				model.add(lineBetween(node, destination, offsetX, offsetY));
 			}
 
 		}
 	}
 
-	private Element lineBetween(MapNode source, MapNode destination) {
+	private Element lineBetween(MapNode source, MapNode destination, int offsetX, int offsetY) {
 		Element line = new SimpleElement("line");
 		line.setAttribute("stroke", "#000");
 		line.setAttribute("stroke-weight", "5");
@@ -134,11 +139,11 @@ public class GraphSvgGenerator {
 		int x2 = (destination.x * (SIZE + PADDING)) + (SIZE / 2);
 		int y2 = (destination.y * (SIZE + PADDING)) + (SIZE / 2);
 
-		line.setAttribute("x1", x1);
-		line.setAttribute("y1", y1);
+		line.setAttribute("x1", offsetX + x1);
+		line.setAttribute("y1", offsetY + y1);
 
-		line.setAttribute("x2", x2);
-		line.setAttribute("y2", y2);
+		line.setAttribute("x2", offsetX + x2);
+		line.setAttribute("y2", offsetY + y2);
 
 		return line;
 	}

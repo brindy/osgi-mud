@@ -3,7 +3,8 @@
 	biz.aQute.bnd.annotation,\
 	junit.osgi,\
 	com.brindysoft.mud.core;version=latest,\
-	com.brindysoft.mud.api;version=latest
+	com.brindysoft.mud.api;version=latest,\
+	javax.servlet
 Private-Package: com.brindysoft.necronomud,\
 	com.brindysoft.necronomud.ai,\
 	com.brindysoft.necronomud.commands,\

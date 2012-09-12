@@ -1,6 +1,5 @@
 package com.brindysoft.necronomud;
 
-import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,12 +16,8 @@ import com.brindysoft.mud.mpi.MudPlace;
 import com.brindysoft.mud.mpi.MudPlaceProvider;
 import com.brindysoft.mud.mpi.MudUser;
 import com.brindysoft.mud.mpi.MudWorld;
-import com.brindysoft.necronomud.web.GraphSvgGenerator;
-import com.brindysoft.necronomud.web.MapGraph;
-import com.brindysoft.necronomud.web.MapGraphGenerator;
 import com.brindysoft.oodb.api.Database;
 import com.brindysoft.oodb.api.DatabaseService;
-import com.brindysoft.oodb.api.QueryPredicate;
 import com.brindysoft.oodb.api.QueryResult;
 
 @Component
@@ -63,7 +58,7 @@ public class World implements MudWorld {
 	public void start() {
 		logger.debug("%s#start() - IN", getClass().getSimpleName());
 		db = service.getDatabase(PLACES_DB);
-
+		
 		// put all places in to memory
 		Map<String, MudPlace> tags = new HashMap<String, MudPlace>();
 		for (MudPlaceProvider provider : providers) {
@@ -84,7 +79,7 @@ public class World implements MudWorld {
 
 		if (null == startingPlace) {
 			logger.error("%s#start() No place with tag '0001'", getClass().getSimpleName());
-			// throw new RuntimeException("No place with tag '0001'");
+			throw new RuntimeException("No place with tag '0001'");
 		}
 
 		// make connections
@@ -97,17 +92,6 @@ public class World implements MudWorld {
 					logger.info("%s#start() - no destination called [%s]", getClass().getSimpleName(),
 							connection.connectedTo);
 				}
-			}
-		}
-
-		if (null != startingPlace) {
-			try {
-				MapGraph graph = new MapGraphGenerator().generate(startingPlace);
-				graph.normalise();
-
-				new GraphSvgGenerator().generate(graph, 10, 10).writeTo(new FileOutputStream("world.svg"));
-			} catch (Exception e) {
-				logger.error(e, "%s#start() Error writing world.svg", getClass().getSimpleName());
 			}
 		}
 
@@ -137,9 +121,13 @@ public class World implements MudWorld {
 
 	@Override
 	public MudPlace findPlaceContaining(MudUser user) {
-		QueryResult<MudPlace> query = db.query(new FindPlaceContainingUserPredicate((User) user));
-		MudPlace place = query.isEmpty() ? null : query.get(0);
-		return place;
+		return findPlaceByTag(((User) user).getPlaceTag());
+	}
+
+	@Override
+	public MudPlace findPlaceByTag(String tag) {
+		QueryResult<Place> result = db.queryByExample(new Place(null, tag, null));
+		return result.size() > 0 ? result.get(0) : null;
 	}
 
 	@Override
@@ -158,26 +146,6 @@ public class World implements MudWorld {
 		if (null != place) {
 			place.disconnectUser(user);
 		}
-	}
-
-	static class FindPlaceContainingUserPredicate implements QueryPredicate<MudPlace> {
-
-		private final User user;
-
-		public FindPlaceContainingUserPredicate(User user) {
-			this.user = user;
-		}
-
-		@Override
-		public boolean match(MudPlace place) {
-			return place.containsUser(user) || place.getTag().equals(user.getPlaceTag());
-		}
-
-	}
-
-	public MudPlace findPlaceByTag(String tag) {
-		QueryResult<Place> result = db.queryByExample(new Place(null, tag, null));
-		return result.size() > 0 ? result.get(0) : null;
 	}
 
 }
