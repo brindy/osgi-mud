@@ -26,3 +26,6 @@ com.brindysoft.necronomud/generated
 com.brindysoft.necronomud/.classpath
 com.brindysoft.necronomud/.project
 com.brindysoft.necronomud/databases
+com.brindysoft.arkhamud/bin
+com.brindysoft.arkhamud/generated
+org.eclipse.jdt.core.prefs

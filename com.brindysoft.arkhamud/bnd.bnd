@@ -1,0 +1,5 @@
+-buildpath: com.brindysoft.mud.api;version=latest,\
+	biz.aQute.bnd.annotation,\
+	com.brindysoft.mud.utils;version=latest
+Private-Package: com.brindysoft.arkhamud
+Service-Component: *
