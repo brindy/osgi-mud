@@ -1,7 +1,11 @@
 package com.brindysoft.arkhamud;
 
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Set;
+
+import org.osgi.service.component.ComponentFactory;
+import org.osgi.service.component.ComponentInstance;
 
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
@@ -16,6 +20,12 @@ public class Authenticator implements MudAuthenticator {
 
 	private Logger logger;
 	private Set<String> usernames = new HashSet<String>();
+	private ComponentFactory creationFactory;
+
+	@Reference(target = "(component.factory=" + CharacterCreator.FACTORY_NAME + ")")
+	public void setCharacterCreationFactory(ComponentFactory creationFactory) {
+		this.creationFactory = creationFactory;
+	}
 
 	@Reference
 	public void setLogger(Logger logger) {
@@ -36,8 +46,17 @@ public class Authenticator implements MudAuthenticator {
 
 		ArkhamCharacter character = new ArkhamCharacter(name);
 		character.setSocketHandler(socket);
-		
-		new CharacterCreator(character).run();
+
+		Hashtable<String, Object> properties = new Hashtable<String, Object>();
+		properties.put(CharacterCreator.CHARACTER_PROPERTY, character);
+
+		ComponentInstance component = creationFactory.newInstance(properties);
+		try {
+			CharacterCreator characterCreation = (CharacterCreator) component.getInstance();
+			characterCreation.run();
+		} finally {
+			component.dispose();
+		}
 
 		logger.debug("%s#authenticate() - OUT", getClass().getName());
 		return character;

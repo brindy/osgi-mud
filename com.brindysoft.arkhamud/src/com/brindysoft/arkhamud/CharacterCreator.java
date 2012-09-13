@@ -1,15 +1,40 @@
 package com.brindysoft.arkhamud;
 
+import java.util.Map;
 import java.util.Stack;
 
+import aQute.bnd.annotation.component.Activate;
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
+@Component(factory = CharacterCreator.FACTORY_NAME, provide = { CharacterCreator.class })
 public class CharacterCreator {
+
+	public static final String CHARACTER_PROPERTY = "character";
+
+	public static final String FACTORY_NAME = "arkhamud.character.creator";
 
 	private Stack<Command> commands = new Stack<Command>();
 
 	private ArkhamCharacter character;
 
-	public CharacterCreator(ArkhamCharacter character) {
-		this.character = character;
+	private CommonItemService commonItemService;
+
+	private UniqueItemService uniqueItemService;
+
+	@Reference
+	public void setUniqueItemService(UniqueItemService uniqueItemService) {
+		this.uniqueItemService = uniqueItemService;
+	}
+
+	@Reference
+	public void setCommonItemService(CommonItemService commonItemService) {
+		this.commonItemService = commonItemService;
+	}
+
+	@Activate
+	public void start(Map<String, Object> properties) {
+		character = (ArkhamCharacter) properties.get(CHARACTER_PROPERTY);
 	}
 
 	public void run() {
@@ -37,10 +62,18 @@ public class CharacterCreator {
 				execute(new BuyFocusCommand());
 				break;
 
+			case '4':
+				execute(new BuyCommonItemCommand());
+				break;
+
+			case '5':
+				execute(new BuyUniqueItemCommand());
+				break;
+
 			case 'R':
 				character.randomise();
 				break;
-				
+
 			case 'U':
 				undo();
 				break;
@@ -54,11 +87,11 @@ public class CharacterCreator {
 	}
 
 	private void undo() {
-		
+
 		if (commands.size() > 0) {
 			commands.pop().undo();
 		}
-		
+
 	}
 
 	private void execute(Command cmd) {
@@ -103,6 +136,8 @@ public class CharacterCreator {
 		character.println("Focus: %d (min 1, max 3)", character.getFocus());
 
 		character.println("Items: %s ", character.getItemSummary());
+		character.println("Spells: %s ", character.getSpellsSummary());
+		character.println("Skills: %s ", character.getSkillsSummary());
 		character.println("Money: $%d", character.getMoney());
 		character.println("Clues: %d", character.getClues());
 		character.println("");
@@ -131,6 +166,50 @@ public class CharacterCreator {
 		void execute();
 
 		void undo();
+	}
+
+	class BuyUniqueItemCommand implements Command {
+
+		private UniqueItem item;
+
+		@Override
+		public void execute() {
+			if (character.getBuildPoints() >= 2) {
+				item = uniqueItemService.randomItem();
+				character.addUniqueItem(item);
+				character.decBuildPoints();
+				character.decBuildPoints();
+			}
+		}
+
+		@Override
+		public void undo() {
+			if (item != null) {
+				character.removeUniqueItem(item);
+				character.incBuildPoints();
+				character.incBuildPoints();
+			}
+		}
+
+	}
+
+	class BuyCommonItemCommand implements Command {
+
+		private CommonItem item;
+
+		@Override
+		public void execute() {
+			item = commonItemService.randomItem();
+			character.addCommonItem(item);
+			character.decBuildPoints();
+		}
+
+		@Override
+		public void undo() {
+			character.removeCommonItem(item);
+			character.incBuildPoints();
+		}
+
 	}
 
 	class BuyFocusCommand implements Command {

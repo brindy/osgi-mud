@@ -1,5 +1,8 @@
 package com.brindysoft.arkhamud;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.brindysoft.mud.mpi.AbstractMudUser;
 
 public class ArkhamCharacter extends AbstractMudUser {
@@ -15,6 +18,10 @@ public class ArkhamCharacter extends AbstractMudUser {
 	private int clues;
 
 	private int buildPoints = 15;
+
+	private Set<CommonItem> commonItems = new HashSet<CommonItem>();
+
+	private Set<UniqueItem> uniqueItems = new HashSet<UniqueItem>();
 
 	public ArkhamCharacter(String name) {
 		setName(name);
@@ -76,7 +83,44 @@ public class ArkhamCharacter extends AbstractMudUser {
 		buildPoints++;
 	}
 
+	public void addCommonItem(CommonItem item) {
+		commonItems.add(item);
+	}
+
+	public void removeCommonItem(CommonItem item) {
+		commonItems.remove(item);
+	}
+
+	public void addUniqueItem(UniqueItem item) {
+		uniqueItems.add(item);
+	}
+
+	public void removeUniqueItem(UniqueItem item) {
+		uniqueItems.remove(item);
+	}
+
 	public String getItemSummary() {
+
+		StringBuilder builder = new StringBuilder();
+		if (commonItems.size() > 0) {
+			builder.append(commonItems.size()).append(" common items");
+		}
+
+		if (uniqueItems.size() > 0) {
+			if (builder.length() > 0) {
+				builder.append(", ");
+			}
+			builder.append(uniqueItems.size()).append(" unique items");
+		}
+
+		return builder.length() == 0 ? "None" : builder.toString();
+	}
+
+	public String getSpellsSummary() {
+		return "None";
+	}
+
+	public String getSkillsSummary() {
 		return "None";
 	}
 
