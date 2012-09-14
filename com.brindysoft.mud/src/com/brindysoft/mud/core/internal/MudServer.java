@@ -17,7 +17,6 @@ import org.osgi.service.component.ComponentInstance;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
-import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Deactivate;
 import aQute.bnd.annotation.component.Reference;
@@ -25,7 +24,8 @@ import aQute.bnd.annotation.component.Reference;
 import com.brindysoft.logging.api.Logger;
 import com.brindysoft.mud.api.MudSocketHandler;
 
-@Component(immediate = true, properties = { "event.topics=" + ExceptionEvent.TOPIC, "spawn=true" })
+@Component(immediate = true, properties = { "event.topics=" + ExceptionEvent.TOPIC,
+		"service.pid=com.brindysoft.mud.server" })
 public class MudServer implements Runnable, EventHandler, ManagedService {
 
 	private final Map<MudSocketHandler, ComponentInstance> socketHandlers = new HashMap<MudSocketHandler, ComponentInstance>();
@@ -56,32 +56,6 @@ public class MudServer implements Runnable, EventHandler, ManagedService {
 		this.properties = properties;
 		stop();
 		start();
-	}
-
-	@Activate
-	public void start() {
-
-		Dictionary<String, String> properties = getProperties();
-
-		logger.debug("%s#start() - IN", getClass().getSimpleName());
-		socketHandlers.clear();
-		try {
-			serverSocket = new ServerSocket(Integer.parseInt(properties.get("port")));
-		} catch (NumberFormatException e) {
-			logger.error(e, "%s#start() - configuration error", getClass().getSimpleName());
-			throw e;
-		} catch (IOException e) {
-			logger.error(e, "%s#start() - MudServer NOT running, port already in use.", getClass().getSimpleName());
-		}
-		logger.debug("%s#start() - OUT", getClass().getSimpleName());
-	}
-
-	private Dictionary<String, String> getProperties() {
-		if (null == properties) {
-			properties = new Hashtable<String, String>();
-			properties.put("port", "20128");
-		}
-		return properties;
 	}
 
 	@Override
@@ -123,7 +97,7 @@ public class MudServer implements Runnable, EventHandler, ManagedService {
 
 	@Deactivate
 	public void stop() {
-		logger.debug("MudServer#stop() - IN");
+		logger.debug("MudServer#stop() - IN, %s", this.thread);
 
 		Thread thread = this.thread;
 		ServerSocket serverSocket = this.serverSocket;
@@ -131,11 +105,16 @@ public class MudServer implements Runnable, EventHandler, ManagedService {
 		this.thread = null;
 		this.serverSocket = null;
 
-		thread.interrupt();
-		try {
-			serverSocket.close();
-		} catch (IOException e) {
-			logger.error(e, "MudServer#stop() - error closing socket");
+		if (null != thread) {
+			thread.interrupt();
+		}
+
+		if (null != serverSocket) {
+			try {
+				serverSocket.close();
+			} catch (IOException e) {
+				logger.error(e, "MudServer#stop() - error closing socket");
+			}
 		}
 
 		logger.debug("MudServer#stop() - OUT");
@@ -148,6 +127,34 @@ public class MudServer implements Runnable, EventHandler, ManagedService {
 			handleExceptionEvent(event);
 		}
 		logger.debug("MudServer(" + Thread.currentThread().getName() + ")#handleEvent(" + event + ") OUT");
+	}
+
+	private void start() {
+
+		Dictionary<String, String> properties = getProperties();
+
+		logger.debug("%s#start() - IN", getClass().getSimpleName());
+		socketHandlers.clear();
+		try {
+			serverSocket = new ServerSocket(Integer.parseInt(properties.get("port")));
+
+			new Thread(this).start();
+
+		} catch (NumberFormatException e) {
+			logger.error(e, "%s#start() - configuration error", getClass().getSimpleName());
+			throw e;
+		} catch (IOException e) {
+			logger.error(e, "%s#start() - MudServer NOT running, port already in use.", getClass().getSimpleName());
+		}
+		logger.debug("%s#start() - OUT", getClass().getSimpleName());
+	}
+
+	private Dictionary<String, String> getProperties() {
+		if (null == properties) {
+			properties = new Hashtable<String, String>();
+			properties.put("port", "20128");
+		}
+		return properties;
 	}
 
 	private void cleanup(Socket socket) {
