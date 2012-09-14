@@ -1,4 +1,7 @@
-package com.brindysoft.arkhamud;
+package com.brindysoft.arkhamud.impl;
+
+import com.brindysoft.arkhamud.UniqueItem;
+import com.brindysoft.arkhamud.UniqueItemService;
 
 import aQute.bnd.annotation.component.Component;
 

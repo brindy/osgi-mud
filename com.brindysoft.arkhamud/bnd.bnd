@@ -3,5 +3,6 @@
 	com.brindysoft.mud.utils;version=latest,\
 	osgi.core,\
 	osgi.cmpn
-Private-Package: com.brindysoft.arkhamud
+Private-Package: com.brindysoft.arkhamud,\
+	com.brindysoft.arkhamud.impl
 Service-Component: *

@@ -22,6 +22,13 @@ public class CharacterCreator {
 
 	private UniqueItemService uniqueItemService;
 
+	private SpellService spellService;
+
+	@Reference
+	public void setSpellService(SpellService spellService) {
+		this.spellService = spellService;
+	}
+
 	@Reference
 	public void setUniqueItemService(UniqueItemService uniqueItemService) {
 		this.uniqueItemService = uniqueItemService;
@@ -63,11 +70,15 @@ public class CharacterCreator {
 				break;
 
 			case '4':
-				execute(new BuyCommonItemCommand());
+				execute(new BuyCommand(commonItemService.randomItem()));
 				break;
 
 			case '5':
-				execute(new BuyUniqueItemCommand());
+				execute(new BuyCommand(uniqueItemService.randomItem()));
+				break;
+
+			case '6':
+				execute(new BuyCommand(spellService.randomItem()));
 				break;
 
 			case 'R':
@@ -168,46 +179,34 @@ public class CharacterCreator {
 		void undo();
 	}
 
-	class BuyUniqueItemCommand implements Command {
+	class BuyCommand implements Command {
 
-		private UniqueItem item;
+		private Object item;
 
-		@Override
-		public void execute() {
-			if (character.getBuildPoints() >= 2) {
-				item = uniqueItemService.randomItem();
-				character.addUniqueItem(item);
-				character.decBuildPoints();
-				character.decBuildPoints();
-			}
+		public BuyCommand(Object item) {
+			this.item = item;
 		}
 
 		@Override
-		public void undo() {
-			if (item != null) {
-				character.removeUniqueItem(item);
-				character.incBuildPoints();
-				character.incBuildPoints();
-			}
-		}
-
-	}
-
-	class BuyCommonItemCommand implements Command {
-
-		private CommonItem item;
-
-		@Override
 		public void execute() {
-			item = commonItemService.randomItem();
-			character.addCommonItem(item);
 			character.decBuildPoints();
+			if (item instanceof CommonItem) {
+				character.addCommonItem((CommonItem) item);
+			} else if (item instanceof UniqueItem) {
+				character.decBuildPoints();
+				character.addUniqueItem((UniqueItem) item);
+			}
 		}
 
 		@Override
 		public void undo() {
-			character.removeCommonItem(item);
 			character.incBuildPoints();
+			if (item instanceof CommonItem) {
+				character.removeCommonItem((CommonItem) item);
+			} else if (item instanceof UniqueItem) {
+				character.incBuildPoints();
+				character.removeUniqueItem((UniqueItem) item);
+			}
 		}
 
 	}
