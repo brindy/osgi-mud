@@ -1,6 +1,7 @@
 package com.brindysoft.arkhamud;
 
 import java.util.Map;
+import java.util.Random;
 import java.util.Stack;
 
 import aQute.bnd.annotation.component.Activate;
@@ -72,7 +73,7 @@ public class CharacterCreator {
 	public void incBuildPoints(int... points) {
 
 		if (null == points || points.length == 0) {
-			buildPoints--;
+			buildPoints++;
 		} else {
 			for (int i : points) {
 				buildPoints += i;
@@ -88,65 +89,205 @@ public class CharacterCreator {
 			String option = character.readLine();
 
 			String trimmed = option.trim();
-			if (trimmed.length() != 1) {
+
+			switch (trimmed.length()) {
+			case 1:
+				handleOption(trimmed.toUpperCase().charAt(0));
+				break;
+
+			default:
 				character.println("Please enter a menu option.");
-				continue;
-			}
-
-			switch (trimmed.toUpperCase().charAt(0)) {
-			case '1':
-				moreHealth();
-				break;
-
-			case '2':
-				moreSanity();
-				break;
-
-			case '3':
-				execute(new BuyFocusCommand());
-				break;
-
-			case '4':
-				execute(new BuyCommand(commonItemService.randomItem()));
-				break;
-
-			case '5':
-				execute(new BuyCommand(uniqueItemService.randomItem()));
-				break;
-
-			case '6':
-				execute(new BuyCommand(spellService.randomItem()));
-				break;
-
-			case '7':
-				execute(new BuyCommand(skillService.randomItem()));
-				break;
-
-			case '8':
-				execute(new BuyMoneyCommand());
-				break;
-
-			case '9':
-				execute(new BuyClueCommand());
-				break;
-
-			case 'R':
-				randomise();
-				break;
-
-			case 'U':
-				undo();
-				break;
-
-			case 'Q':
-				quit();
 				break;
 			}
+		}
+		
+		showCharacterInfo();
+		
+	}
+
+	private void handleOption(char c) {
+
+		switch (c) {
+		case '1':
+			moreHealth();
+			break;
+
+		case '2':
+			moreSanity();
+			break;
+
+		// available only at character creation
+
+		case '3':
+			buyFocus();
+			break;
+
+		case '4':
+			buySkill();
+			break;
+
+		// random shop
+
+		case '5':
+			buyMoney();
+			break;
+
+		case '6':
+			buyCommonItem();
+			break;
+
+		case '7':
+			buyUniqueItem();
+			break;
+
+		case '8':
+			buySpell();
+			break;
+
+		case 'G':
+			randomise(character.getName().hashCode());
+			break;
+
+		case 'R':
+			randomise(System.currentTimeMillis());
+			break;
+
+		case 'U':
+			undo();
+			break;
+
+		case 'Q':
+			quit();
+			break;
 		}
 
 	}
 
-	private void randomise() {
+	private void buySpell() {
+		execute(new BuyCommand(spellService.randomItem()));
+	}
+
+	private void buyUniqueItem() {
+		execute(new BuyCommand(uniqueItemService.randomItem()));
+	}
+
+	private void buyCommonItem() {
+		execute(new BuyCommand(commonItemService.randomItem()));
+	}
+
+	private void buyMoney() {
+		execute(new BuyMoneyCommand());
+	}
+
+	private void buySkill() {
+		execute(new BuyCommand(skillService.randomItem()));
+	}
+
+	private void buyFocus() {
+		execute(new BuyFocusCommand());
+	}
+
+	private void showMenu() {
+		character.println("{cls}");
+		character.println("{text:u}{text:bold}{text:blue}Character Creation Menu{text}");
+		character.println("");
+
+		showCharacterInfo();
+
+		character.println("");
+		character.println("Change health and sanity:");
+		character.println("{text:bold}1){text} +1 health, -1 sanity");
+		character.println("{text:bold}2){text} +1 sanity, -1 health");
+		character.println("");
+		character.println("You have {text:bold}%d{text} build points remaining", getBuildPoints());
+		character.println("");
+		character.println("Available at character creation only:");
+		character.println("{text:bold}3){text} +1 focus = 4 points");
+		character.println("{text:bold}4){text} +1 skill = %d point", Skill.BUILD_COST);
+		character.println("");
+		character.println("Items and starting money:");
+		character.println("{text:bold}5){text} +1 money = 1 point");
+		character.println("{text:bold}6){text} +1 common item = %d points", CommonItem.BUILD_COST);
+		character.println("{text:bold}7){text} +1 unique item = %d points", UniqueItem.BUILD_COST);
+		character.println("{text:bold}8){text} +1 spell = %d point", Spell.BUILD_COST);
+		character.println("");
+		character.println("or...");
+		character.println("{text:bold}U){text} undo points spend");
+		character.println("{text:bold}G){text} to generate character for this username (quick start)");
+		character.println("{text:bold}R){text} to generate a purely random character (quick start)");
+		character.println("{text:bold}Q){text} quit");
+		character.println("");
+		character.println("or, type a keyword for help, e.g. focus");
+		character.print("> ");
+	}
+
+	private void showCharacterInfo() {
+		character.println("{cls}{text:bold}{text:magenta}Character{text}: {text:bold}%s{text}", character.getName());
+
+		// start = 5, min = 3, max = 7
+		character.println("{text:bold}{text:magenta}Health{text}: {text:bold}%d{text} (min 3, max 7)",
+				character.getHealth());
+
+		// start = 5, min = 3, max = 7
+		character.println("{text:bold}{text:magenta}Sanity{text}: {text:bold}%d{text} (min 3, max 7)",
+				character.getSanity());
+
+		// start = 1, min = 1, max = 3>
+		character.println("{text:bold}{text:magenta}Focus{text}: {text:bold}%d{text} (min 1, max 3)",
+				character.getFocus());
+
+		character.println("{text:bold}{text:magenta}Items{text}: {text:bold}%s{text}", character.getItemSummary());
+		character.println("{text:bold}{text:magenta}Spells{text}: {text:bold}%s{text}", character.getSpellSummary());
+		character.println("{text:bold}{text:magenta}Skills{text}: {text:bold}%s{text}", character.getSkillsSummary());
+		character.println("{text:bold}{text:magenta}Money{text}: {text:bold}$%d{text}", character.getMoney());
+	}
+
+	private void randomise(long seed) {
+
+		Random rnd = new Random(seed);
+
+		if (rnd.nextBoolean()) {
+			if (rnd.nextBoolean()) {
+				moreHealth();
+				if (rnd.nextBoolean()) {
+					moreHealth();
+				}
+			} else {
+				moreSanity();
+				if (rnd.nextBoolean()) {
+					moreSanity();
+				}
+			}
+		}
+
+		while (buildPoints > 0) {
+
+			if (rnd.nextBoolean()) {
+				buyFocus();
+			}
+
+			if (rnd.nextBoolean()) {
+				buySkill();
+			}
+
+			if (rnd.nextBoolean()) {
+				buyCommonItem();
+			}
+
+			if (rnd.nextBoolean()) {
+				buyUniqueItem();
+			}
+
+			if (rnd.nextBoolean()) {
+				buySpell();
+			}
+
+			if (rnd.nextBoolean()) {
+				buyMoney();
+			}
+
+		}
+
 	}
 
 	private void undo() {
@@ -182,52 +323,6 @@ public class CharacterCreator {
 		character.println("{text:bold}{text:red}Noooooo! The world is doomed!{text}");
 		character.println("");
 		throw new RuntimeException("User has quit.");
-	}
-
-	private void showMenu() {
-		character.println("");
-		character.println("{text:u}{text:bold}{text:blue}Character Creation Menu{text}");
-		// character.println("=======================");
-		character.println("");
-		character.println("{text:bold}{text:magenta}Character{text}: {text:bold}%s{text}", character.getName());
-
-		// start = 5, min = 3, max = 7
-		character.println("{text:bold}{text:magenta}Health{text}: {text:bold}%d{text} (min 3, max 7)",
-				character.getHealth());
-
-		// start = 5, min = 3, max = 7
-		character.println("{text:bold}{text:magenta}Sanity{text}: {text:bold}%d{text} (min 3, max 7)",
-				character.getSanity());
-
-		// start = 1, min = 1, max = 3>
-		character.println("{text:bold}{text:magenta}Focus{text}: {text:bold}%d{text} (min 1, max 3)",
-				character.getFocus());
-
-		character.println("{text:bold}{text:magenta}Items{text}: {text:bold}%s{text}", character.getItemSummary());
-		character.println("{text:bold}{text:magenta}Spells{text}: {text:bold}%s{text}", character.getSpellSummary());
-		character.println("{text:bold}{text:magenta}Skills{text}: {text:bold}%s{text}", character.getSkillsSummary());
-		character.println("{text:bold}{text:magenta}Money{text}: {text:bold}$%d{text}", character.getMoney());
-		character.println("{text:bold}{text:magenta}Clues{text}: {text:bold}%d{text}", character.getClues());
-		character.println("");
-		character.println("Change health and sanity:");
-		character.println("{text:bold}1){text} +1 health, -1 sanity");
-		character.println("{text:bold}2){text} +1 sanity, -1 health");
-		character.println("");
-		character.println("Spend some of your %d remaining points on:", getBuildPoints());
-		character.println("{text:bold}3){text} +1 focus = 1 point");
-		character.println("{text:bold}4){text} +1 starting common item = %d points", CommonItem.BUILD_COST);
-		character.println("{text:bold}5){text} +1 starting unique item = %d points", UniqueItem.BUILD_COST);
-		character.println("{text:bold}6){text} +1 starting spell = %d point", Spell.BUILD_COST);
-		character.println("{text:bold}7){text} +1 starting skill = %d point", Skill.BUILD_COST);
-		character.println("{text:bold}8){text} +1 starting money = 1 point");
-		character.println("{text:bold}9){text} +1 starting clue = 1 point");
-		character.println("");
-		character.println("or...");
-		character.println("{text:bold}U){text} undo points spend");
-		character.println("{text:bold}R){text} to generate a random character (quick start)");
-		character.println("{text:bold}Q){text} quit");
-		character.println("");
-		character.print("> ");
 	}
 
 	interface Command {
@@ -289,9 +384,9 @@ public class CharacterCreator {
 
 		@Override
 		public boolean execute() {
-			if (character.getFocus() < 3) {
+			if (buildPoints >= 4 && character.getFocus() < 3) {
 				character.incFocus();
-				decBuildPoints();
+				decBuildPoints(4);
 				return true;
 			}
 			return false;
@@ -299,7 +394,7 @@ public class CharacterCreator {
 
 		@Override
 		public void undo() {
-			incBuildPoints();
+			incBuildPoints(4);
 			character.decFocus();
 		}
 
@@ -318,23 +413,6 @@ public class CharacterCreator {
 		public void undo() {
 			incBuildPoints();
 			character.decMoney();
-		}
-
-	}
-
-	class BuyClueCommand implements Command {
-
-		@Override
-		public boolean execute() {
-			decBuildPoints();
-			character.incClues();
-			return true;
-		}
-
-		@Override
-		public void undo() {
-			incBuildPoints();
-			character.decClues();
 		}
 
 	}

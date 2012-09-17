@@ -35,9 +35,11 @@ public class Authenticator implements MudAuthenticator {
 	@Override
 	public MudUser authenticate(MudSocketHandler socket) {
 		logger.debug("%s#authenticate() - IN", getClass().getName());
-		socket.println("Welcome to {text:red}Arkhamud{text} v1.");
+		socket.println("{cls}Welcome to {text:red}Arkhamud{text} v1.");
 		socket.println("");
+		
 		// TODO show high scores
+		
 		socket.println("The old ones are awakening.  Help defeat the monsters and close the portals before this world is lost!");
 		socket.println("");
 
@@ -63,9 +65,13 @@ public class Authenticator implements MudAuthenticator {
 	}
 
 	private String promptForName(MudSocketHandler socket) {
-		socket.print("Please enter a name for your investigator: ");
 		while (true) {
+			socket.print("Please enter a name for your investigator: ");
 			String name = socket.readLine();
+			if (name.trim().length() == 0) {
+				continue;
+			}
+
 			synchronized (usernames) {
 				if (!usernames.add(name)) {
 					socket.println("Sorry, an investigator with that name is already in Arkham.");

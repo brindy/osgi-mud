@@ -353,6 +353,7 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		public synchronized void print(String message) throws IOException {
 			logger.debug("%s#print(%s)", getClass().getSimpleName(), message);
 
+			message = message.replaceAll("\\{cls}", new String(new byte[] { 0x1B, '[', '2', 'J', 0x1B, '[', '1', ';', '1', 'H' }));
 			message = message.replaceAll("\\{text:bold}", new String(new byte[] { 0x1B, '[', '1', 'm' }));
 			
 			message = message.replaceAll("\\{text:u}", new String(new byte[] { 0x1B, '[', '4', 'm' }));
