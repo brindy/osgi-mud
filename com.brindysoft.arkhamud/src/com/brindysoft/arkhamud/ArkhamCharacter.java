@@ -23,6 +23,10 @@ public class ArkhamCharacter extends AbstractMudUser {
 
 	private Set<UniqueItem> uniqueItems = new HashSet<UniqueItem>();
 
+	private Set<Skill> skills = new HashSet<Skill>();
+
+	private Set<Spell> spells = new HashSet<Spell>();
+
 	public ArkhamCharacter(String name) {
 		setName(name);
 	}
@@ -75,12 +79,60 @@ public class ArkhamCharacter extends AbstractMudUser {
 		return buildPoints;
 	}
 
-	public void decBuildPoints() {
-		buildPoints--;
+	public void decBuildPoints(int... points) {
+
+		if (null == points || points.length == 0) {
+			buildPoints--;
+		} else {
+			for (int i : points) {
+				buildPoints -= i;
+			}
+		}
+
 	}
 
-	public void incBuildPoints() {
-		buildPoints++;
+	public void incBuildPoints(int... points) {
+
+		if (null == points || points.length == 0) {
+			buildPoints--;
+		} else {
+			for (int i : points) {
+				buildPoints += i;
+			}
+		}
+
+	}
+
+	public void incMoney() {
+		money++;
+	}
+
+	public void decMoney() {
+		money--;
+	}
+
+	public void incClues() {
+		clues++;
+	}
+
+	public void decClues() {
+		clues--;
+	}
+
+	public void addSpell(Spell item) {
+		spells.add(item);
+	}
+
+	public void removeSpell(Spell item) {
+		spells.remove(item);
+	}
+
+	public void addSkill(Skill item) {
+		skills.add(item);
+	}
+
+	public void removeSkill(Skill item) {
+		skills.remove(item);
 	}
 
 	public void addCommonItem(CommonItem item) {
@@ -116,16 +168,6 @@ public class ArkhamCharacter extends AbstractMudUser {
 		return builder.length() == 0 ? "None" : builder.toString();
 	}
 
-	// TODO add spells
-	public String getSpellsSummary() {
-		return "None";
-	}
-
-	// TODO add skills
-	public String getSkillsSummary() {
-		return "None";
-	}
-
 	public boolean isComplete() {
 		return buildPoints == 0;
 	}
@@ -156,6 +198,14 @@ public class ArkhamCharacter extends AbstractMudUser {
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
+	}
+
+	public String getSpellSummary() {
+		return spells.size() == 0 ? "None" : spells.size() + " spells";
+	}
+
+	public String getSkillsSummary() {
+		return skills.size() == 0 ? "None" : skills.size() + " skills";
 	}
 
 }

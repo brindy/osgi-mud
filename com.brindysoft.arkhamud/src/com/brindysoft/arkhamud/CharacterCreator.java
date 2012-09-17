@@ -92,6 +92,14 @@ public class CharacterCreator {
 				execute(new BuyCommand(skillService.randomItem()));
 				break;
 
+			case '8':
+				execute(new BuyMoneyCommand());
+				break;
+
+			case '9':
+				execute(new BuyClueCommand());
+				break;
+
 			case 'R':
 				character.randomise();
 				break;
@@ -117,8 +125,9 @@ public class CharacterCreator {
 	}
 
 	private void execute(Command cmd) {
-		cmd.execute();
-		commands.push(cmd);
+		if (cmd.execute()) {
+			commands.push(cmd);
+		}
 	}
 
 	private void moreHealth() {
@@ -162,7 +171,7 @@ public class CharacterCreator {
 				character.getFocus());
 
 		character.println("{text:bold}{text:magenta}Items{text}: {text:bold}%s{text}", character.getItemSummary());
-		character.println("{text:bold}{text:magenta}Spells{text}: {text:bold}%s{text}", character.getSpellsSummary());
+		character.println("{text:bold}{text:magenta}Spells{text}: {text:bold}%s{text}", character.getSpellSummary());
 		character.println("{text:bold}{text:magenta}Skills{text}: {text:bold}%s{text}", character.getSkillsSummary());
 		character.println("{text:bold}{text:magenta}Money{text}: {text:bold}$%d{text}", character.getMoney());
 		character.println("{text:bold}{text:magenta}Clues{text}: {text:bold}%d{text}", character.getClues());
@@ -173,10 +182,10 @@ public class CharacterCreator {
 		character.println("");
 		character.println("Spend some of your %d remaining points on:", character.getBuildPoints());
 		character.println("{text:bold}3){text} +1 focus = 1 point");
-		character.println("{text:bold}4){text} +1 starting common item = 1 point");
-		character.println("{text:bold}5){text} +1 starting unique item = 2 points");
-		character.println("{text:bold}6){text} +1 starting spell = 1 point");
-		character.println("{text:bold}7){text} +1 starting skill = 1 point");
+		character.println("{text:bold}4){text} +1 starting common item = %d points", CommonItem.BUILD_COST);
+		character.println("{text:bold}5){text} +1 starting unique item = %d points", UniqueItem.BUILD_COST);
+		character.println("{text:bold}6){text} +1 starting spell = %d point", Spell.BUILD_COST);
+		character.println("{text:bold}7){text} +1 starting skill = %d point", Skill.BUILD_COST);
 		character.println("{text:bold}8){text} +1 starting money = 1 point");
 		character.println("{text:bold}9){text} +1 starting clue = 1 point");
 		character.println("");
@@ -189,7 +198,7 @@ public class CharacterCreator {
 	}
 
 	interface Command {
-		void execute();
+		boolean execute();
 
 		void undo();
 	}
@@ -203,24 +212,41 @@ public class CharacterCreator {
 		}
 
 		@Override
-		public void execute() {
-			character.decBuildPoints();
-			if (item instanceof CommonItem) {
+		public boolean execute() {
+			boolean bought = true;
+			if (item instanceof CommonItem && character.getBuildPoints() >= CommonItem.BUILD_COST) {
+				character.decBuildPoints(CommonItem.BUILD_COST);
 				character.addCommonItem((CommonItem) item);
-			} else if (item instanceof UniqueItem) {
-				character.decBuildPoints();
+			} else if (item instanceof UniqueItem && character.getBuildPoints() >= UniqueItem.BUILD_COST) {
+				character.decBuildPoints(UniqueItem.BUILD_COST);
 				character.addUniqueItem((UniqueItem) item);
+			} else if (item instanceof Spell && character.getBuildPoints() >= Spell.BUILD_COST) {
+				character.decBuildPoints(Spell.BUILD_COST);
+				character.addSpell((Spell) item);
+			} else if (item instanceof Skill && character.getBuildPoints() >= Skill.BUILD_COST) {
+				character.decBuildPoints(Skill.BUILD_COST);
+				character.addSkill((Skill) item);
+			} else {
+				bought = false;
 			}
+
+			return bought;
 		}
 
 		@Override
 		public void undo() {
-			character.incBuildPoints();
 			if (item instanceof CommonItem) {
+				character.incBuildPoints(CommonItem.BUILD_COST);
 				character.removeCommonItem((CommonItem) item);
 			} else if (item instanceof UniqueItem) {
-				character.incBuildPoints();
+				character.incBuildPoints(UniqueItem.BUILD_COST);
 				character.removeUniqueItem((UniqueItem) item);
+			} else if (item instanceof Spell) {
+				character.incBuildPoints(Spell.BUILD_COST);
+				character.removeSpell((Spell) item);
+			} else if (item instanceof Skill) {
+				character.incBuildPoints(Skill.BUILD_COST);
+				character.removeSkill((Skill) item);
 			}
 		}
 
@@ -228,23 +254,54 @@ public class CharacterCreator {
 
 	class BuyFocusCommand implements Command {
 
-		private boolean spent;
-
 		@Override
-		public void execute() {
+		public boolean execute() {
 			if (character.getFocus() < 3) {
 				character.incFocus();
 				character.decBuildPoints();
-				spent = true;
+				return true;
 			}
+			return false;
 		}
 
 		@Override
 		public void undo() {
-			if (spent) {
-				character.incBuildPoints();
-				character.decFocus();
-			}
+			character.incBuildPoints();
+			character.decFocus();
+		}
+
+	}
+
+	class BuyMoneyCommand implements Command {
+
+		@Override
+		public boolean execute() {
+			character.decBuildPoints();
+			character.incMoney();
+			return true;
+		}
+
+		@Override
+		public void undo() {
+			character.incBuildPoints();
+			character.decMoney();
+		}
+
+	}
+
+	class BuyClueCommand implements Command {
+
+		@Override
+		public boolean execute() {
+			character.decBuildPoints();
+			character.incClues();
+			return true;
+		}
+
+		@Override
+		public void undo() {
+			character.incBuildPoints();
+			character.decClues();
 		}
 
 	}
