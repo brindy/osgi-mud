@@ -353,6 +353,10 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 		public synchronized void print(String message) throws IOException {
 			logger.debug("%s#print(%s)", getClass().getSimpleName(), message);
 
+			message = message.replaceAll("\\{text:bold}", new String(new byte[] { 0x1B, '[', '1', 'm' }));
+			
+			message = message.replaceAll("\\{text:u}", new String(new byte[] { 0x1B, '[', '4', 'm' }));
+			
 			message = message.replaceAll("\\{text:black}", new String(new byte[] { 0x1B, '[', '3', '0', 'm' }));
 			message = message.replaceAll("\\{text:red}", new String(new byte[] { 0x1B, '[', '3', '1', 'm' }));
 			message = message.replaceAll("\\{text:green}", new String(new byte[] { 0x1B, '[', '3', '2', 'm' }));
@@ -361,6 +365,16 @@ public class DefaultMudSocketHandler implements MudSocketHandler, Runnable {
 			message = message.replaceAll("\\{text:magenta}", new String(new byte[] { 0x1B, '[', '3', '5', 'm' }));
 			message = message.replaceAll("\\{text:cyan}", new String(new byte[] { 0x1B, '[', '3', '6', 'm' }));
 			message = message.replaceAll("\\{text:white}", new String(new byte[] { 0x1B, '[', '3', '7', 'm' }));
+			
+			message = message.replaceAll("\\{text:bgblack}", new String(new byte[] { 0x1B, '[', '4', '0', 'm' }));
+			message = message.replaceAll("\\{text:bgred}", new String(new byte[] { 0x1B, '[', '4', '1', 'm' }));
+			message = message.replaceAll("\\{text:bggreen}", new String(new byte[] { 0x1B, '[', '4', '2', 'm' }));
+			message = message.replaceAll("\\{text:bgyellow}", new String(new byte[] { 0x1B, '[', '4', '3', 'm' }));
+			message = message.replaceAll("\\{text:bgblue}", new String(new byte[] { 0x1B, '[', '4', '4', 'm' }));
+			message = message.replaceAll("\\{text:bgmagenta}", new String(new byte[] { 0x1B, '[', '4', '5', 'm' }));
+			message = message.replaceAll("\\{text:bgcyan}", new String(new byte[] { 0x1B, '[', '4', '6', 'm' }));
+			message = message.replaceAll("\\{text:bgwhite}", new String(new byte[] { 0x1B, '[', '4', '7', 'm' }));
+			
 			message = message.replaceAll("\\{text}", new String(new byte[] { 0x1B, '[', 0, 'm' }));
 
 			message = message.replaceAll("\\{text:?.*?}", "");

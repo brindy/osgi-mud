@@ -116,10 +116,12 @@ public class ArkhamCharacter extends AbstractMudUser {
 		return builder.length() == 0 ? "None" : builder.toString();
 	}
 
+	// TODO add spells
 	public String getSpellsSummary() {
 		return "None";
 	}
 
+	// TODO add skills
 	public String getSkillsSummary() {
 		return "None";
 	}

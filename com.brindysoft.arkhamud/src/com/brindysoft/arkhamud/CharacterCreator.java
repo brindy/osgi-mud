@@ -24,6 +24,13 @@ public class CharacterCreator {
 
 	private SpellService spellService;
 
+	private SkillService skillService;
+
+	@Reference
+	public void setSkillService(SkillService skillService) {
+		this.skillService = skillService;
+	}
+
 	@Reference
 	public void setSpellService(SpellService spellService) {
 		this.spellService = spellService;
@@ -81,6 +88,10 @@ public class CharacterCreator {
 				execute(new BuyCommand(spellService.randomItem()));
 				break;
 
+			case '7':
+				execute(new BuyCommand(skillService.randomItem()));
+				break;
+
 			case 'R':
 				character.randomise();
 				break;
@@ -126,49 +137,53 @@ public class CharacterCreator {
 
 	private void quit() {
 		character.println("");
-		character.println("{text:red}The world is doomed!{text}");
+		character.println("{text:bold}{text:red}Noooooo! The world is doomed!{text}");
+		character.println("");
 		throw new RuntimeException("User has quit.");
 	}
 
 	private void showMenu() {
 		character.println("");
-		character.println("{text:blue}Character Creation Menu{text}");
-		character.println("=======================");
+		character.println("{text:u}{text:bold}{text:blue}Character Creation Menu{text}");
+		// character.println("=======================");
 		character.println("");
-		character.println("Character: %s", character.getName());
+		character.println("{text:bold}{text:magenta}Character{text}: {text:bold}%s{text}", character.getName());
 
 		// start = 5, min = 3, max = 7
-		character.println("Health: %d (min 3, max 7)", character.getHealth());
+		character.println("{text:bold}{text:magenta}Health{text}: {text:bold}%d{text} (min 3, max 7)",
+				character.getHealth());
 
 		// start = 5, min = 3, max = 7
-		character.println("Sanity: %d (min 3, max 7)", character.getSanity());
+		character.println("{text:bold}{text:magenta}Sanity{text}: {text:bold}%d{text} (min 3, max 7)",
+				character.getSanity());
 
 		// start = 1, min = 1, max = 3>
-		character.println("Focus: %d (min 1, max 3)", character.getFocus());
+		character.println("{text:bold}{text:magenta}Focus{text}: {text:bold}%d{text} (min 1, max 3)",
+				character.getFocus());
 
-		character.println("Items: %s ", character.getItemSummary());
-		character.println("Spells: %s ", character.getSpellsSummary());
-		character.println("Skills: %s ", character.getSkillsSummary());
-		character.println("Money: $%d", character.getMoney());
-		character.println("Clues: %d", character.getClues());
+		character.println("{text:bold}{text:magenta}Items{text}: {text:bold}%s{text}", character.getItemSummary());
+		character.println("{text:bold}{text:magenta}Spells{text}: {text:bold}%s{text}", character.getSpellsSummary());
+		character.println("{text:bold}{text:magenta}Skills{text}: {text:bold}%s{text}", character.getSkillsSummary());
+		character.println("{text:bold}{text:magenta}Money{text}: {text:bold}$%d{text}", character.getMoney());
+		character.println("{text:bold}{text:magenta}Clues{text}: {text:bold}%d{text}", character.getClues());
 		character.println("");
 		character.println("Change health and sanity:");
-		character.println("1) +1 health, -1 sanity");
-		character.println("2) +1 sanity, -1 health");
+		character.println("{text:bold}1){text} +1 health, -1 sanity");
+		character.println("{text:bold}2){text} +1 sanity, -1 health");
 		character.println("");
 		character.println("Spend some of your %d remaining points on:", character.getBuildPoints());
-		character.println("3) +1 focus = 1 point");
-		character.println("4) +1 starting common item = 1 point");
-		character.println("5) +1 starting unique item = 2 points");
-		character.println("6) +1 starting spell = 1 point");
-		character.println("7) +1 starting skill = 1 point");
-		character.println("8) +1 starting money = 1 point");
-		character.println("9) +1 starting clue = 1 point");
+		character.println("{text:bold}3){text} +1 focus = 1 point");
+		character.println("{text:bold}4){text} +1 starting common item = 1 point");
+		character.println("{text:bold}5){text} +1 starting unique item = 2 points");
+		character.println("{text:bold}6){text} +1 starting spell = 1 point");
+		character.println("{text:bold}7){text} +1 starting skill = 1 point");
+		character.println("{text:bold}8){text} +1 starting money = 1 point");
+		character.println("{text:bold}9){text} +1 starting clue = 1 point");
 		character.println("");
 		character.println("or...");
-		character.println("U) undo points spend");
-		character.println("R) to generate a random character (quick start)");
-		character.println("Q) quit");
+		character.println("{text:bold}U){text} undo points spend");
+		character.println("{text:bold}R){text} to generate a random character (quick start)");
+		character.println("{text:bold}Q){text} quit");
 		character.println("");
 		character.print("> ");
 	}
