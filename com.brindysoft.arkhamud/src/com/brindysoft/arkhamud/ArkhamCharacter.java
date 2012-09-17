@@ -17,8 +17,6 @@ public class ArkhamCharacter extends AbstractMudUser {
 
 	private int clues;
 
-	private int buildPoints = 15;
-
 	private Set<CommonItem> commonItems = new HashSet<CommonItem>();
 
 	private Set<UniqueItem> uniqueItems = new HashSet<UniqueItem>();
@@ -73,34 +71,6 @@ public class ArkhamCharacter extends AbstractMudUser {
 
 	public int getClues() {
 		return clues;
-	}
-
-	public int getBuildPoints() {
-		return buildPoints;
-	}
-
-	public void decBuildPoints(int... points) {
-
-		if (null == points || points.length == 0) {
-			buildPoints--;
-		} else {
-			for (int i : points) {
-				buildPoints -= i;
-			}
-		}
-
-	}
-
-	public void incBuildPoints(int... points) {
-
-		if (null == points || points.length == 0) {
-			buildPoints--;
-		} else {
-			for (int i : points) {
-				buildPoints += i;
-			}
-		}
-
 	}
 
 	public void incMoney() {
@@ -166,13 +136,6 @@ public class ArkhamCharacter extends AbstractMudUser {
 		}
 
 		return builder.length() == 0 ? "None" : builder.toString();
-	}
-
-	public boolean isComplete() {
-		return buildPoints == 0;
-	}
-
-	public void randomise() {
 	}
 
 	@Override
