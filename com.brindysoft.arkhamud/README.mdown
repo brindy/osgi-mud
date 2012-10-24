@@ -4,3 +4,5 @@
 ### Focus
 
 Users can change stance at any time.  Focus determines how good they are in any particular stance.  Higher focus means better at stealth, fighting, magic, etc.
+
+
